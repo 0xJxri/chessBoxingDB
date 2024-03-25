@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "files": [
+    "example_bg.wasm",
+    "example.js",
+    "example.d.ts"
+  ],
+  "module": "example.js",
+  "types": "example.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

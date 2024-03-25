@@ -1,0 +1,14 @@
+{
+  "name": "qrcodeWasm",
+  "version": "0.1.0",
+  "files": [
+    "qrcodeWasm_bg.wasm",
+    "qrcodeWasm.js",
+    "qrcodeWasm.d.ts"
+  ],
+  "module": "qrcodeWasm.js",
+  "types": "qrcodeWasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
