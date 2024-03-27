@@ -49,5 +49,5 @@ import fs from "fs";
     }
     fs.writeFileSync(`${ dataFolder }/ results.json`, JSON.stringify(finalResult, null, 2));
     console.log('Results saved to data/fighters.json');
-    await browser.close(); // Close the browser
+    await browser.close(); 
 })();
