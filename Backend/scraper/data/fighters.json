@@ -1,14 +1,5 @@
 [
   {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
-  },
-  {
     "name": "Aaron 'Sween machine' Sweeney",
     "fights": "1",
     "record": "1-0-0",
@@ -457,15 +448,6 @@
     "height": "?",
     "weight": "?",
     "activeYears": "2019"
-  },
-  {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
   },
   {
     "name": "Arik Braun",
@@ -918,15 +900,6 @@
     "activeYears": "2018 - 2022"
   },
   {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
-  },
-  {
     "name": "Dan 'The Wake Up Call' Wakeham",
     "fights": "1",
     "record": "0-1-0",
@@ -1375,15 +1348,6 @@
     "height": "167cm",
     "weight": "65kg",
     "activeYears": "2011"
-  },
-  {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
   },
   {
     "name": "Emrah Gokboru",
@@ -1836,15 +1800,6 @@
     "activeYears": "2023"
   },
   {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
-  },
-  {
     "name": "Ieva Zelvyte",
     "fights": "1",
     "record": "1-0-0",
@@ -2293,15 +2248,6 @@
     "height": "?",
     "weight": "?",
     "activeYears": "2023"
-  },
-  {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
   },
   {
     "name": "Kevin Guedj",
@@ -2754,15 +2700,6 @@
     "activeYears": "2012 - 2013"
   },
   {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
-  },
-  {
     "name": "Marie 'Killer Queen' Obegi",
     "fights": "1",
     "record": "0-1-0",
@@ -3211,15 +3148,6 @@
     "height": "175cm",
     "weight": "70kg",
     "activeYears": "2023"
-  },
-  {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
   },
   {
     "name": "Otto 'Bismark' Vihera",
@@ -3672,15 +3600,6 @@
     "activeYears": "2007 - 2014"
   },
   {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
-  },
-  {
     "name": "Scott Parker",
     "fights": "1",
     "record": "0-1-0",
@@ -4129,15 +4048,6 @@
     "height": "183cm",
     "weight": "89kg",
     "activeYears": "2005"
-  },
-  {
-    "name": "Name",
-    "fights": "Fights",
-    "record": "Record",
-    "elo": "ELO",
-    "height": "Height",
-    "weight": "Weight",
-    "activeYears": "Active"
   },
   {
     "name": "Tilman Kohls",

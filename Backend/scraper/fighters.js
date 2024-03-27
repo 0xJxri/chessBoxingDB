@@ -14,7 +14,7 @@ const fs = require('fs');
 
     const fighters = await page.evaluate(() => {
       const fightersArray = [];
-      const tableRows = document.querySelectorAll('.tbl_events tbody tr');
+      const tableRows = document.querySelectorAll('.tbl_events tbody tr:not(:first-child)');
       
       tableRows.forEach(row => {
         const name = row.querySelector('td:nth-child(2) a').textContent.trim();
