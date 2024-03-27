@@ -47,7 +47,7 @@ import fs from "fs";
     if (!fs.existsSync(dataFolder)) {
         fs.mkdirSync(dataFolder);
     }
-    fs.writeFileSync(`${ dataFolder }/ results.json`, JSON.stringify(finalResult, null, 2));
+    fs.writeFileSync(`${ dataFolder }/results.json`, JSON.stringify(finalResult, null, 2));
     console.log('Results saved to data/fighters.json');
     await browser.close(); 
 })();
