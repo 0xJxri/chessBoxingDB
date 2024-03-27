@@ -1,0 +1,4493 @@
+[
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Aaron 'Sween machine' Sweeney",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1600",
+    "height": "167cm",
+    "weight": "70kg",
+    "activeYears": "2018"
+  },
+  {
+    "name": "Ahmet Celik",
+    "fights": "3",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019 - 2022"
+  },
+  {
+    "name": "Aidar Amirzakov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2024"
+  },
+  {
+    "name": "Aishegul Pekhlivan",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Aksoy Sergan",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Alan Riley",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Albert 'boxbox' Zheng",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1400",
+    "height": "188cm",
+    "weight": "88kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Aldiyar Zhandaulat",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Alec Hermann",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "32kg",
+    "activeYears": "2007"
+  },
+  {
+    "name": "Aleksandr 'E4' Smirnov",
+    "fights": "6",
+    "record": "3-3-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Aleksandr Nikitin",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Aleksandr Noskova",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Aleksandras Traskelis",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "170cm",
+    "weight": "68kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Aleksey Gogolev",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Alex 'The Snake' Troll",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2007 - 2011"
+  },
+  {
+    "name": "Alex Turalski",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1500",
+    "height": "182cm",
+    "weight": "69kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Alexander Bestuzhev",
+    "fights": "5",
+    "record": "3-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018 - 2023"
+  },
+  {
+    "name": "Alexander Dis",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018"
+  },
+  {
+    "name": "Alexander Ivashnev",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Alexander Kuchkin",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Alexander Vassu",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1200",
+    "height": "?",
+    "weight": "75kg",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Alexey Miroshnikov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Ali 'Myth' Kabbani",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Alina Rath",
+    "fights": "5",
+    "record": "4-0-1",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Alisha Lara Wallat",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1300",
+    "height": "172cm",
+    "weight": "75kg",
+    "activeYears": "2023 - 2024"
+  },
+  {
+    "name": "Aman 'Chessbrah' Hambleton",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "2509",
+    "height": "183cm",
+    "weight": "83kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Amin Babashev",
+    "fights": "6",
+    "record": "3-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017 - 2019"
+  },
+  {
+    "name": "Amina Akhmadulina",
+    "fights": "4",
+    "record": "3-1-0",
+    "elo": "?",
+    "height": "177cm",
+    "weight": "65kg",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Anatol 'Chico' Przytulski",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1500",
+    "height": "180cm",
+    "weight": "75kg",
+    "activeYears": "2010"
+  },
+  {
+    "name": "Anatolii Shchukin",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Anatolijus Stachinskas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "85kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Anchit Sharad Mishra",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Andre 'Glenzman' Glenzer",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "1900",
+    "height": "184cm",
+    "weight": "75kg",
+    "activeYears": "2013 - 2023"
+  },
+  {
+    "name": "Andrea 'Soviet' Mastrantuono",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Andrea Botez",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1709",
+    "height": "168cm",
+    "weight": "61kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Andreas 'D' Schneider",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "2153",
+    "height": "191cm",
+    "weight": "85kg",
+    "activeYears": "2005"
+  },
+  {
+    "name": "Andreas 'Sardoche' Honnet",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "1750",
+    "height": "174cm",
+    "weight": "68kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Andrew 'Komodo Dragon' Haworth",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1530",
+    "height": "181cm",
+    "weight": "85kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Andrew 'The Fightin Philanthropist' McGregor",
+    "fights": "4",
+    "record": "3-1-0",
+    "elo": "1600",
+    "height": "210cm",
+    "weight": "125kg",
+    "activeYears": "2010 - 2016"
+  },
+  {
+    "name": "Andrew 'ThePawnSlayer' Smith",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "1750",
+    "height": "178cm",
+    "weight": "99kg",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Andrius Grubinskas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "90kg",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Andrius Sepavicius",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "90kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Andy 'The Rock' Costello",
+    "fights": "11",
+    "record": "3-6-1",
+    "elo": "1800",
+    "height": "?",
+    "weight": "99kg",
+    "activeYears": "2008 - 2013"
+  },
+  {
+    "name": "Angom Nongsha Singh Basumatary",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Anthony 'Toto' Bourached",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "2044",
+    "height": "185cm",
+    "weight": "75kg",
+    "activeYears": "2019 - 2022"
+  },
+  {
+    "name": "Anthony Grunfelder",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "2100",
+    "height": "178cm",
+    "weight": "95kg",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Anthony Hain",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Antonin Doulat",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Antonio Montana",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1200",
+    "height": "170cm",
+    "weight": "64kg",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Arda Unknown",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Arik Braun",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011 - 2012"
+  },
+  {
+    "name": "Arminius Rolle",
+    "fights": "4",
+    "record": "2-2-0",
+    "elo": "1300",
+    "height": "176cm",
+    "weight": "50kg",
+    "activeYears": "2023 - 2024"
+  },
+  {
+    "name": "Arnold 'Confectioner' Baklizky",
+    "fights": "8",
+    "record": "7-1-0",
+    "elo": "1800",
+    "height": "180cm",
+    "weight": "85kg",
+    "activeYears": "2018 - 2023"
+  },
+  {
+    "name": "Arnold Rogalewski",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Arol Ayberk",
+    "fights": "3",
+    "record": "0-3-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Arslan Charyev",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Artem 'Johnny Brain' Sldoian",
+    "fights": "11",
+    "record": "8-3-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2024"
+  },
+  {
+    "name": "Arthur Var",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1200",
+    "height": "175cm",
+    "weight": "73kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Artur Khannanov",
+    "fights": "5",
+    "record": "2-3-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023 - 2024"
+  },
+  {
+    "name": "Arturas Kazlauskas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "80kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Arturas Lukosiunas",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1200",
+    "height": "176cm",
+    "weight": "83kg",
+    "activeYears": "2021 - 2023"
+  },
+  {
+    "name": "Arundhathy R Nair",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Aryansurya Sunilamitha",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Asutosh Kumar Jha",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Atharhan Jathar",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Attila 'The Hungarian' Por",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Aydogdu Sedat Furkan",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Azamat Berdikeyev",
+    "fights": "3",
+    "record": "0-3-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2024"
+  },
+  {
+    "name": "Azamat Mirzosaidov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Baha Gozcu",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019 - 2022"
+  },
+  {
+    "name": "Baris Acar",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Ben 'The Rumble' Robinson",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "?",
+    "height": "178cm",
+    "weight": "78kg",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Ben 'The Veggie' Reid",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "190cm",
+    "weight": "95kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Bendas Gudzinskas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "50kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Benjamin Buckland",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Benjamin Hofmann",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Benny Kang",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "178cm",
+    "weight": "68kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Biggles Bristol",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1400",
+    "height": "178cm",
+    "weight": "82kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Birk 'Busi Boy' Ruud",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "800",
+    "height": "180cm",
+    "weight": "75kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Bjorn 'Left Rook' Jonsson",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "2039",
+    "height": "?",
+    "weight": "85kg",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Bob 'The Red Kite' Innes",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "100kg",
+    "activeYears": "2008 - 2009"
+  },
+  {
+    "name": "Boriss Raigordkis",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "1200",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019 - 2021"
+  },
+  {
+    "name": "Brian 'No Slack' Mak",
+    "fights": "4",
+    "record": "1-3-0",
+    "elo": "1600",
+    "height": "177cm",
+    "weight": "71kg",
+    "activeYears": "2018 - 2020"
+  },
+  {
+    "name": "Briedis Juris",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Bryan 'Singapore Slinger' Woon",
+    "fights": "3",
+    "record": "0-2-1",
+    "elo": "1500",
+    "height": "178cm",
+    "weight": "73kg",
+    "activeYears": "2012 - 2013"
+  },
+  {
+    "name": "C Carinov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Cagri Turker",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Cameron 'The Hurt Locker' Little",
+    "fights": "6",
+    "record": "4-2-0",
+    "elo": "1700",
+    "height": "199cm",
+    "weight": "104kg",
+    "activeYears": "2016 - 2020"
+  },
+  {
+    "name": "Carl Williams",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Carlo Molteni",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Chad 'Cherdleys' Lebaron",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "175cm",
+    "weight": "75kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Charlie Hayter",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "185cm",
+    "weight": "83kg",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Chris 'Abroad in Japan' Broad",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "172cm",
+    "weight": "81kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Chris 'The General' Levy",
+    "fights": "5",
+    "record": "1-4-0",
+    "elo": "1700",
+    "height": "?",
+    "weight": "85kg",
+    "activeYears": "2011 - 2016"
+  },
+  {
+    "name": "Chris 'The Ventriloquist' Powell",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "?",
+    "height": "178cm",
+    "weight": "69kg",
+    "activeYears": "2013 - 2014"
+  },
+  {
+    "name": "Christ Van Leest",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Christian 'The Barber' Balsamo",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016 - 2018"
+  },
+  {
+    "name": "Christian Martin Schafer",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Dan 'The Man' Stanner",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Dan 'The Taxman' Manfold",
+    "fights": "6",
+    "record": "2-4-0",
+    "elo": "1700",
+    "height": "190cm",
+    "weight": "79kg",
+    "activeYears": "2018 - 2022"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Dan 'The Wake Up Call' Wakeham",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "95kg",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Dan Chandler",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "178cm",
+    "weight": "90kg",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Dan Hall",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "2094",
+    "height": "195cm",
+    "weight": "83kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Daniel 'Pretty Boy' Thordarson",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "73kg",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Daniel 'The Man From Pamplona' Lizarraga",
+    "fights": "6",
+    "record": "5-0-0",
+    "elo": "1850",
+    "height": "180cm",
+    "weight": "75kg",
+    "activeYears": "2009 - 2014"
+  },
+  {
+    "name": "Daniel Biman",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "1800",
+    "height": "184cm",
+    "weight": "84kg",
+    "activeYears": "2017 - 2019"
+  },
+  {
+    "name": "Daniele Giulio 'Dada' Rota",
+    "fights": "7",
+    "record": "5-2-0",
+    "elo": "1700",
+    "height": "175cm",
+    "weight": "73kg",
+    "activeYears": "2015 - 2022"
+  },
+  {
+    "name": "Daniil Solovyov",
+    "fights": "16",
+    "record": "11-5-0",
+    "elo": "1850",
+    "height": "190cm",
+    "weight": "77kg",
+    "activeYears": "2016 - 2023"
+  },
+  {
+    "name": "Danil Kutyin",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Danlei 'Pengting' Zhu",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1042",
+    "height": "163cm",
+    "weight": "55kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Danny 'Loco Mosquito' Bent",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "175cm",
+    "weight": "78kg",
+    "activeYears": "2015 - 2016"
+  },
+  {
+    "name": "Darius 'Iron Man' Gelezinis",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Darius Rolkis",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "190cm",
+    "weight": "91kg",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Darrel 'Almighty' High",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "180cm",
+    "weight": "73kg",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Darvin Canameti",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1100",
+    "height": "?",
+    "weight": "90kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Dashiell 'Demontime' Shaw",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "2260",
+    "height": "182cm",
+    "weight": "84kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Dave Cashman",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018"
+  },
+  {
+    "name": "David 'Dare Dave' Steppeler",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2007"
+  },
+  {
+    "name": "David 'Double D' Depto",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "1850",
+    "height": "?",
+    "weight": "85kg",
+    "activeYears": "2007 - 2008"
+  },
+  {
+    "name": "David 'Dr King Kong' Pfeifer",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2010"
+  },
+  {
+    "name": "David 'Just Wants a Kiss' Garley",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "David 'Northern Powerhouse' Jarmany",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "2267",
+    "height": "188cm",
+    "weight": "97kg",
+    "activeYears": "2020 - 2023"
+  },
+  {
+    "name": "David 'Stone Man' Jarmak",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "David Estrada",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Davide Lanzillotta",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Delabarre Olivier Gerard",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Dele 'The Dominator' Martins",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1300",
+    "height": "190cm",
+    "weight": "92kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Denis Gurba",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "1600",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018 - 2020"
+  },
+  {
+    "name": "Denny Park",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Dhanalokgjam Dhanalokgjam",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018"
+  },
+  {
+    "name": "Diana Toktybayeva",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Dimitry 'The Kid' Pechurin",
+    "fights": "8",
+    "record": "6-2-0",
+    "elo": "1600",
+    "height": "195cm",
+    "weight": "105kg",
+    "activeYears": "2015 - 2021"
+  },
+  {
+    "name": "Dina Belenkaya",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "2292",
+    "height": "168cm",
+    "weight": "57kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Divya Medi",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Dmitry Ermakovich",
+    "fights": "7",
+    "record": "4-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017 - 2022"
+  },
+  {
+    "name": "Dmitry Kalmykov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Dmitry Prokopiev",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Dogan Aktas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Dogukan 'Big Brother' Cinar",
+    "fights": "16",
+    "record": "12-4-0",
+    "elo": "1634",
+    "height": "183cm",
+    "weight": "80kg",
+    "activeYears": "2019 - 2024"
+  },
+  {
+    "name": "Domas Laurencikas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "80kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Dominik Lorenz",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "34kg",
+    "activeYears": "2007"
+  },
+  {
+    "name": "Dylan 'The Intern' Bellholter",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Dymer 'Beast of Peace' Agasaryan",
+    "fights": "10",
+    "record": "9-1-0",
+    "elo": "1600",
+    "height": "173cm",
+    "weight": "68kg",
+    "activeYears": "2012 - 2021"
+  },
+  {
+    "name": "Edgars Raits",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Eduard 'The Eagle' Lleshi",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1200",
+    "height": "168cm",
+    "weight": "60kg",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Egor Dolgatchev",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Egor Vlasov",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Ekaterina Petruchkova",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Ekrem Celik",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Emma Richardson",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "167cm",
+    "weight": "65kg",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Emrah Gokboru",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Erbolat Zeynolla",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2024"
+  },
+  {
+    "name": "Eric 'PointCrow' Morino",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "175cm",
+    "weight": "68kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Eswara Moorthtm",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Ethan 'Hammer' Holmwood",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "193cm",
+    "weight": "100kg",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Eva Forova",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Evgenij Lykhta",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Fabian Alcer",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "1900",
+    "height": "?",
+    "weight": "68kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Fabio Reinhard",
+    "fights": "1",
+    "record": "0-0-1",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Felix 'Intense' Li",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "1475",
+    "height": "172cm",
+    "weight": "72kg",
+    "activeYears": "2021 - 2022"
+  },
+  {
+    "name": "Felix Bartels",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2012 - 2013"
+  },
+  {
+    "name": "Filippo 'Catanarinelli' Gubbini",
+    "fights": "6",
+    "record": "1-3-2",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014 - 2022"
+  },
+  {
+    "name": "Firedevs Hale Balyemez",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Fortunato Adinolfi",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Francesco 'Braniac Bruiser' Silvestrin",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1097",
+    "height": "173cm",
+    "weight": "72kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Francesco Tordoni",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Frank 'Anti Terror' Stoldt",
+    "fights": "6",
+    "record": "3-3-0",
+    "elo": "2000",
+    "height": "?",
+    "weight": "86kg",
+    "activeYears": "2006 - 2013"
+  },
+  {
+    "name": "Gabriel Lacoutre",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Gabriel Pierre Paul",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Galiakhmetov Galiakhmetov",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Gavin 'Grievous Bodily Farmer' Paterson",
+    "fights": "3",
+    "record": "0-3-0",
+    "elo": "1230",
+    "height": "180cm",
+    "weight": "80kg",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Gearoid 'Sex Appeal' Veale",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "1500",
+    "height": "180cm",
+    "weight": "70kg",
+    "activeYears": "2019 - 2021"
+  },
+  {
+    "name": "George 'Huggy Bear' Crespo",
+    "fights": "7",
+    "record": "1-6-0",
+    "elo": "1500",
+    "height": "187cm",
+    "weight": "80kg",
+    "activeYears": "2013 - 2014"
+  },
+  {
+    "name": "Gerard 'Ripper' Reilly",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "1784",
+    "height": "178cm",
+    "weight": "68kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Gerry 'The Pacemaker' Anderson",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1500",
+    "height": "187cm",
+    "weight": "75kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Gianluca 'Il Dottore' Sirci",
+    "fights": "6",
+    "record": "4-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2008 - 2015"
+  },
+  {
+    "name": "Gianluca Di Vece",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Gianpiero Sportelli",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015 - 2019"
+  },
+  {
+    "name": "Giulio Sanfelice",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Giuseppe 'Mezzaluna' Grasso",
+    "fights": "3",
+    "record": "0-2-1",
+    "elo": "?",
+    "height": "183cm",
+    "weight": "79kg",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Giuseppe Andreoni",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Greg Drach",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Greg Eva",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Grigory Novikov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Guitong Li",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1100",
+    "height": "?",
+    "weight": "55kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Gurkan Sinan Yasar",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Guy Cohen",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "188cm",
+    "weight": "82kg",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Hamit Haveri",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Hamza Kucukkahraman",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Hannes 'Hotzenblitz' Fritz",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "74kg",
+    "activeYears": "2007"
+  },
+  {
+    "name": "Hannes Friedrich",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Hasan Celik",
+    "fights": "7",
+    "record": "5-2-0",
+    "elo": "1500",
+    "height": "165cm",
+    "weight": "80kg",
+    "activeYears": "2022 - 2024"
+  },
+  {
+    "name": "Hasim Abed",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Hector Gomez",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Henry 'Raffles' Blanchard",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "?",
+    "height": "182cm",
+    "weight": "88kg",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Hubert 'The Wardrobe' Van Melick",
+    "fights": "6",
+    "record": "4-2-0",
+    "elo": "1500",
+    "height": "193cm",
+    "weight": "98kg",
+    "activeYears": "2008 - 2011"
+  },
+  {
+    "name": "Hugo 'Hugs' Gonzalez",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1400",
+    "height": "170cm",
+    "weight": "75kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Ibrahim Erdogan",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Iepe 'The Joker' Rubingh",
+    "fights": "8",
+    "record": "6-2-0",
+    "elo": "1575",
+    "height": "178cm",
+    "weight": "73kg",
+    "activeYears": "2003 - 2015"
+  },
+  {
+    "name": "Ieva Budenaite",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "161cm",
+    "weight": "60kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Ieva Zelvyte",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "169cm",
+    "weight": "65kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Igor Lebdev",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Igor Orlov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Igoris Krugliakovas",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "80kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Ilsur 'BashBure' Iskhakov",
+    "fights": "6",
+    "record": "6-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Ilya Goykfhis",
+    "fights": "4",
+    "record": "2-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017 - 2019"
+  },
+  {
+    "name": "Ion Citu",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Isidro Gete",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "2132",
+    "height": "183cm",
+    "weight": "68kg",
+    "activeYears": "2010 - 2014"
+  },
+  {
+    "name": "Ismail Ozturk",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Ivan Ryabtsev",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Jack 'Gentleman' Page",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1200",
+    "height": "182cm",
+    "weight": "73kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Jack 'The Reaper' Sheard",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1774",
+    "height": "183cm",
+    "weight": "68kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Jack Funk",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Jacopo Di Lauro",
+    "fights": "2",
+    "record": "0-1-1",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014 - 2015"
+  },
+  {
+    "name": "Jamel 'Boumier' Hennous",
+    "fights": "4",
+    "record": "3-1-0",
+    "elo": "1850",
+    "height": "190cm",
+    "weight": "110kg",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "James 'Chelsea Chainsaw' Pope",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "1200",
+    "height": "180cm",
+    "weight": "79kg",
+    "activeYears": "2013 - 2014"
+  },
+  {
+    "name": "James 'Spiceboy' Corrigan",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1800",
+    "height": "180cm",
+    "weight": "94kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Jan Mielke",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "1600",
+    "height": "?",
+    "weight": "70kg",
+    "activeYears": "2006 - 2008"
+  },
+  {
+    "name": "Janhavi Chavhen",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Jani 'The Rookie' Peurakoski",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Jason 'Mayhem' Miller",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "183cm",
+    "weight": "84kg",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Jason Longas",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "190cm",
+    "weight": "100kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Jeff Martin",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Jens Beyer",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Jeremy 'Disguised Toast' Wang",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "170cm",
+    "weight": "64kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Jeronimo 'The Chief' Barbin",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2010"
+  },
+  {
+    "name": "Jimbo 'The Slice' Taylor",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "100kg",
+    "activeYears": "2008 - 2010"
+  },
+  {
+    "name": "Jitender Singh",
+    "fights": "4",
+    "record": "0-3-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Joe 'Pawn Star' Mela",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1750",
+    "height": "178cm",
+    "weight": "76kg",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Johnny Higginson",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "800",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2010"
+  },
+  {
+    "name": "Jon 'The Brick' Wood",
+    "fights": "5",
+    "record": "1-4-0",
+    "elo": "1100",
+    "height": "176cm",
+    "weight": "67kg",
+    "activeYears": "2019 - 2020"
+  },
+  {
+    "name": "Jonathan 'The Tactician' Arnott",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "2100",
+    "height": "180cm",
+    "weight": "92kg",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Jonathan Rodrguez Vega",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009 - 2014"
+  },
+  {
+    "name": "Jonathan Vonnemann",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2010"
+  },
+  {
+    "name": "Jordan 'Roarin' Paul",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Jose Luis 'Puma' Rodriquez Perez",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Jose Sanchez Amen",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1500",
+    "height": "183cm",
+    "weight": "75kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Josh Birnbaum",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Jules Alois Julien",
+    "fights": "8",
+    "record": "6-2-0",
+    "elo": "2081",
+    "height": "187cm",
+    "weight": "85kg",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Juliana 'Kick Ass Baroness' Baron",
+    "fights": "4",
+    "record": "2-1-1",
+    "elo": "1440",
+    "height": "165cm",
+    "weight": "64kg",
+    "activeYears": "2021 - 2022"
+  },
+  {
+    "name": "Kai 'The Man from Helsinki' Salminen",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "1450",
+    "height": "180cm",
+    "weight": "85kg",
+    "activeYears": "2016 - 2018"
+  },
+  {
+    "name": "Kalidas Bagato",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "182cm",
+    "weight": "75kg",
+    "activeYears": "2014 - 2015"
+  },
+  {
+    "name": "Kamel Boudjahlat",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "1400",
+    "height": "184cm",
+    "weight": "85kg",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Karl 'Ouch' Strugnell",
+    "fights": "10",
+    "record": "10-0-0",
+    "elo": "2300",
+    "height": "182cm",
+    "weight": "89kg",
+    "activeYears": "2009 - 2022"
+  },
+  {
+    "name": "Karl Marsh",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "175cm",
+    "weight": "70kg",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Kath Dobson",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "170cm",
+    "weight": "65kg",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Keith Kolbe",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "185cm",
+    "weight": "82kg",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Kenan Guzel",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "179cm",
+    "weight": "68kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Kenza Megzari",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "171cm",
+    "weight": "55kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Kenzhebaev Aknazar",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Kevin Guedj",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1700",
+    "height": "178cm",
+    "weight": "64kg",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Kevin Strazburger",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Khalidas Talaini",
+    "fights": "3",
+    "record": "1-0-1",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014 - 2015"
+  },
+  {
+    "name": "Kingshuk Saha",
+    "fights": "5",
+    "record": "3-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "60kg",
+    "activeYears": "2022 - 2024"
+  },
+  {
+    "name": "Kip Praissman",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Kirill Sambros",
+    "fights": "1",
+    "record": "0-0-1",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Kirill Zelenov",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017 - 2019"
+  },
+  {
+    "name": "Konrad Rikardson",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "2000",
+    "height": "?",
+    "weight": "79kg",
+    "activeYears": "2008 - 2009"
+  },
+  {
+    "name": "Konstantin Koshkin",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Kourosh Toloeie",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Kris 'Toph' Aldenderfer",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1800",
+    "height": "175cm",
+    "weight": "74kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Krishna Sarkar",
+    "fights": "2",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Kristina Nguen",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Kushi Lakra",
+    "fights": "3",
+    "record": "0-3-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019 - 2022"
+  },
+  {
+    "name": "Lakya Khushi",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Lara Armas",
+    "fights": "4",
+    "record": "3-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Lars 'Lazarus' Bjorknas",
+    "fights": "7",
+    "record": "0-7-0",
+    "elo": "1200",
+    "height": "188cm",
+    "weight": "106kg",
+    "activeYears": "2015 - 2021"
+  },
+  {
+    "name": "Lars Rooch",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018"
+  },
+  {
+    "name": "Lasse Rabiger",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "925",
+    "height": "181cm",
+    "weight": "61kg",
+    "activeYears": "2024"
+  },
+  {
+    "name": "Latifi Refik",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Lawrence Trent",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "2402",
+    "height": "180cm",
+    "weight": "84kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Leo 'Granit' Kraft",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1997",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Leo Bockting",
+    "fights": "4",
+    "record": "1-3-0",
+    "elo": "1250",
+    "height": "178cm",
+    "weight": "75kg",
+    "activeYears": "2023 - 2024"
+  },
+  {
+    "name": "Leo Guirlet",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Leon 'Bomber' Harris",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "180cm",
+    "weight": "65kg",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Leon Bender",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "2050",
+    "height": "?",
+    "weight": "66kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Leonardo 'Leo' Dagnoni",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Leonid Chernobaev",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "1997",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Lewis 'The Headliner' McLellan",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1600",
+    "height": "?",
+    "weight": "72kg",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Liam 'Yogi' Macpherson",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015 - 2016"
+  },
+  {
+    "name": "Luca Andreoletti",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Luigi Sbailo",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Luis 'The Lawyer' Veenstra",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1550",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2003"
+  },
+  {
+    "name": "Luis Niedermeier",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Lukas 'The Frog' Kosowski",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1750",
+    "height": "?",
+    "weight": "75kg",
+    "activeYears": "2011 - 2018"
+  },
+  {
+    "name": "Lukas Petrusas",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "50kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Luke Lieske",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Maarten 'Machine' Kamerling",
+    "fights": "5",
+    "record": "2-3-0",
+    "elo": "1250",
+    "height": "196cm",
+    "weight": "82kg",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Madhavi R Gonbare",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Maksim Bogancov",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015 - 2016"
+  },
+  {
+    "name": "Maksim Golubovski",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Manoj Madhav",
+    "fights": "2",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Marat Shakhmanov",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014 - 2015"
+  },
+  {
+    "name": "Marc 'The Essex Bomb' Sidwell",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1200",
+    "height": "163cm",
+    "weight": "68kg",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Marc Breuer",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1972",
+    "height": "?",
+    "weight": "81kg",
+    "activeYears": "2007"
+  },
+  {
+    "name": "Marc Hickey",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Marc Meler",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Marcello 'The Sir' Gasperini",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018 - 2022"
+  },
+  {
+    "name": "Marco Muccini",
+    "fights": "4",
+    "record": "2-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Marcus Kowal",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2012 - 2013"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Marie 'Killer Queen' Obegi",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1200",
+    "height": "169cm",
+    "weight": "60kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Marius Sturmanas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Mark 'King Slayer' Reed",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Mark Pilkington",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Marry Corr",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Matt 'Canadian Bacon' Wilson",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Matt 'Crazy Arms' Read",
+    "fights": "25",
+    "record": "15-10-0",
+    "elo": "1850",
+    "height": "200cm",
+    "weight": "77kg",
+    "activeYears": "2009 - 2023"
+  },
+  {
+    "name": "Matt 'Matador' Thomas",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "1600",
+    "height": "186cm",
+    "weight": "90kg",
+    "activeYears": "2018 - 2019"
+  },
+  {
+    "name": "Matt Doucett",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Matthew 'The Minotaur' Coldwell",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "2050",
+    "height": "190cm",
+    "weight": "87kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Matti Schaffran",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Matyas Chrt",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Max 'Jock Talk' Gershfield",
+    "fights": "4",
+    "record": "2-2-0",
+    "elo": "1400",
+    "height": "187cm",
+    "weight": "83kg",
+    "activeYears": "2016 - 2019"
+  },
+  {
+    "name": "Max 'The Inkman' Brown",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Max Baumert",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Max Williams",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1500",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Maxim Boganzov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018"
+  },
+  {
+    "name": "Maxim Kuznetsov",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Maya 'The Magician' Hayes",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1300",
+    "height": "172cm",
+    "weight": "65kg",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Mazen Girke",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017 - 2018"
+  },
+  {
+    "name": "Mehmet Zengin",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Michal Adamski",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Mike 'The Bedfordshire Bull' Botteley",
+    "fights": "4",
+    "record": "3-1-0",
+    "elo": "2108",
+    "height": "178cm",
+    "weight": "73kg",
+    "activeYears": "2011 - 2013"
+  },
+  {
+    "name": "Mikhail Ermakov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Mikhail Germans",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Mikhail Grigorev",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Mirko Trasciatti",
+    "fights": "1",
+    "record": "0-0-1",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Mohammed Khadija",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Mohammed Rafa Araoui",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Muhammet Mustafa Isik",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Nandakumar Dhanasekaran",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Nathan Stanz",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1050",
+    "height": "185cm",
+    "weight": "88kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Nerijus Staniulis",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "90kg",
+    "activeYears": "2020"
+  },
+  {
+    "name": "Nick 'Showstopper' Cornish",
+    "fights": "8",
+    "record": "3-5-0",
+    "elo": "1450",
+    "height": "187cm",
+    "weight": "87kg",
+    "activeYears": "2009 - 2019"
+  },
+  {
+    "name": "Nicolas Mildenstein",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Nicolay 'The Pawn Star' Ramm",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "800",
+    "height": "180cm",
+    "weight": "77kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Nicolo Tiraboschi",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Nika Shindy",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Nikita 'Razor' Evstafiev",
+    "fights": "4",
+    "record": "3-1-0",
+    "elo": "2100",
+    "height": "173cm",
+    "weight": "70kg",
+    "activeYears": "2015 - 2019"
+  },
+  {
+    "name": "Niko Metrevli",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "169cm",
+    "weight": "66kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Nikolay 'The Siberian Express' Sazhin",
+    "fights": "6",
+    "record": "5-1-0",
+    "elo": "2005",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2008 - 2015"
+  },
+  {
+    "name": "Nils 'The Berlin Bull' Becker",
+    "fights": "4",
+    "record": "2-2-0",
+    "elo": "2144",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2010 - 2012"
+  },
+  {
+    "name": "Noche Logan",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Nurbek Bekturgan",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2024"
+  },
+  {
+    "name": "Oksana Komissarova",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "?",
+    "height": "164cm",
+    "weight": "55kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Olaf Schlippe",
+    "fights": "1",
+    "record": "0-0-1",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Oleg 'Soldier' Shatkov",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Oleg Petrovskis",
+    "fights": "8",
+    "record": "8-0-0",
+    "elo": "2118",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016 - 2021"
+  },
+  {
+    "name": "Oleksander Zozulia",
+    "fights": "6",
+    "record": "5-1-0",
+    "elo": "?",
+    "height": "189cm",
+    "weight": "81kg",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Oliver 'The Revolver' Ye",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1700",
+    "height": "175cm",
+    "weight": "70kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Otto 'Bismark' Vihera",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "1250",
+    "height": "191cm",
+    "weight": "86kg",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Ozan Onder Guzel",
+    "fights": "2",
+    "record": "2-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "PJ 'Overtflow' Brittain",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "180cm",
+    "weight": "84kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Pablo Hatz",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015 - 2017"
+  },
+  {
+    "name": "Pairav 'Shikorchi' Alinazarov",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Patrick Teehan",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "178cm",
+    "weight": "92kg",
+    "activeYears": "2011 - 2012"
+  },
+  {
+    "name": "Paul Arthur Bernard Sergent",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Paul Ducher",
+    "fights": "4",
+    "record": "2-2-0",
+    "elo": "1400",
+    "height": "184cm",
+    "weight": "73kg",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Paul JD 'The Hitman' Roberts",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015 - 2016"
+  },
+  {
+    "name": "Pavan Kumar Uppalapu",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Pawel 'Blitz' Dziubinski",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "2006",
+    "height": "?",
+    "weight": "96kg",
+    "activeYears": "2006"
+  },
+  {
+    "name": "Pete 'The Heat' Keetley",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1700",
+    "height": "181cm",
+    "weight": "75kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Peter 'Actuator' Crowley",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1300",
+    "height": "185cm",
+    "weight": "92kg",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Peter 'The Killer Chemist' VanCouvering",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011 - 2013"
+  },
+  {
+    "name": "Piotr Pukos",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2008"
+  },
+  {
+    "name": "Pritam Ehakra Borty",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Qasim Qasim",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Rafael Ward",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Raffaele Nigro",
+    "fights": "3",
+    "record": "1-2-0",
+    "elo": "?",
+    "height": "185cm",
+    "weight": "76kg",
+    "activeYears": "2014 - 2015"
+  },
+  {
+    "name": "Rahul Dhorte",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2018"
+  },
+  {
+    "name": "Rasel 'Razzle Dazzle' Alam",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1500",
+    "height": "185cm",
+    "weight": "85kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Ravil Galiakhmetov",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1650",
+    "height": "176cm",
+    "weight": "68kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Red Dexter",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "162cm",
+    "weight": "58kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Remmo Ali",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Reza Ahmadi",
+    "fights": "2",
+    "record": "0-0-2",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Ricardo Koesling",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Riccardo Mura",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Richard 'The Berzerker' Evans Lacey",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "740",
+    "height": "182cm",
+    "weight": "98kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Richard 'The Razor' Frazer",
+    "fights": "11",
+    "record": "5-6-0",
+    "elo": "1300",
+    "height": "178cm",
+    "weight": "78kg",
+    "activeYears": "2013 - 2022"
+  },
+  {
+    "name": "Richard Kavernough",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Rick 'Nice Guy' Santati",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Ricky 'Slick' Brown",
+    "fights": "3",
+    "record": "2-0-1",
+    "elo": "1200",
+    "height": "179cm",
+    "weight": "75kg",
+    "activeYears": "2012 - 2014"
+  },
+  {
+    "name": "Ritik Prasad",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Rob 'The Danger Man' Fletcher",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Rob 'The Gentleman' Gillies",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "800",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2010 - 2011"
+  },
+  {
+    "name": "Robert Carus",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Roger 'Cannonball' Baxter",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "2000",
+    "height": "181cm",
+    "weight": "75kg",
+    "activeYears": "2018 - 2020"
+  },
+  {
+    "name": "Roman 'Chef' Marinchenko",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Roman 'Fighting Scorpion' Molarishvili",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Roman Doroshenko",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1200",
+    "height": "?",
+    "weight": "87kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Roxanna Pinotti",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Ruth 'Instanitea' Slattery",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1200",
+    "height": "164cm",
+    "weight": "55kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Ruthie 'Pink Machine' Wright",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1500",
+    "height": "152cm",
+    "weight": "55kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Sagar Das",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Sait Sonmez",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Sakari 'Horse Attack' Lahderinne",
+    "fights": "7",
+    "record": "2-4-0",
+    "elo": "1600",
+    "height": "177cm",
+    "weight": "85kg",
+    "activeYears": "2018 - 2023"
+  },
+  {
+    "name": "Salokhiddin Khaidarov",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Sameer Prakash Uppada",
+    "fights": "3",
+    "record": "0-3-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Sandeep Yadav",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Sascha Wandkowsky",
+    "fights": "7",
+    "record": "3-4-0",
+    "elo": "1800",
+    "height": "?",
+    "weight": "79kg",
+    "activeYears": "2007 - 2014"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Scott Parker",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Sean 'The Machine' Mooney",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "1500",
+    "height": "176cm",
+    "weight": "73kg",
+    "activeYears": "2012 - 2015"
+  },
+  {
+    "name": "Sebastian Bauersfeld",
+    "fights": "6",
+    "record": "4-2-0",
+    "elo": "1800",
+    "height": "?",
+    "weight": "80kg",
+    "activeYears": "2007 - 2010"
+  },
+  {
+    "name": "Sebastien 'Sergeant Willis' Aubriot",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2007"
+  },
+  {
+    "name": "Sehirli Berk",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Semen Dobrunov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Semih Sah Cindir",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Sergei 'Giraffe' Fedorenko",
+    "fights": "4",
+    "record": "2-2-0",
+    "elo": "1810",
+    "height": "182cm",
+    "weight": "82kg",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Sergei Shvedchikov",
+    "fights": "5",
+    "record": "4-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Sergeij Ychenko",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Sergej Milevskij",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "90kg",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Sergejs Ribakovs",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Sergio 'The Phoenix' Leveque",
+    "fights": "11",
+    "record": "8-3-0",
+    "elo": "2009",
+    "height": "193cm",
+    "weight": "90kg",
+    "activeYears": "2010 - 2023"
+  },
+  {
+    "name": "Shailesh Tripathi",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Shawn Whyte",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Shayakhmetov Sayan",
+    "fights": "2",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Shayan 'Shah' Zarein Dolab",
+    "fights": "7",
+    "record": "1-6-0",
+    "elo": "1800",
+    "height": "175cm",
+    "weight": "75kg",
+    "activeYears": "2019 - 2023"
+  },
+  {
+    "name": "Shem Lopez",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Shilpa Barhan",
+    "fights": "2",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Shogo 'Iron Prawn' Ida",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Simamtini Das",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Simona Pantano",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Simone Cajelli",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Soichiro 'The ChoYabai' Yanase",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1465",
+    "height": "177cm",
+    "weight": "70kg",
+    "activeYears": "2004"
+  },
+  {
+    "name": "Soumen Pramanik",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Stanislav Yudaev",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015"
+  },
+  {
+    "name": "Stefan Daniel",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2015 - 2016"
+  },
+  {
+    "name": "Stefan Dittrich",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2006"
+  },
+  {
+    "name": "Stefano Tudoran",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "1000",
+    "height": "170cm",
+    "weight": "59kg",
+    "activeYears": "2023 - 2024"
+  },
+  {
+    "name": "Stepan Lokshin",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Stephan Kring",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Stephanie Pogue",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013 - 2014"
+  },
+  {
+    "name": "Steve 'Demon' Philp",
+    "fights": "4",
+    "record": "2-2-0",
+    "elo": "1400",
+    "height": "174cm",
+    "weight": "75kg",
+    "activeYears": "2013 - 2015"
+  },
+  {
+    "name": "Steve Yorath",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "188cm",
+    "weight": "102kg",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Stewart Telford",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "182cm",
+    "weight": "95kg",
+    "activeYears": "2008"
+  },
+  {
+    "name": "Subhas Nashkar",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Sukhrob Mahmadzoda",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Svein Clouston",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2011"
+  },
+  {
+    "name": "Sven Pueschel",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Sven Rooch",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "1500",
+    "height": "?",
+    "weight": "71kg",
+    "activeYears": "2013 - 2018"
+  },
+  {
+    "name": "Svyatoslav Kovalenko",
+    "fights": "1",
+    "record": "0-0-1",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Swenja Wagner",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1544",
+    "height": "179cm",
+    "weight": "65kg",
+    "activeYears": "2024"
+  },
+  {
+    "name": "Tamara Frapasella",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2013"
+  },
+  {
+    "name": "Temirgerey Ataev",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Tero 'El Toro' Weckroth",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "1450",
+    "height": "179cm",
+    "weight": "79kg",
+    "activeYears": "2015 - 2016"
+  },
+  {
+    "name": "Terry 'The Fighting Fireman' Marsh",
+    "fights": "3",
+    "record": "3-0-0",
+    "elo": "1500",
+    "height": "178cm",
+    "weight": "68kg",
+    "activeYears": "2014 - 2015"
+  },
+  {
+    "name": "Terry Tony Kochanowky",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Teschka Max Andreas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Thomas Cazeneuve",
+    "fights": "9",
+    "record": "8-1-0",
+    "elo": "?",
+    "height": "175cm",
+    "weight": "70kg",
+    "activeYears": "2016 - 2022"
+  },
+  {
+    "name": "Tihomir 'Tigertad' Titschko",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "2342",
+    "height": "183cm",
+    "weight": "89kg",
+    "activeYears": "2005"
+  },
+  {
+    "name": "Name",
+    "fights": "Fights",
+    "record": "Record",
+    "elo": "ELO",
+    "height": "Height",
+    "weight": "Weight",
+    "activeYears": "Active"
+  },
+  {
+    "name": "Tilman Kohls",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2012"
+  },
+  {
+    "name": "Tim 'Bavarian Beast' Yilmaz",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2010"
+  },
+  {
+    "name": "Tim 'CSI' Benfeldt",
+    "fights": "6",
+    "record": "5-1-0",
+    "elo": "2111",
+    "height": "179cm",
+    "weight": "76kg",
+    "activeYears": "2011 - 2013"
+  },
+  {
+    "name": "Tim 'Hippo' Woolgar",
+    "fights": "13",
+    "record": "5-7-1",
+    "elo": "1400",
+    "height": "188cm",
+    "weight": "98kg",
+    "activeYears": "2008 - 2019"
+  },
+  {
+    "name": "Tim Arby",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "1878",
+    "height": "191cm",
+    "weight": "79kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Timo Sandro Bieri",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1300",
+    "height": "?",
+    "weight": "76kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Timur Iyubinskii",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017 - 2019"
+  },
+  {
+    "name": "Toby 'Slowby' White",
+    "fights": "8",
+    "record": "4-4-0",
+    "elo": "1400",
+    "height": "187cm",
+    "weight": "87kg",
+    "activeYears": "2014 - 2019"
+  },
+  {
+    "name": "Toby John Grear",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Tommi 'TNT' Mantysalo",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "1540",
+    "height": "178cm",
+    "weight": "81kg",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Tony Infantino",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "172cm",
+    "weight": "65kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Tony Lugo",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2014 - 2016"
+  },
+  {
+    "name": "Tuukka Repo",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "89kg",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Utkirbek Ergashev",
+    "fights": "4",
+    "record": "0-4-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Valdas Drociunas",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Valentin 'Chauffe' Marcel",
+    "fights": "5",
+    "record": "5-0-0",
+    "elo": "2062",
+    "height": "182cm",
+    "weight": "80kg",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Valentin Vonnemann",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2010"
+  },
+  {
+    "name": "Valery Volozhenin",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Vardan Martoyan",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Vasia Vasilenko",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2021"
+  },
+  {
+    "name": "Viktor Tarasov",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Ville 'Jukola' Makinen",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "195cm",
+    "weight": "83kg",
+    "activeYears": "2017"
+  },
+  {
+    "name": "Vincent 'The Frenchman' Forest",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1450",
+    "height": "189cm",
+    "weight": "82kg",
+    "activeYears": "2018"
+  },
+  {
+    "name": "Vitali Degtjarew",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2009"
+  },
+  {
+    "name": "Vito 'Il Cigno' Borrelli",
+    "fights": "3",
+    "record": "2-1-0",
+    "elo": "1100",
+    "height": "180cm",
+    "weight": "78kg",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Vito Gasparyan",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2016"
+  },
+  {
+    "name": "Vladimir Makarov",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1800",
+    "height": "?",
+    "weight": "75kg",
+    "activeYears": "2012 - 2015"
+  },
+  {
+    "name": "Vytautas Binkus",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "80kg",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Vytautas Vesa Vaitulevicius",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "169cm",
+    "weight": "93kg",
+    "activeYears": "2023"
+  },
+  {
+    "name": "Waykar Sneha Sanjay",
+    "fights": "4",
+    "record": "2-2-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022 - 2023"
+  },
+  {
+    "name": "Wilfried Hoareau",
+    "fights": "4",
+    "record": "3-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2017 - 2022"
+  },
+  {
+    "name": "Wolfram Von Stauffenberg",
+    "fights": "2",
+    "record": "1-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2008"
+  },
+  {
+    "name": "Xhemshid 'Jim' Vogliqi",
+    "fights": "4",
+    "record": "1-3-0",
+    "elo": "?",
+    "height": "185cm",
+    "weight": "72kg",
+    "activeYears": "2019 - 2022"
+  },
+  {
+    "name": "Y Dhineshhannomanth",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Yordan 'The Bulgarian Beast' Yordanov",
+    "fights": "2",
+    "record": "0-2-0",
+    "elo": "1400",
+    "height": "192cm",
+    "weight": "86kg",
+    "activeYears": "2021 - 2023"
+  },
+  {
+    "name": "Yousef Ansari",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2019"
+  },
+  {
+    "name": "Zakhar 'Panther' Dilanyan",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2022"
+  },
+  {
+    "name": "Zena The Technician",
+    "fights": "1",
+    "record": "1-0-0",
+    "elo": "1200",
+    "height": "167cm",
+    "weight": "69kg",
+    "activeYears": "2014"
+  },
+  {
+    "name": "Zoran 'The Priest' Mijatovic",
+    "fights": "1",
+    "record": "0-1-0",
+    "elo": "?",
+    "height": "?",
+    "weight": "?",
+    "activeYears": "2006"
+  }
+]
