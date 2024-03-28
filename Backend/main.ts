@@ -7,14 +7,16 @@ import ValidationController from "./controllers/validationController.ts";
 import AuthHelper from "./helpers/auth.ts";
 import Db from "./helpers/db.ts";
 import wasmSingleton from "./wasm_helpers.ts";
+import { load } from "https://deno.land/std@0.221.0/dotenv/mod.ts";
 
 const app = new Application();
-
+const env = await load()
+const mongoConnectionString = env.MONGO_CONNECTIONSTRING
 // wasm
 await wasmSingleton.init();
 
 // db stuff
-const db = new Db(); // mi serve una connection string per mongo
+const db = new Db(mongoConnectionString); // mi serve una connection string per mongo
 
 // auth stuff
 const keyFile = await Deno.readFile("./openssl/key.pem");
