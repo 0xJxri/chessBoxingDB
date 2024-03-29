@@ -1,5 +1,5 @@
-import puppeteer from "puppeteer";
 import fs from "fs";
+import puppeteer from "puppeteer";
 
 (async () => {
     const browser = await puppeteer.launch();

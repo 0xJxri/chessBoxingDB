@@ -1,5 +1,11 @@
-import puppeteer from "puppeteer";
-import fs from "fs";
+import { load } from "https://deno.land/std@0.221.0/dotenv/mod.ts";
+import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
+import Db from "../Backend/helpers/db.ts";
+
+const env = await load()
+const mongoConnectionString = env.MONGO_CONNECTIONSTRING
+
+const db = new Db(mongoConnectionString); // mi serve una connection string per mongo
 
 (async () => {
     const browser = await puppeteer.launch();
@@ -46,11 +52,12 @@ import fs from "fs";
         pageNumber++;
     }
 
-    const dataFolder = 'data';
-    if (!fs.existsSync(dataFolder)) {
-        fs.mkdirSync(dataFolder);
-    }
-    fs.writeFileSync(`${dataFolder}/results.json`, JSON.stringify(finalResult, null, 2));
-    console.log('Results saved to data/results.json');
+    // Insert the final result array into the database
+    const result = await db.getDb().then(async db => {
+        const results = db.collection('results');
+        return await results.insertMany(finalResult);
+    });
+
+    console.log(result);
     await browser.close(); 
 })();
