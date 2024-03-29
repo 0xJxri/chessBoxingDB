@@ -1,19 +1,28 @@
-import { ResultsDto } from "../dtos/results.dto";
 import {
-    Context,
     Router
 } from "https://deno.land/x/oak@v12.4.0/mod.ts";
-import Db from "../helpers/db";
 
-// class dataController {
 
-//     public router
 
-//     constructor(){this.router = new Router()}
-    
-//     public async init() {
+class DataController {
+    private db;
+    private auth;
+    private wasm;
+    public router; 
 
-//     this.router.get('/results', async (context: Context) => {
-//     })
-// }
-// }
+    constructor(db, auth, wasm) {
+        this.db = db;
+        this.auth = auth;
+        this.wasm = wasm;
+        this.router = new Router();
+    }
+
+
+    public async init() {
+
+        // TODO fare le rotte
+        return this.router.routes();
+    }
+}
+
+export default DataController;
