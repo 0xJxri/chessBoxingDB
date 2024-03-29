@@ -1,4 +1,4 @@
-import Db from "./db.ts";
+import Db from "../helpers/db.ts";
 
 class DataService {
     private db: Db;

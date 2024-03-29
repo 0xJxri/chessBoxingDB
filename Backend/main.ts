@@ -9,7 +9,7 @@ import AuthHelper from "./helpers/auth.ts";
 import Db from "./helpers/db.ts";
 import wasmSingleton from "./wasm_helpers.ts";
 import DataController from "./controllers/dataController.ts";
-import DataService from "./helpers/data.service.ts";
+import DataService from "./services/data.service.ts";
 
 const app = new Application();
 const env = await load()
