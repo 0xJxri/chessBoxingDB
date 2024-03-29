@@ -583,7 +583,7 @@
   {
     "fighterWhite": "Manoj Madhav",
     "fighterBlack": "Shayakhmetov Sayan",
-    "result": "?-?",
+    "result": null,
     "event": "CBOI - Asian Chessboxing Gala Night",
     "data": "07 June 2023"
   },
@@ -1633,7 +1633,7 @@
   {
     "fighterWhite": "Atilla Baris",
     "fighterBlack": "Jitender Singh",
-    "result": "?-?",
+    "result": null,
     "event": "WCBO - World Chessboxing Championships 2019",
     "data": "15 December 2019"
   },
@@ -1647,7 +1647,7 @@
   {
     "fighterWhite": "Dmitry Ermakovich",
     "fighterBlack": "Ahmet Celik",
-    "result": "?-?",
+    "result": null,
     "event": "WCBO - World Chessboxing Championships 2019",
     "data": "15 December 2019"
   },
@@ -1717,7 +1717,7 @@
   {
     "fighterWhite": "Sakari 'Horse Attack' Lahderinne",
     "fighterBlack": "Atilla Baris",
-    "result": "?-?",
+    "result": null,
     "event": "WCBO - World Chessboxing Championships 2019",
     "data": "15 December 2019"
   },
@@ -1738,14 +1738,14 @@
   {
     "fighterWhite": "Krishna Sarkar",
     "fighterBlack": "Ahmet Celik",
-    "result": "?-?",
+    "result": null,
     "event": "WCBO - World Chessboxing Championships 2019",
     "data": "15 December 2019"
   },
   {
     "fighterWhite": "Riza Sonmez",
     "fighterBlack": "Ilya Goykfhis",
-    "result": "?-?",
+    "result": null,
     "event": "WCBO - World Chessboxing Championships 2019",
     "data": "15 December 2019"
   },
@@ -1759,14 +1759,14 @@
   {
     "fighterWhite": "Amin Babashev",
     "fighterBlack": "Honlev Aliaksev",
-    "result": "?-?",
+    "result": null,
     "event": "WCBO - World Chessboxing Championships 2019",
     "data": "15 December 2019"
   },
   {
     "fighterWhite": "Shilpa Barhan",
     "fighterBlack": "Shaboni Malakar",
-    "result": "?-?",
+    "result": null,
     "event": "WCBO - World Chessboxing Championships 2019",
     "data": "15 December 2019"
   },
@@ -2263,7 +2263,7 @@
   {
     "fighterWhite": "Arben Malai",
     "fighterBlack": "Esat Bitri",
-    "result": "?-?",
+    "result": null,
     "event": "LCB - Season's Beatings 2016",
     "data": "17 December 2016"
   },
@@ -2445,7 +2445,7 @@
   {
     "fighterWhite": "Chris 'Taco' Padilla",
     "fighterBlack": "Derion Chapman",
-    "result": "?-?",
+    "result": null,
     "event": "LACBC - Bringing Back Broadway Event 2016",
     "data": "30 January 2016"
   },
@@ -2634,21 +2634,21 @@
   {
     "fighterWhite": "Said Fannane",
     "fighterBlack": "Massimo Gradin",
-    "result": "?-?",
+    "result": null,
     "event": "FISP - Public exhibition of chess boxing at Mongrando EXPO",
     "data": "24 May 2015"
   },
   {
     "fighterWhite": "Khalidas Talaini",
     "fighterBlack": "Simone Giuliana",
-    "result": "?-?",
+    "result": null,
     "event": "FISP - Public exhibition of chess boxing at Mongrando EXPO",
     "data": "24 May 2015"
   },
   {
     "fighterWhite": "Mariagrazia Turrini",
     "fighterBlack": "Simone Giuliana",
-    "result": "?-?",
+    "result": null,
     "event": "FISP - Public exhibition of chess boxing at Mongrando EXPO",
     "data": "24 May 2015"
   },
@@ -2781,7 +2781,7 @@
   {
     "fighterWhite": "Sven Markschlger",
     "fighterBlack": "Raphael Vincent Schulz",
-    "result": "?-?",
+    "result": null,
     "event": "CBCB - Chessboxing Fight Night",
     "data": "16 August 2014"
   },
@@ -3019,7 +3019,7 @@
   {
     "fighterWhite": "Andy 'The Rock' Costello",
     "fighterBlack": "Matt Follain",
-    "result": "?-?",
+    "result": null,
     "event": "Brain vs Pain Tour - Exeter",
     "data": "04 August 2013"
   },
@@ -3334,7 +3334,7 @@
   {
     "fighterWhite": "Alem Begic",
     "fighterBlack": "Daniel 'The Man From Pamplona' Lizarraga",
-    "result": "?-?",
+    "result": null,
     "event": "WCBO - Exhibition in Zurich",
     "data": "17 September 2011"
   },
@@ -3481,7 +3481,7 @@
   {
     "fighterWhite": "Marc Beaucoudray",
     "fighterBlack": "Alexandre Visseq",
-    "result": "?-?",
+    "result": null,
     "event": "Exhibition Bout at La Tour Blanche",
     "data": "10 April 2010"
   },
