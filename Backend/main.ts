@@ -8,6 +8,8 @@ import ValidationController from "./controllers/validationController.ts";
 import AuthHelper from "./helpers/auth.ts";
 import Db from "./helpers/db.ts";
 import wasmSingleton from "./wasm_helpers.ts";
+import DataController from "./controllers/dataController.ts";
+import DataService from "./helpers/data.service.ts";
 
 const app = new Application();
 const env = await load()
@@ -26,15 +28,17 @@ const auth_rs =  await wasmSingleton.executeForeignConstructor(wasmSingleton.was
 
 
 const authentication = await new AuthHelper(db, auth_rs, wasmSingleton);
+const dataService = await new DataService(db);
 
 // controllers init
 const userController = new UserController(db, authentication, wasmSingleton);
 const validationController = new ValidationController(db, authentication, wasmSingleton);
-
+const dataController = new DataController(db, authentication, wasmSingleton, dataService)
 
 
 app.use(await userController.init());
 app.use(await validationController.init());
+app.use(await dataController.init())
 
 
 
