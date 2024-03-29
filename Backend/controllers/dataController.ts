@@ -2,10 +2,6 @@ import {
     Context,
     Router
 } from "https://deno.land/x/oak@v12.4.0/mod.ts";
-import { ResultsDto } from "../dtos/results.dto.ts";
-import {
-    MongoClient
-} from "https://deno.land/x/mongo@v0.32.0/mod.ts";
 
 
 class DataController {
@@ -26,13 +22,23 @@ class DataController {
 
     public async init() {
 
-        this.router.get("/api/results", async (context: Context) => {
-            context.response.body =  await this.dataService.getResults();
+        this.router.get("/results", async (context: Context) => {
+            const limit = context.request.url.searchParams.get("limit");
+            let response;
+            let parsedLimit = Infinity;
+
+            if (limit && /^\d+$/.test(limit)) {
+                parsedLimit = parseInt(limit);
+            }
+
+            response = await this.dataService.getResults(parseInt(limit));
+            context.response.body = response;
             context.response.status = context.response.body.code;
-        })
-        // TODO fare le rotte   
+        });
+
         return this.router.routes();
     }
 }
+
 
 export default DataController;
