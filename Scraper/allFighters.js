@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
 import fs from 'fs';
 import path from 'path';
 

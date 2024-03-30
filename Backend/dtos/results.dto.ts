@@ -1,5 +1,5 @@
-export interface ResultsDto{
-    _id: {$oid: string};
+export interface ResultsDto {
+    _id: { $oid: string };
     fighterWhite: string;
     fighterBlack: string;
     results: string;
