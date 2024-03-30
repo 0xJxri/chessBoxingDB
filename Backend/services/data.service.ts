@@ -7,13 +7,12 @@ class DataService {
         this.db = client;
     }
 
-    public async getResults() {
+    public async getResults(limit: number = Infinity) {
         try {
             const db = await this.db.getDb();
             const resultsCollection = db.collection<ResultsDto>('results');
 
-            // Find all documents in the collection and convert the cursor to an array
-            const results = await resultsCollection.find().toArray();
+            const results = await resultsCollection.find().limit(limit).toArray();
 
             if (results.length > 0) {
                 return {
