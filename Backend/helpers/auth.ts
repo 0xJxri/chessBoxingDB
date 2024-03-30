@@ -1,4 +1,4 @@
-import { Context } from "https://deno.land/x/oak/mod.ts";
+import { Context } from "@oakserver/oak";
 import Db from "./db.ts";
 import ResponsePayload from "./responsePayload.ts";
 
@@ -87,6 +87,7 @@ class AuthHelper {
     public async getUsers() {
         try {
             const db = await this.db.getDb();
+            
             const usersCursor = db.collection("users").find({}, { projection: { _id: 1 } });
             const users = await usersCursor.toArray();
 

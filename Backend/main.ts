@@ -1,8 +1,8 @@
 import {
   Application
-} from "https://deno.land/x/oak@v12.4.0/mod.ts";
+} from "@oakserver/oak";
 
-import { load } from "https://deno.land/std@0.221.0/dotenv/mod.ts";
+import 'dotenv/config'
 import UserController from "./controllers/userController.ts";
 import ValidationController from "./controllers/validationController.ts";
 import AuthHelper from "./helpers/auth.ts";
@@ -10,20 +10,20 @@ import Db from "./helpers/db.ts";
 import wasmSingleton from "./wasm_helpers.ts";
 import DataController from "./controllers/dataController.ts";
 import DataService from "./services/data.service.ts";
+import * as fs from 'fs/promises';    
+
+
 
 const app = new Application();
-const env = await load()
-const mongoConnectionString = env.MONGO_CONNECTIONSTRING
-// wasm
+const mongoConnectionString: any = process.env.MONGO_CONNECTIONSTRING
 await wasmSingleton.init();
 
 // db stuff
-const db = new Db(mongoConnectionString); // mi serve una connection string per mongo
+const db = new Db(mongoConnectionString); 
 
 // auth stuff
-const keyFile = await Deno.readFile("./openssl/key.pem");
-const keyString = new TextDecoder().decode(keyFile);
-const auth_rs =  await wasmSingleton.executeForeignConstructor(wasmSingleton.wasmFunctions["jwt_rs"].jwt_rs_methods, keyString);
+const keyFile: any = await await fs.readFile("./openssl/key.pem", 'utf8');
+const auth_rs =  await wasmSingleton.executeForeignConstructor(wasmSingleton.wasmFunctions["jwt_rs"].jwt_rs_methods, keyFile);
 
 
 

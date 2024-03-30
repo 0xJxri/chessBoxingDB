@@ -1,26 +1,25 @@
-import {
-    MongoClient
-} from "https://deno.land/x/mongo@v0.32.0/mod.ts";
-
+import { MongoClient } from "mongodb";
 
 class Db {
-    private db: MongoClient;
-    
-    constructor(host){
-        let client =  new MongoClient();
-        console.log(host);
-        this.db = client.connect(host);
+    private db: any;
 
-        console.log(this.db)
-        console.log("Connected to db");
+    constructor(host: string) {
+        this.connectDb(host);
     }
 
-    public async getDb(){
+    private async connectDb(host: string) {
+        try {
+            const client = await MongoClient.connect(host);
+            this.db = client.db(); // Get the database instance
+            console.log("Connected to db");
+        } catch (error) {
+            console.error("Error connecting to database:", error);
+        }
+    }
+
+    public async getDb() {
         return this.db;
     }
-
-
-
 }
 
 export default Db;

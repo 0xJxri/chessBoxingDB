@@ -1,3 +1,9 @@
+import * as fs from 'fs/promises';    
+
+async function readJsonFile(filePath) {
+    const data = await fs.readFile(filePath, 'utf8');
+    return JSON.parse(data);
+}
 class WasmSingleton {
     private initialized: boolean;
     private wasmModule: any = [];
@@ -25,7 +31,7 @@ class WasmSingleton {
 
     async init() {
         if (!this.initialized) {
-            const modules = JSON.parse(await Deno.readTextFile("./mods.json"));
+            const modules = await readJsonFile("./mods.json"); 
             for(const module of modules) {
                     this.wasmFunctions[module.name] = await this.loadFunctionsFromModule(module.path);
                     this.wasmModule[module.name] = await this.executeForeign(this.wasmFunctions[module.name].default);
