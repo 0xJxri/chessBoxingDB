@@ -36,8 +36,26 @@ class DataController {
             context.response.status = context.response.body.code;
         });
 
+     
+        this.router.get("/fighterslist", async (context: Context) => {
+            const limit = context.request.url.searchParams.get("limit");
+            const orderBy = context.request.url.searchParams.get("orderBy") || "name";
+            const orderAscDesc = context.request.url.searchParams.get("order") || "asc";
+
+            let parsedLimit = Infinity;
+
+            if (limit && /^\d+$/.test(limit)) {
+                parsedLimit = parseInt(limit);
+            }
+
+            const response = await this.dataService.getFightersList(parsedLimit, orderBy, orderAscDesc);
+            context.response.body = response;
+            context.response.status = response.code;
+        });
         return this.router.routes();
     }
+
+    
 }
 
 

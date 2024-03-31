@@ -35,12 +35,12 @@ const db = new Db(mongoConnectionString); // mi serve una connection string per 
                         nationality = nationalitySrc.split('/').pop().replace('.png', '');
                     }
                 }
-                const fights = row.querySelector('td:nth-child(4)').textContent.trim();
+                const fights = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
                 const record = row.querySelector('td:nth-child(5)').textContent.trim();
                 const eloElement = row.querySelector('td:nth-child(6)');
                 let elo = null;
                 if (eloElement) {
-                    const eloText = eloElement.textContent.trim();
+                    const eloText = parseInt(eloElement.textContent.trim());
                     elo = eloText === '?' ? null : eloText;
                 }
                 const heightElement = row.querySelector('td:nth-child(7)');
@@ -186,12 +186,12 @@ const db = new Db(mongoConnectionString); // mi serve una connection string per 
     // fs.writeFileSync(detailedFightersFilePath, JSON.stringify(detailedFighters, null, 2));
     // console.log(`Saved detailed fighters to ${detailedFightersFilePath}`);
 
-    const detailedListFighters = await db.getDb().then(async db => {
-        const detailedListFighters = db.collection('detailedfighters');
-        return await detailedListFighters.insertMany(detailedFighters);
-    });
+    // const detailedListFighters = await db.getDb().then(async db => {
+    //     const detailedListFighters = db.collection('detailedfighters');
+    //     return await detailedListFighters.insertMany(detailedFighters);
+    // });
 
-    console.log(detailedListFighters);
+    // console.log(detailedListFighters);
 
     await browser.close();
 })();
