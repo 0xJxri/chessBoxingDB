@@ -1,9 +1,13 @@
-import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
-import fs from 'fs';
-import path from 'path';
+import puppeteer from 'puppeteer'
+import Db from '../Backend/helpers/db.ts';
+import "dotenv/config"
+
+const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING
+
+const db = new Db(mongoConnectionString); // mi serve una connection string per mongo
 
 (async () => {
-    const browser = await puppeteer.launch({ headless: false});
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto('https://www.chessboxing.info/fighters/');
 
@@ -17,7 +21,7 @@ import path from 'path';
         const fighters = await page.evaluate(() => {
             const fightersArray = [];
             const tableRows = document.querySelectorAll('.tbl_events tbody tr:not(:first-child)');
-            
+
             tableRows.forEach(row => {
                 const profileLink = row.querySelector('td:nth-child(2) a').href.trim();
                 const name = row.querySelector('td:nth-child(2) a').textContent.trim();
@@ -52,7 +56,7 @@ import path from 'path';
                     weight = weightText === '?' ? null : weightText;
                 }
                 const activeYears = row.querySelector('td:nth-child(9)').textContent.trim() || null;
-                
+
                 fightersArray.push({
                     profileLink,
                     name,
@@ -65,7 +69,7 @@ import path from 'path';
                     activeYears
                 });
             });
-            
+
             return fightersArray;
         });
 
@@ -167,13 +171,27 @@ import path from 'path';
         await fighterPage.close();
     }
 
-    const listFightersFilePath = path.join('data', 'listFighters.json');
-    fs.writeFileSync(listFightersFilePath, JSON.stringify(listFighters, null, 2));
-    console.log(`Saved list of fighters to ${listFightersFilePath}`);
+    // const listFightersFilePath = path.join('data', 'listFighters.json');
+    // fs.writeFileSync(listFightersFilePath, JSON.stringify(listFighters, null, 2));
+    // console.log(`Saved list of fighters to ${listFightersFilePath}`);
 
-    const detailedFightersFilePath = path.join('data', 'detailedFighters.json');
-    fs.writeFileSync(detailedFightersFilePath, JSON.stringify(detailedFighters, null, 2));
-    console.log(`Saved detailed fighters to ${detailedFightersFilePath}`);
+    const fightersList = await db.getDb().then(async db => {
+        const fightersList = db.collection('listfighters');
+        return await fightersList.insertMany(listFighters);
+    });
+
+    console.log(fightersList);
+
+    // const detailedFightersFilePath = path.join('data', 'detailedFighters.json');
+    // fs.writeFileSync(detailedFightersFilePath, JSON.stringify(detailedFighters, null, 2));
+    // console.log(`Saved detailed fighters to ${detailedFightersFilePath}`);
+
+    const detailedListFighters = await db.getDb().then(async db => {
+        const detailedListFighters = db.collection('detailedfighters');
+        return await detailedListFighters.insertMany(detailedFighters);
+    });
+
+    console.log(detailedListFighters);
 
     await browser.close();
 })();
