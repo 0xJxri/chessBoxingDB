@@ -9,55 +9,27 @@ class DataService {
         this.db = client;
     }
 
-    public async getResults(limit: number = Infinity) {
+    public async fetchData<T>(
+        collectionName: string,
+        limit: number = Infinity,
+        orderBy: string = "_id",
+        order: string = "asc"
+    ) {
         try {
             const db = await this.db.getDb();
-            const resultsCollection = db.collection<ResultsDto>('results');
-
-            const results = await resultsCollection.find().limit(limit).toArray();
-
-            if (results.length > 0) {
-                return {
-                    status: "success",
-                    message: "Results found",
-                    code: 200,
-                    payload: results
-                };
-            } else {
-                return {
-                    status: "error",
-                    message: "Results not found",
-                    code: 404,
-                    payload: null
-                };
-            }
-        } catch (error) {
-            console.error("Error fetching results:", error);
-            return {
-                status: "error",
-                message: "Internal server error",
-                code: 500,
-                payload: null
-            };
-        }
-    }
-
-    public async getFightersList(limit: number = Infinity, orderBy: string = "name", order: string = "asc") {
-        try {
-            const db = await this.db.getDb();
-            const listFightersCollection = db.collection<FightersListDto>('listfighters');
-
+            const collection = db.collection<T>(collectionName);
+    
             const sortOptions = {};
             sortOptions[orderBy] = order === "asc" ? 1 : -1;
-
-            const fighters = await listFightersCollection.find().limit(limit).sort(sortOptions).toArray();
-
-            if (fighters.length > 0) {
+    
+            const data = await collection.find().limit(limit).sort(sortOptions).toArray();
+    
+            if (data.length > 0) {
                 return {
                     status: "success",
                     message: "Results found",
                     code: 200,
-                    payload: fighters
+                    payload: data
                 };
             } else {
                 return {

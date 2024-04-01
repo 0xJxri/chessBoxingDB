@@ -31,7 +31,7 @@ class DataController {
                 parsedLimit = parseInt(limit);
             }
 
-            response = await this.dataService.getResults(parseInt(limit));
+            response = await this.dataService.fetchData<ResultsDto>('results', parsedLimit, 'timestamp', 'desc');
             context.response.body = response;
             context.response.status = context.response.body.code;
         });
@@ -48,7 +48,7 @@ class DataController {
                 parsedLimit = parseInt(limit);
             }
 
-            const response = await this.dataService.getFightersList(parsedLimit, orderBy, orderAscDesc);
+            const response = await this.dataService.fetchData<FightersListDto>('listfighters', parsedLimit, orderBy, orderAscDesc);
             context.response.body = response;
             context.response.status = response.code;
         });
