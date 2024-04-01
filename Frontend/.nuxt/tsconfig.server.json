@@ -77,6 +77,9 @@
       ],
       "public/*": [
         "../public/*"
+      ],
+      "#color-mode-options": [
+        "./color-mode-options"
       ]
     }
   },
@@ -84,6 +87,7 @@
     "./types/nitro-nuxt.d.ts",
     "../node_modules/@nuxtjs/tailwindcss/runtime/server",
     "../node_modules/shadcn-nuxt/runtime/server",
+    "../node_modules/@nuxtjs/color-mode/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./types/nitro.d.ts",
     "../**/*",

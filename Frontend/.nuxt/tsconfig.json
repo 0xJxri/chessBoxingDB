@@ -71,6 +71,9 @@
       "vue-demi": [
         "../node_modules/nuxt/dist/app/compat/vue-demi"
       ],
+      "#color-mode-options": [
+        "./color-mode-options.mjs"
+      ],
       "#vue-router": [
         "./vue-router-stub"
       ],
@@ -115,6 +118,7 @@
     "../**/*",
     "../node_modules/@nuxtjs/tailwindcss/runtime",
     "../node_modules/shadcn-nuxt/runtime",
+    "../node_modules/@nuxtjs/color-mode/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
     ".."
   ],
@@ -124,6 +128,7 @@
     "../node_modules/nuxt/node_modules",
     "../node_modules/@nuxtjs/tailwindcss/runtime/server",
     "../node_modules/shadcn-nuxt/runtime/server",
+    "../node_modules/@nuxtjs/color-mode/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "../dist",
     "../.output"

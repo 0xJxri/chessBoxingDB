@@ -24,9 +24,7 @@
 
               <Dialog>
                 <DialogTrigger>
-                  <a
-                    class="ml-auto inline-block text-sm underline"
-                  >
+                  <a class="ml-auto inline-block text-sm underline">
                     Forgot your password?
                   </a>
                 </DialogTrigger>
@@ -34,7 +32,7 @@
                   <DialogHeader>
                     <DialogTitle>Well... try to remember it</DialogTitle>
                     <DialogDescription>
-                      <img src="/forgot-password.gif" alt="forgot-password">
+                      <img src="/forgot-password.gif" alt="forgot-password" />
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>

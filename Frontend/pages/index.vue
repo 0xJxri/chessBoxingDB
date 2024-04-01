@@ -1,4 +1,3 @@
-import { NuxtLink } from '#build/components';
 <template>
   <div>
     <NuxtLink to="/login">
