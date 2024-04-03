@@ -5,7 +5,7 @@
     >
       <span class="flex-1" />
       <nuxt-link to="/" class="flex-1 flex justify-center">
-        <img src="/chessboxing-logo.svg" alt="logo" class="h-20" />
+        <img src="/chessboxingdb-logo.svg" alt="logo" class="h-20" />
       </nuxt-link>
       <NuxtLink to="/login" class="flex-1 flex justify-end">
         <Icon icon="material-symbols:login" class="mr-4 mb-2" width="2rem" />
@@ -42,4 +42,5 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+
 </script>

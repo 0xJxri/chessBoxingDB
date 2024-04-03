@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Blaka&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
+.font-blaka {
+  font-family: "Blaka", system-ui;
+}
 
 @layer base {
   :root {

@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>Fighters</h1>
+    <h1>Fighters Page</h1>
   </div>
 </template>
