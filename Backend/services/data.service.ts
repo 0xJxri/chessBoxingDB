@@ -21,7 +21,7 @@ class DataService {
     
             const sortOptions = {};
             sortOptions[orderBy] = order === "asc" ? 1 : -1;
-    
+            console.log("sortOptions", sortOptions);
             const data = await collection.find().limit(limit).sort(sortOptions).toArray();
     
             if (data.length > 0) {
