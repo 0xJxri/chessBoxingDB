@@ -96,7 +96,7 @@
 
     <!-- grid layout -->
     <div v-show="isGridLayoutSelected" class="grid grid-cols-3 gap-4">
-      <Card v-for="item in data.payload" :key="item._id" class="w-full">
+      <Card v-for="item in data.payload" :key="item._id" class="w-full bg-background">
         <CardHeader class="flex items-center">
           <p class="font-bold">{{ item.event }}</p>
           <p class="text-xs text-zinc-400 italic">{{ item.data }}</p>
