@@ -13,21 +13,33 @@ class DataService {
         collectionName: string,
         limit: number = Infinity,
         orderBy: string = "_id",
-        order: string = "asc"
+        order: string = "asc",
+        page: any = undefined
     ) {
         try {
             const db = await this.db.getDb();
             const collection = db.collection<T>(collectionName);
-    
             const sortOptions = {};
             sortOptions[orderBy] = order === "asc" ? 1 : -1;
-            console.log("sortOptions", sortOptions);
-            const data = await collection.find().limit(limit).sort(sortOptions).toArray();
-    
+
+            let start = 0;
+            let end = limit;
+            var data = await collection.find().limit(limit).sort(sortOptions).toArray();
+
+            var additionalData:any = {};
+            if(page) {
+                end = 50 * page;
+                var len = data.length;
+                data = data.slice(start, end);
+                additionalData = {current: page, total: Math.ceil(len / 50)};
+
+            } 
+
             if (data.length > 0) {
                 return {
                     status: "success",
                     message: "Results found",
+                    paging: additionalData,
                     code: 200,
                     payload: data
                 };

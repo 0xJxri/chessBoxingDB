@@ -4,6 +4,7 @@ interface Params {
     limit?: number;
     orderBy?: string;
     order?: string;
+    page?: any;
 }
 
 class DataController {
@@ -27,6 +28,7 @@ class DataController {
         const limit = urlSearchParams.get("limit");
         const orderBy = urlSearchParams.get("orderBy") || "name";
         const order = urlSearchParams.get("order") || "asc";
+        const page = urlSearchParams.get("page") || undefined;
 
         let parsedLimit: number | undefined;
 
@@ -37,21 +39,22 @@ class DataController {
         return {
             limit: parsedLimit,
             orderBy,
-            order
+            order,
+            page
         };
     }
 
     public async init() {
         this.router.get("/results", async (context: Context) => {
             const params = this.extractParams(context);
-            const response = await this.dataService.fetchData<ResultsDto>('results', params.limit, params.orderBy, params.order);
+            const response = await this.dataService.fetchData<ResultsDto>('results', params.limit, params.orderBy, params.order, params.page);
             context.response.body = response;
             context.response.status = context.response.body.code;
         });
 
         this.router.get("/fighterslist", async (context: Context) => {
             const params = this.extractParams(context);
-            const response = await this.dataService.fetchData<FightersListDto>('listfighters', params.limit, params.orderBy, params.order);
+            const response = await this.dataService.fetchData<FightersListDto>('listfighters', params.limit, params.orderBy, params.order, params.page);
             context.response.body = response;
             context.response.status = response.code;
         });

@@ -25,7 +25,7 @@ class AuthHelper {
         if (user) {
             return {
                 status: "error",
-                message: "User already exists",
+                message: "User already exists", // The CIA trying to get in
                 code: 400,
                 payload: null
             };
