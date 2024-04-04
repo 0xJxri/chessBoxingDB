@@ -10,14 +10,19 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@tresjs/cientos": "^3.8.0",
+    "@tresjs/nuxt": "^2.1.1",
+    "@tresjs/post-processing": "^0.7.1",
     "@vueuse/core": "^10.9.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "lucide-vue-next": "^0.363.0",
+    "lucide-vue-next": "^0.364.0",
     "nuxt": "^3.11.1",
+    "oxc-parser": "^0.8.0",
     "radix-vue": "^1.6.1",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.163.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
