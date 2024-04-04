@@ -1,7 +1,6 @@
 import {
   Application
 } from "@oakserver/oak";
-import { OakCors } from "@cors"; 
 
 import 'dotenv/config'
 import UserController from "./controllers/userController.ts";
@@ -12,7 +11,6 @@ import wasmSingleton from "./wasm_helpers.ts";
 import DataController from "./controllers/dataController.ts";
 import DataService from "./services/data.service.ts";
 import * as fs from 'fs/promises';   
-
 
 
 const app = new Application();
@@ -37,12 +35,14 @@ const userController = new UserController(db, authentication, wasmSingleton);
 const validationController = new ValidationController(db, authentication, wasmSingleton);
 const dataController = new DataController(db, authentication, wasmSingleton, dataService)
 
+app.use((ctx, next) => {
+  ctx.response.headers.set('Access-Control-Allow-Origin', '*')
+  return next()
+})
 
 app.use(await userController.init());
 app.use(await validationController.init());
 app.use(await dataController.init())
-
-
 
 console.log("Server running on port 8000");
 
