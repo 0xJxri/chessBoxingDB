@@ -82,11 +82,11 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
     }
 
     // // Insert the final result array into the database
-    // const result = await db.getDb().then(async db => {
-    //     const results = db.collection('results');
-    //     return await results.insertMany(finalResult);
-    // });
+    const result = await db.getDb().then(async db => {
+        const results = db.collection('results');
+        return await results.insertMany(finalResult);
+    });
 
-    console.log(finalResult);
+    console.log(result);
     await browser.close();
 })();
