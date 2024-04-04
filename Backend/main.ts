@@ -1,7 +1,7 @@
 import {
   Application
 } from "@oakserver/oak";
-import cors from 'cors' 
+import { OakCors } from "@cors"; 
 
 import 'dotenv/config'
 import UserController from "./controllers/userController.ts";
@@ -19,6 +19,7 @@ const app = new Application();
 const mongoConnectionString: any = process.env.MONGO_CONNECTIONSTRING
 await wasmSingleton.init();
 
+console.log(wasmSingleton);
 // db stuff
 const db = new Db(mongoConnectionString); 
 
@@ -36,7 +37,6 @@ const userController = new UserController(db, authentication, wasmSingleton);
 const validationController = new ValidationController(db, authentication, wasmSingleton);
 const dataController = new DataController(db, authentication, wasmSingleton, dataService)
 
-app.use(cors());
 
 app.use(await userController.init());
 app.use(await validationController.init());
