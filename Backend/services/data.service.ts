@@ -28,7 +28,8 @@ class DataService {
 
             var additionalData:any = {};
             if(page) {
-                end = 50 * page;
+                start = 50 * page;
+                end = start + 50;
                 var len = data.length;
                 data = data.slice(start, end);
                 additionalData = {current: page, total: Math.ceil(len / 50)};
