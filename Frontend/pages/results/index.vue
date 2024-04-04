@@ -1,6 +1,101 @@
 <template>
-  <div class="container mx-auto mt-4">
-    <div class="grid grid-cols-3 gap-4">
+  <div class="container mx-auto">
+    <div class="flex justify-between items-center mb-4 mt-4">
+      <Breadcrumb class="flex-1">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink as-child>
+              <nuxt-link to="/"> Home </nuxt-link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage> Results </BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
+      <div class="relative w-full max-w-sm items-center flex-1">
+        <Input id="search" type="text" placeholder="Search..." class="pl-10" />
+        <span
+          class="absolute start-0 inset-y-0 flex items-center justify-center px-2"
+        >
+          <Search class="size-6 text-muted-foreground" />
+        </span>
+      </div>
+
+      <div class="flex flex-1 justify-end">
+        <Menubar>
+          <MenubarMenu>
+            <MenubarTrigger>ord by date ...</MenubarTrigger>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>ord by </MenubarTrigger>
+          </MenubarMenu>
+        </Menubar>
+        <div
+          class="flex h-10 items-center gap-x-1 rounded-md border bg-background p-1"
+        >
+          <button
+            @click="isGridLayoutSelected = false"
+            class="flex cursor-pointer select-none items-center rounded-sm px-2 py-1 text-sm font-medium outline-none"
+            :class="{
+              'bg-accent text-accent-foreground': !isGridLayoutSelected,
+            }"
+          >
+            <Rows3 />
+          </button>
+          <button
+            @click="isGridLayoutSelected = true"
+            class="flex cursor-pointer select-none items-center rounded-sm px-2 py-1 text-sm font-medium outline-none"
+            :class="{
+              'bg-accent text-accent-foreground': isGridLayoutSelected,
+            }"
+          >
+            <Grid3X3 />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- list layout -->
+    <Table v-show="!isGridLayoutSelected">
+      <TableHeader>
+        <TableRow>
+          <TableHead class="flex items-center justify-end gap-2">
+            <div class="w-4 h-4 bg-white rounded-full"></div>
+            <span>Fighter White</span>
+          </TableHead>
+          <TableHead>
+            <div class="flex items-center justify-start gap-2">
+              <span>Fighter Black</span>
+              <div
+                class="w-4 h-4 bg-black border-white border rounded-full"
+              ></div>
+            </div>
+          </TableHead>
+          <TableHead>Result</TableHead>
+          <TableHead>Event</TableHead>
+          <TableHead>Date </TableHead>
+          <TableHead class="text-right">Go to result</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow v-for="item in data.payload" :key="item._id">
+          <TableCell class="text-right">{{ item.fighterWhite }}</TableCell>
+          <TableCell>{{ item.fighterBlack }}</TableCell>
+          <TableCell>{{ item.result }}</TableCell>
+          <TableCell>{{ item.event }}</TableCell>
+          <TableCell>{{ item.data }}</TableCell>
+          <TableCell>
+            <ArrowRightToLine class="ml-auto"/>
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+    <!-- grid layout -->
+    <div v-show="isGridLayoutSelected" class="grid grid-cols-3 gap-4">
       <Card v-for="item in data.payload" :key="item._id" class="w-full">
         <CardHeader class="flex items-center">
           <p class="font-bold">{{ item.event }}</p>
@@ -55,8 +150,10 @@
 </template>
 
 <script setup>
-// https://www.chessboxing.info/images/uploads/fighters/f_021123220807_001_021123220835_big.jpg
-// https://www.chessboxing.info/images/uploads/fighters/f_211122232102_002_021123221207_big.jpg
+import { Search, Rows3, Grid3X3, ArrowRightToLine } from "lucide-vue-next";
+
+const isGridLayoutSelected = ref(false);
+
 const data = {
   status: "success",
   message: "Results found",
@@ -101,9 +198,11 @@ const data = {
     {
       _id: "6606c6e0902c732ad64b1cf6",
       fighterWhite: "Richard 'The Razor' Frazer",
-      whitePfp: "https://www.chessboxing.info/images/uploads/fighters/f_021123220807_001_021123220835_big.jpg",
+      whitePfp:
+        "https://www.chessboxing.info/images/uploads/fighters/f_021123220807_001_021123220835_big.jpg",
       fighterBlack: "Dan 'The Taxman' Manfold",
-      blackPfp: "https://www.chessboxing.info/images/uploads/fighters/f_211122232102_002_021123221207_big.jpg",
+      blackPfp:
+        "https://www.chessboxing.info/images/uploads/fighters/f_211122232102_002_021123221207_big.jpg",
       result: "L-W",
       event: "LCB - 36 Clash of Kings 2020",
       data: "26 July 2020",
