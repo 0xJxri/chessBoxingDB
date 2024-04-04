@@ -18,6 +18,7 @@ const app = new Application();
 const mongoConnectionString: any = process.env.MONGO_CONNECTIONSTRING
 await wasmSingleton.init();
 
+console.log(wasmSingleton);
 // db stuff
 const db = new Db(mongoConnectionString); 
 
