@@ -66,9 +66,7 @@
             <div class="w-4 h-4 bg-white rounded-full"></div>
             <span>Fighter White</span>
           </TableHead>
-          <TableHead class="px-0">
-            VS
-          </TableHead>
+          <TableHead class="px-0"> VS </TableHead>
           <TableHead>
             <div class="flex items-center justify-start gap-2">
               <span>Fighter Black</span>
@@ -87,7 +85,7 @@
         <TableRow v-for="item in results.payload" :key="item._id">
           <TableCell>
             <div class="flex justify-end items-center gap-3">
-              <span>{{ item.fighterWhite }}</span>
+              <span class="text-right">{{ item.fighterWhite }}</span>
               <img
                 class="w-7 h-7 rounded-full"
                 :src="
@@ -98,9 +96,7 @@
               />
             </div>
           </TableCell>
-          <TableCell class="px-0">
-            vs
-          </TableCell>
+          <TableCell class="px-0"> vs </TableCell>
           <TableCell>
             <div class="flex justify-start items-center gap-3">
               <img
@@ -192,6 +188,67 @@
         </CardContent>
       </Card>
     </div>
+
+    <Pagination
+      v-slot="{ page }"
+      :total="(results.paging.total - 1) * 10"
+      :sibling-count="1"
+      show-edges
+      :default-page="1"
+    >
+      <PaginationList
+        v-slot="{ items }"
+        class="flex justify-center items-center gap-1 my-8"
+      >
+        <PaginationFirst
+          @click="
+            selectedPage = 1;
+            console.log('this is the first page ' + selectedPage);
+          "
+        />
+        <PaginationPrev
+          @click="
+            selectedPage--;
+            console.log(selectedPage);
+          "
+        />
+
+        <template v-for="(item, index) in items">
+          <PaginationListItem
+            v-if="item.type === 'page'"
+            :key="index"
+            :value="item.value"
+            as-child
+          >
+            <Button
+              class="w-10 h-10 p-0"
+              :variant="item.value === page ? 'default' : 'outline'"
+              @click="
+                selectedPage = item.value;
+                console.log(selectedPage);
+              "
+            >
+              <!-- item.value-1 -->
+              {{ item.value }}
+            </Button>
+          </PaginationListItem>
+          <PaginationEllipsis v-else :key="item.type" :index="index" />
+        </template>
+
+        <PaginationNext
+          @click="
+            selectedPage++;
+            console.log(selectedPage);
+          "
+        />
+        <PaginationLast
+          @click="
+            selectedPage = results.paging.total - 1;
+            console.log('this is the last page ' + selectedPage);
+          "
+        />
+      </PaginationList>
+    </Pagination>
   </div>
 </template>
 
@@ -199,5 +256,20 @@
 import { Search, Rows3, Grid3X3, ArrowRightToLine } from "lucide-vue-next";
 
 const isGridLayoutSelected = ref(false);
-const { data: results } = await useFetch("http://localhost:8000/results");
+const selectedPage = ref(1)
+
+const results = ref()
+
+const fetchData = async () => {
+  try {
+    const data = await $fetch(`http://localhost:8000/results?page=${selectedPage.value}`);
+    results.value = data; 
+    window.scrollTo(0, 0)
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+await fetchData();
+
+watch(selectedPage, fetchData, { immediate: true }); 
 </script>
