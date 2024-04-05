@@ -19,12 +19,10 @@ class DataService {
         try {
             const db = await this.db.getDb();
             const collection = db.collection<T>(collectionName);
-            const sortOptions = {};
-            sortOptions[orderBy] = order === "asc" ? 1 : -1;
-
+            
             let start = 0;
             let end = limit;
-            var data = await collection.find().limit(limit).sort(sortOptions).toArray();
+            var data = await collection.find().limit(limit).toArray();
 
             var additionalData:any = {};
             if(page) {
@@ -35,6 +33,10 @@ class DataService {
                 additionalData = {current: page, total: Math.ceil(len / 50)};
 
             } 
+
+            if (order == "desc") {
+                data = data.reverse(); // bruh moment
+            }
 
             if (data.length > 0) {
                 return {
