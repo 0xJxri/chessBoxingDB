@@ -191,7 +191,6 @@ const db = new Db(mongoConnectionString); // mi serve una connection string per 
     //     return await detailedListFighters.insertMany(detailedFighters);
     // });
 
-    // console.log(detailedListFighters);
 
     await browser.close();
 })();
