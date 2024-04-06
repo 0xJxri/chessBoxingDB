@@ -59,6 +59,13 @@ class DataController {
             context.response.status = response.code;
         });
 
+        this.router.get('/events', async (context: Context) => {
+            const params = this.extractParams(context);
+            const response = await this.dataService.fetchData('events', params.limit, params.orderBy, params.order, params.page);
+            context.response.body = response;
+            context.response.status = context.response.body.code;
+        });
+
         return this.router.routes();
     }
 }
