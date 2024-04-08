@@ -16,7 +16,15 @@
       </Breadcrumb>
 
       <div class="relative w-full max-w-sm items-center flex-1">
-        <Input id="search" type="text" placeholder="Search..." class="pl-10" />
+        <form @submit.prevent="console.log(searchQuery.value)">
+          <input
+            class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            ref="searchQuery"
+            id="search"
+            type="text"
+            placeholder="Search event name..."
+          />
+        </form>
         <span
           class="absolute start-0 inset-y-0 flex items-center justify-center px-2"
         >
@@ -203,13 +211,11 @@
         <PaginationFirst
           @click="
             selectedPage = 1;
-            console.log('this is the first page ' + selectedPage);
           "
         />
         <PaginationPrev
           @click="
             selectedPage--;
-            console.log(selectedPage);
           "
         />
 
@@ -224,8 +230,7 @@
               class="w-10 h-10 p-0"
               :variant="item.value === page ? 'default' : 'outline'"
               @click="
-                selectedPage = item.value;
-                console.log(selectedPage);
+                selectedPage = item.value
               "
             >
               <!-- item.value-1 -->
@@ -237,14 +242,12 @@
 
         <PaginationNext
           @click="
-            selectedPage++;
-            console.log(selectedPage);
+            selectedPage++
           "
         />
         <PaginationLast
           @click="
-            selectedPage = results.paging.total - 1;
-            console.log('this is the last page ' + selectedPage);
+            selectedPage = results.paging.total - 1
           "
         />
       </PaginationList>
@@ -253,23 +256,41 @@
 </template>
 
 <script setup>
-import { Search, Rows3, Grid3X3, ArrowRightToLine } from "lucide-vue-next";
+import {
+  Search,
+  Rows3,
+  Grid3X3,
+  ArrowRightToLine,
+  CalendarClock,
+} from "lucide-vue-next";
 
 const isGridLayoutSelected = ref(false);
-const selectedPage = ref(1)
+const selectedPage = ref(1);
+const searchQuery = ref();
 
-const results = ref()
+const results = ref();
 
-const fetchData = async () => {
+const fetchPage = async (page) => {
   try {
-    const data = await $fetch(`http://localhost:8000/results?page=${selectedPage.value}`);
-    results.value = data; 
-    window.scrollTo(0, 0)
+    const data = await $fetch(`http://localhost:8000/results?page=${page-1}`);
+    results.value = data;
+    window.scrollTo(0, 0);
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
   }
 };
-await fetchData();
+await fetchPage(selectedPage.value);
 
-watch(selectedPage, fetchData, { immediate: true }); 
+const fetchSearchQuery = async (query) => {
+  try {
+    const data = await $fetch(`http://localhost:8000/results?=${selectedPage.value}`);
+    results.value = data;
+    window.scrollTo(0, 0);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+
+
+watch(selectedPage, fetchPage, { immediate: true });
 </script>
