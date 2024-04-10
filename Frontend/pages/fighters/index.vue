@@ -66,13 +66,11 @@
       </div>
     </div>
 
-    {{ fighters }}
-
     <!-- list layout -->
     <Table v-show="!isGridLayoutSelected">
       <TableHeader>
         <TableRow>
-          <TableHead></TableHead>
+          <TableHead />
           <TableHead>Name</TableHead>
           <TableHead>Nationality</TableHead>
           <TableHead>Fights </TableHead>
@@ -85,7 +83,15 @@
       </TableHeader>
       <TableBody>
         <TableRow v-for="item in fighters.payload" :key="item._id">
-          <TableCell>{{  }}</TableCell>
+          <TableCell class="flex items-center justify-end"
+            ><img
+              class="w-8 h-8 rounded-full"
+              :src="
+                item.urlImg
+                  ? item.urlImg + '_thumb.jpg'
+                  : 'https://www.chessboxing.info/images/avatar_unknown.jpg'
+              "
+          /></TableCell>
           <TableCell>{{ item.name }}</TableCell>
           <TableCell>{{ item.nationality }}</TableCell>
           <TableCell>{{ item.fights }}</TableCell>
@@ -98,10 +104,51 @@
       </TableBody>
     </Table>
 
+    <!-- grid layout -->
+    <div v-show="isGridLayoutSelected" class="grid grid-cols-5 gap-4">
+      <CardFlip
+        v-for="item in fighters.payload"
+        :key="item._id"
+        class="w-full bg-background flex flex-col justify-between"
+      >
+        <CardFlipFront>
+          <div class="relative">
+            <img
+              class="rounded-md"
+              :src="
+                item.urlImg
+                  ? item.urlImg + '_big.jpg'
+                  : 'https://www.chessboxing.info/images/profile_unknown.jpg'
+              "
+              alt="fighter"
+            />
+            <p
+              class="bg-gradient-to-t from-black via-black to-transparent absolute -bottom-4 pt-4 text-center font-bold text-xl w-full"
+            >
+              {{ item.name }}
+            </p>
+          </div>
+        </CardFlipFront>
+        <CardFlipBack class="">
+          <div>nome</div>
+          <div>pippo</div>
+          <div>
+            {{ item.countryCode }}
+          </div>
+          <img
+            :src='`https://flagcdn.com/16x12/${item.countryCode}.png`'
+            width="16"
+            height="12"
+            alt="flag"
+          />
+          <Button>See more ...</Button>
+        </CardFlipBack>
+      </CardFlip>
+    </div>
 
     <Pagination
       v-slot="{ page }"
-      :total="(fighters.paging.total) * 10"
+      :total="fighters.paging.total * 10"
       :sibling-count="1"
       show-edges
       :default-page="1"
@@ -110,16 +157,8 @@
         v-slot="{ items }"
         class="flex justify-center items-center gap-1 my-8"
       >
-        <PaginationFirst
-          @click="
-            selectedPage = 1;
-          "
-        />
-        <PaginationPrev
-          @click="
-            selectedPage--;
-          "
-        />
+        <PaginationFirst @click="selectedPage = 1" />
+        <PaginationPrev @click="selectedPage--" />
 
         <template v-for="(item, index) in items">
           <PaginationListItem
@@ -131,9 +170,7 @@
             <Button
               class="w-10 h-10 p-0"
               :variant="item.value === page ? 'default' : 'outline'"
-              @click="
-                selectedPage = item.value
-              "
+              @click="selectedPage = item.value"
             >
               <!-- item.value-1 -->
               {{ item.value }}
@@ -142,16 +179,8 @@
           <PaginationEllipsis v-else :key="item.type" :index="index" />
         </template>
 
-        <PaginationNext
-          @click="
-            selectedPage++
-          "
-        />
-        <PaginationLast
-          @click="
-            selectedPage = fighters.paging.total - 1
-          "
-        />
+        <PaginationNext @click="selectedPage++" />
+        <PaginationLast @click="selectedPage = fighters.paging.total - 1" />
       </PaginationList>
     </Pagination>
   </div>
@@ -166,7 +195,7 @@ import {
   CalendarClock,
 } from "lucide-vue-next";
 
-const isGridLayoutSelected = ref(false);
+const isGridLayoutSelected = ref(true);
 const selectedPage = ref(1);
 const searchQuery = ref();
 
