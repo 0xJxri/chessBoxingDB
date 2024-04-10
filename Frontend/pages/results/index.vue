@@ -133,7 +133,7 @@
       <Card
         v-for="item in results.payload"
         :key="item._id"
-        class="w-full bg-background"
+        class="w-full bg-background flex flex-col justify-between"
       >
         <CardHeader class="flex items-center">
           <p class="font-bold">{{ item.event }}</p>
@@ -153,8 +153,8 @@
           </div>
           <div class="grid grid-cols-2 gap-6">
             <div class="relative rounded-t-lg overflow-clip rounded-es-3xl">
+              <div class="w-full h-2.5 bg-white border-[#909092] border rounded-t-lg " />
               <img
-                class="border-t-8 border-white"
                 :src="
                   item.urlImgWhite
                     ? item.urlImgWhite + '_big.jpg'
@@ -173,8 +173,8 @@
               </p>
             </div>
             <div class="relative rounded-t-lg overflow-clip rounded-ee-3xl">
+              <div class="w-full h-2.5 bg-black border-[#505052] border rounded-t-lg " />
               <img
-                class="border-t-8 border-black"
                 :src="
                   item.urlImgBlack
                     ? item.urlImgBlack + '_big.jpg'
@@ -199,7 +199,7 @@
 
     <Pagination
       v-slot="{ page }"
-      :total="(results.paging.total - 1) * 10"
+      :total="(results.paging.total) * 10"
       :sibling-count="1"
       show-edges
       :default-page="1"
@@ -268,7 +268,7 @@ const isGridLayoutSelected = ref(false);
 const selectedPage = ref(1);
 const searchQuery = ref();
 
-const results = ref();
+const results = ref((await useFetch("http://localhost:8000/results?page=0")).data);
 
 const fetchPage = async (page) => {
   try {
@@ -279,7 +279,6 @@ const fetchPage = async (page) => {
     console.error("Error fetching data:", error);
   }
 };
-await fetchPage(selectedPage.value);
 
 const fetchSearchQuery = async (query) => {
   try {
