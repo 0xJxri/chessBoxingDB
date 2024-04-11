@@ -11,7 +11,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 1.5rem;
+  padding: 2rem 1rem;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 0.5rem;
