@@ -29,18 +29,23 @@ class DataController {
         const orderBy = this.parseOrderBy(urlSearchParams.get("orderBy"));
         const order = urlSearchParams.get("order") || "asc";
         const page = urlSearchParams.get("page") || undefined;
+        const search = urlSearchParams.get("search") || undefined;
 
         let parsedLimit;
 
         if (limit && /^\d+$/.test(limit)) {
             parsedLimit = parseInt(limit);
         }
-
+        
+        if (!parsedLimit) {
+            parsedLimit = Infinity;
+        }
         return {
             "limit": parsedLimit,
             "orderBy": orderBy,
             "order": order,
-            "page": page
+            "page": page,
+            "search": search
         };
     }
 
@@ -62,22 +67,21 @@ class DataController {
     public async init() {
         this.router.get("/results", async (context: Context) => {
             const params = this.extractParams(context);
-            const response = await this.dataService.fetchData<ResultsDto>('results', params.limit, params.orderBy, params.order, params.page);
+            const response = await this.dataService.fetchData<ResultsDto>('results', params);
             context.response.body = response;
             context.response.status = context.response.body.code;
         });
 
         this.router.get("/fighterslist", async (context: Context) => {
             const params = this.extractParams(context);
-            console.log(params);
-            const response = await this.dataService.fetchData<FightersListDto>('listfighters', params.limit, params.orderBy, params.order, params.page);
+            const response = await this.dataService.fetchData<FightersListDto>('listfighters', params);
             context.response.body = response;
             context.response.status = response.code;
         });
 
         this.router.get('/events', async (context: Context) => {
             const params = this.extractParams(context);
-            const response = await this.dataService.fetchData('events', params.limit, params.orderBy, params.order, params.page);
+            const response = await this.dataService.fetchData('events', params);
             context.response.body = response;
             context.response.status = context.response.body.code;
         });
