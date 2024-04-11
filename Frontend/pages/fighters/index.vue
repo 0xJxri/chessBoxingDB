@@ -83,17 +83,26 @@
       </TableHeader>
       <TableBody>
         <TableRow v-for="item in fighters.payload" :key="item._id">
-          <TableCell class="flex items-center justify-end"
-            ><img
+          <TableCell class="flex items-center justify-end">
+            <img
               class="w-8 h-8 rounded-full"
               :src="
                 item.urlImg
                   ? item.urlImg + '_thumb.jpg'
                   : 'https://www.chessboxing.info/images/avatar_unknown.jpg'
               "
-          /></TableCell>
+            />
+          </TableCell>
           <TableCell>{{ item.name }}</TableCell>
-          <TableCell>{{ item.nationality }}</TableCell>
+          <TableCell class="flex items-center">
+            <img
+              v-if="item.countryCode"
+              class="h-4 mr-2"
+              :src="`https://flagcdn.com/${item.countryCode}.svg`"
+              alt="flag"
+            />
+              {{ item.nationality }}
+          </TableCell>
           <TableCell>{{ item.fights }}</TableCell>
           <TableCell>{{ item.record }}</TableCell>
           <TableCell>{{ item.elo }}</TableCell>
@@ -129,19 +138,39 @@
             </p>
           </div>
         </CardFlipFront>
-        <CardFlipBack class="">
-          <div>nome</div>
-          <div>pippo</div>
-          <div>
-            {{ item.countryCode }}
-          </div>
+        <CardFlipBack class="flex flex-col items-center justify-between">
           <img
-            :src='`https://flagcdn.com/16x12/${item.countryCode}.png`'
-            width="16"
-            height="12"
+            v-if="item.countryCode"
+            class="absolute opacity-15 px-6"
+            :src="`https://flagcdn.com/${item.countryCode}.svg`"
             alt="flag"
           />
-          <Button>See more ...</Button>
+          <div class="grid grid-cols-2 w-full z-10 pt-8">
+            <div
+              class="flex flex-col items-end pr-2 border-r border-r-muted gap-1 font-bold text-right"
+            >
+              <p>Nationality</p>
+              <p>Fights</p>
+              <p>Record</p>
+              <p>ELO</p>
+              <p>Height</p>
+              <p>Weight</p>
+              <p>Active years</p>
+            </div>
+            <div
+              class="flex flex-col items-start pl-2 border-l border-l-muted gap-1"
+            >
+              <span class="flex-1">{{ item.nationality }}</span>
+              <span class="flex-1">{{ item.fights }}</span>
+              <span class="flex-1">{{ item.record }}</span>
+              <span class="flex-1">{{ item.elo }}</span>
+              <span class="flex-1">{{ item.height }}</span>
+              <span class="flex-1">{{ item.weight }}</span>
+              <span class="flex-1">{{ item.activeYears }}</span>
+            </div>
+          </div>
+
+          <Button class="mt-8">See more ...</Button>
         </CardFlipBack>
       </CardFlip>
     </div>
