@@ -1,15 +1,21 @@
 import puppeteer from 'puppeteer'
 import Db from '../Backend/helpers/db.ts';
 import "dotenv/config"
+import fs from 'fs'
+import path from 'path'
+import * as countryCodeJSON from './data/countryCode.json';
+
 
 const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING
 
-const db = new Db(mongoConnectionString); // mi serve una connection string per mongo
+const db = new Db(mongoConnectionString);
+
 
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto('https://www.chessboxing.info/fighters/');
+
 
     let pageNumber = 1;
     const listFighters = [];
@@ -21,8 +27,24 @@ const db = new Db(mongoConnectionString); // mi serve una connection string per 
         const fighters = await page.evaluate(() => {
             const fightersArray = [];
             const tableRows = document.querySelectorAll('.tbl_events tbody tr:not(:first-child)');
-
             tableRows.forEach(row => {
+                let urlImg = row.querySelector('td:nth-child(1) img').getAttribute('src');
+                console.log(urlImg)
+                if (urlImg && urlImg.includes('unknown.jpg')) {
+                    urlImg = null;
+                }
+                else {
+                    const truncateUrl = (url) => {
+                        if (url && url.length > 0) {
+                            const lastIndex = url.lastIndexOf('_');
+                            return lastIndex !== -1 ? url.substring(0, lastIndex) : url;
+                        } else {
+                            return url; // Return the original URL if it's empty
+                        }
+                    };
+                    urlImg = truncateUrl(urlImg)
+                }
+
                 const profileLink = row.querySelector('td:nth-child(2) a').href.trim();
                 const name = row.querySelector('td:nth-child(2) a').textContent.trim();
                 const nationalityImg = row.querySelector('td:nth-child(3) img.flag');
@@ -35,6 +57,8 @@ const db = new Db(mongoConnectionString); // mi serve una connection string per 
                         nationality = nationalitySrc.split('/').pop().replace('.png', '');
                     }
                 }
+
+
                 const fights = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
                 const record = row.querySelector('td:nth-child(5)').textContent.trim();
                 const eloElement = row.querySelector('td:nth-child(6)');
@@ -58,6 +82,7 @@ const db = new Db(mongoConnectionString); // mi serve una connection string per 
                 const activeYears = row.querySelector('td:nth-child(9)').textContent.trim() || null;
 
                 fightersArray.push({
+                    urlImg,
                     profileLink,
                     name,
                     nationality,
@@ -171,27 +196,40 @@ const db = new Db(mongoConnectionString); // mi serve una connection string per 
         await fighterPage.close();
     }
 
-    // const listFightersFilePath = path.join('data', 'listFighters.json');
+    for (let i = 0; i < listFighters.length; i++) {
+        const nation = listFighters[i]
+        let nationality = nation.nationality
+        for (const key in countryCodeJSON) {
+            if (Object.prototype.hasOwnProperty.call(countryCodeJSON, key)) {
+                console.log(key)
+                if (key === nationality) {
+                    listFighters[i].countryCode = countryCodeJSON[key]; // Set nationality to the matched key
+                    break; // Exit the loop once a match is found
+                }
+            }
+        }
+    }
+
+
+
+    // const listFightersFilePath = path.join('data', 'listFightersNew.json');
     // fs.writeFileSync(listFightersFilePath, JSON.stringify(listFighters, null, 2));
     // console.log(`Saved list of fighters to ${listFightersFilePath}`);
-
-    const fightersList = await db.getDb().then(async db => {
-        const fightersList = db.collection('listfighters');
-        return await fightersList.insertMany(listFighters);
-    });
-
-    console.log(fightersList);
 
     // const detailedFightersFilePath = path.join('data', 'detailedFighters.json');
     // fs.writeFileSync(detailedFightersFilePath, JSON.stringify(detailedFighters, null, 2));
     // console.log(`Saved detailed fighters to ${detailedFightersFilePath}`);
 
+     const fighterList = await db.getDb().then(async db => {
+            const fighterList = db.collection('listfighters');
+            return await fighterList.insertMany(listFighters);
+        });
+        console.log(fighterList)
     // const detailedListFighters = await db.getDb().then(async db => {
     //     const detailedListFighters = db.collection('detailedfighters');
     //     return await detailedListFighters.insertMany(detailedFighters);
     // });
-
-    // console.log(detailedListFighters);
-
+    // console.log(detailedFighters)
     await browser.close();
+
 })();
