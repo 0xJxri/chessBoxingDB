@@ -25,12 +25,12 @@ public async fetchData<T>(
             const searchParams = params.search.split(';');
             for (const param of searchParams) {
                 const [field, value] = param.split(':');
-                searchQuery[field] = value;
+                    searchQuery[field] = { $regex: `.*${value}.*`, $options: 'i' };
             }
         }
 
-        console.log(searchQuery);
-        var data = await collection.find(searchQuery).limit(params.limit).sort(sortOptions).toArray();
+
+        var data = await collection.find(searchQuery).limit(params.limit).sort(sortOptions).toArray(); 
         var additionalData:any = {};
         if(params.page) {
             start = 50 * params.page;

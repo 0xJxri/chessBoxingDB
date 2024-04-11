@@ -26,7 +26,7 @@ class DataController {
     private extractParams(context) {
         const urlSearchParams = context.request.url.searchParams;
         const limit = urlSearchParams.get("limit");
-        const orderBy = this.parseOrderBy(urlSearchParams.get("orderBy"));
+        const orderBy = urlSearchParams.get("orderBy") || "name";
         const order = urlSearchParams.get("order") || "asc";
         const page = urlSearchParams.get("page") || undefined;
         const search = urlSearchParams.get("search") || undefined;
@@ -49,18 +49,7 @@ class DataController {
         };
     }
 
-    private parseOrderBy(orderBy) {
-        try{
-            const orderParts = orderBy.split('=');
-            if (orderParts.length === 2) {
-                return {
-                    [orderParts[0]]: orderParts[1]
-                };
-            }
-        } catch (e) {
-            return {};
-        }
-    }
+
 
 
 
