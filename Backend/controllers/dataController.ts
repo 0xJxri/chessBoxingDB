@@ -23,26 +23,41 @@ class DataController {
     }
 
     // Terry is king
-    private extractParams(context: Context): Params {
+    private extractParams(context) {
         const urlSearchParams = context.request.url.searchParams;
         const limit = urlSearchParams.get("limit");
-        const orderBy = urlSearchParams.get("orderBy") || "name";
+        const orderBy = this.parseOrderBy(urlSearchParams.get("orderBy"));
         const order = urlSearchParams.get("order") || "asc";
         const page = urlSearchParams.get("page") || undefined;
 
-        let parsedLimit: number | undefined;
+        let parsedLimit;
 
         if (limit && /^\d+$/.test(limit)) {
             parsedLimit = parseInt(limit);
         }
 
         return {
-            limit: parsedLimit,
-            orderBy,
-            order,
-            page
+            "limit": parsedLimit,
+            "orderBy": orderBy,
+            "order": order,
+            "page": page
         };
     }
+
+    private parseOrderBy(orderBy) {
+        try{
+            const orderParts = orderBy.split('=');
+            if (orderParts.length === 2) {
+                return {
+                    [orderParts[0]]: orderParts[1]
+                };
+            }
+        } catch (e) {
+            return {};
+        }
+    }
+
+
 
     public async init() {
         this.router.get("/results", async (context: Context) => {
@@ -54,6 +69,7 @@ class DataController {
 
         this.router.get("/fighterslist", async (context: Context) => {
             const params = this.extractParams(context);
+            console.log(params);
             const response = await this.dataService.fetchData<FightersListDto>('listfighters', params.limit, params.orderBy, params.order, params.page);
             context.response.body = response;
             context.response.status = response.code;
