@@ -19,24 +19,28 @@ class DataService {
         try {
             const db = await this.db.getDb();
             const collection = db.collection<T>(collectionName);
-            
+
             let start = 0;
             let end = limit;
-            var data = await collection.find().limit(limit).toArray();
 
-            var additionalData:any = {};
-            if(page) {
+            let sortOrder = (order == "desc") ? -1 : 1;
+
+            var data = await collection.find().sort({ [orderBy]: sortOrder }).limit(limit).toArray();
+            console.log(data);
+
+            var additionalData: any = {};
+            if (page) {
                 start = 50 * page;
                 end = start + 50;
                 var len = data.length;
                 data = data.slice(start, end);
-                additionalData = {current: page, total: Math.ceil(len / 50)};
+                additionalData = { current: page, total: Math.ceil(len / 50) };
 
-            } 
-
-            if (order == "desc") {
-                data = data.reverse(); // bruh moment
             }
+
+            // if (order == "desc") {
+            //     data = data.reverse(); // bruh moment
+            // }
 
             if (data.length > 0) {
                 return {

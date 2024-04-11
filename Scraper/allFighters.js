@@ -203,7 +203,7 @@ const db = new Db(mongoConnectionString);
             if (Object.prototype.hasOwnProperty.call(countryCodeJSON, key)) {
                 console.log(key)
                 if (key === nationality) {
-                    listFighters[i].nationality = countryCodeJSON[key]; // Set nationality to the matched key
+                    listFighters[i].countryCode = countryCodeJSON[key]; // Set nationality to the matched key
                     break; // Exit the loop once a match is found
                 }
             }
@@ -212,7 +212,7 @@ const db = new Db(mongoConnectionString);
 
 
 
-    // const listFightersFilePath = path.join('data', 'listFighters.json');
+    // const listFightersFilePath = path.join('data', 'listFightersNew.json');
     // fs.writeFileSync(listFightersFilePath, JSON.stringify(listFighters, null, 2));
     // console.log(`Saved list of fighters to ${listFightersFilePath}`);
 
