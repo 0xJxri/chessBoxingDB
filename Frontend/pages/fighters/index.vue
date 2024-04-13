@@ -16,7 +16,7 @@
       </Breadcrumb>
 
       <div class="relative w-full max-w-sm items-center flex-1">
-        <form @submit.prevent="console.log(searchQuery.value)">
+        <form @submit.prevent="searchFighter(searchQuery.value)">
           <input
             class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             ref="searchQuery"
@@ -101,10 +101,16 @@
               :src="`https://flagcdn.com/${item.countryCode}.svg`"
               alt="flag"
             />
-              {{ item.nationality }}
+            {{ item.nationality }}
           </TableCell>
           <TableCell>{{ item.fights }}</TableCell>
-          <TableCell>{{ item.record }}</TableCell>
+          <TableCell>
+            <span class="text-green-300">{{ item.record.split("-")[0] }}</span>
+            <span>-</span>
+            <span class="text-red-300">{{ item.record.split("-")[1] }}</span>
+            <span>-</span>
+            <span class="text-blue-300">{{ item.record.split("-")[2] }}</span>
+          </TableCell>
           <TableCell>{{ item.elo }}</TableCell>
           <TableCell>{{ item.height }}</TableCell>
           <TableCell>{{ item.weight }}</TableCell>
@@ -162,7 +168,13 @@
             >
               <span class="flex-1">{{ item.nationality }}</span>
               <span class="flex-1">{{ item.fights }}</span>
-              <span class="flex-1">{{ item.record }}</span>
+              <span class="flex-1">
+                <span class="text-green-500">{{item.record.split("-")[0]}}</span>
+                <span>-</span>
+                <span class="text-red-500">{{item.record.split("-")[1]}}</span>
+                <span>-</span>
+                <span class="text-blue-500">{{item.record.split("-")[2]}}</span>
+              </span>
               <span class="flex-1">{{ item.elo }}</span>
               <span class="flex-1">{{ item.height }}</span>
               <span class="flex-1">{{ item.weight }}</span>
@@ -201,7 +213,6 @@
               :variant="item.value === page ? 'default' : 'outline'"
               @click="selectedPage = item.value"
             >
-              <!-- item.value-1 -->
               {{ item.value }}
             </Button>
           </PaginationListItem>
@@ -212,10 +223,12 @@
         <PaginationLast @click="selectedPage = fighters.paging.total - 1" />
       </PaginationList>
     </Pagination>
+    <Toaster />
   </div>
 </template>
 
 <script setup>
+import { useToast } from '@/components/ui/toast/use-toast'
 import {
   Search,
   Rows3,
@@ -223,6 +236,8 @@ import {
   ArrowRightToLine,
   CalendarClock,
 } from "lucide-vue-next";
+
+const { toast } = useToast()
 
 const isGridLayoutSelected = ref(true);
 const selectedPage = ref(1);
@@ -241,6 +256,23 @@ const fetchPage = async (page) => {
     window.scrollTo(0, 0);
   } catch (error) {
     console.error("Error fetching data:", error);
+  }
+};
+
+const searchFighter = async (name) => {
+  try {
+    if (!name) {
+      fetchPage(selectedPage.value);
+      return;
+    }
+    const data = await $fetch(`http://localhost:8000/fighterslist?search=name:${name}`);
+    fighters.value = data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    toast({
+        title: 'Sorry',
+        description: 'We could not find any fighter with that name',
+      });
   }
 };
 
