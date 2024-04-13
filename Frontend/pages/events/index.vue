@@ -119,6 +119,7 @@
         <PaginationLast @click="selectedPage = events.paging.total - 1" />
       </PaginationList>
     </Pagination>
+    <Toaster />
   </div>
 </template>
 

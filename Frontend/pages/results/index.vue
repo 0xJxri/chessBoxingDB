@@ -16,7 +16,7 @@
       </Breadcrumb>
 
       <div class="relative w-full max-w-sm items-center flex-1">
-        <form @submit.prevent="console.log(searchQuery.value)">
+        <form @submit.prevent="searchEvent(searchQuery.value)">
           <input
             class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             ref="searchQuery"
@@ -252,10 +252,12 @@
         />
       </PaginationList>
     </Pagination>
+    <Toaster />
   </div>
 </template>
 
 <script setup>
+import { useToast } from '@/components/ui/toast/use-toast'
 import {
   Search,
   Rows3,
@@ -263,6 +265,8 @@ import {
   ArrowRightToLine,
   CalendarClock,
 } from "lucide-vue-next";
+
+const { toast } = useToast()
 
 const isGridLayoutSelected = ref(false);
 const selectedPage = ref(1);
@@ -280,16 +284,22 @@ const fetchPage = async (page) => {
   }
 };
 
-const fetchSearchQuery = async (query) => {
+const searchEvent = async (name) => {
   try {
-    const data = await $fetch(`http://localhost:8000/results?=${selectedPage.value}`);
+    if (!name) {
+      fetchPage(selectedPage.value);
+      return;
+    }
+    const data = await $fetch(`http://localhost:8000/results?search=event:${name}`);
     results.value = data;
-    window.scrollTo(0, 0);
   } catch (error) {
     console.error("Error fetching data:", error);
+    toast({
+        title: 'Sorry',
+        description: 'We could not find any event with that name',
+      });
   }
 };
-
 
 watch(selectedPage, fetchPage, { immediate: true });
 </script>
