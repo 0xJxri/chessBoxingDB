@@ -71,13 +71,15 @@ const db = new Db(mongoConnectionString);
                 let height = null;
                 if (heightElement) {
                     const heightText = heightElement.textContent.trim();
-                    height = heightText === '?' ? null : heightText;
+                    const heightMatch = heightText.match(/\d+/); 
+                    height = heightMatch ? parseInt(heightMatch[0]) : null; // Convert to integer
                 }
                 const weightElement = row.querySelector('td:nth-child(8)');
                 let weight = null;
                 if (weightElement) {
                     const weightText = weightElement.textContent.trim();
-                    weight = weightText === '?' ? null : weightText;
+                    const weightMatch = weightText.match(/\d+/); 
+                    weight = weightMatch ? parseInt(weightMatch[0]) : null; //Converting to integer
                 }
                 const activeYears = row.querySelector('td:nth-child(9)').textContent.trim() || null;
 

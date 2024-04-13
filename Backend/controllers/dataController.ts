@@ -5,6 +5,7 @@ interface Params {
     orderBy?: string;
     order?: string;
     page?: any;
+    fighterName?: string;
 }
 
 class DataController {
@@ -31,6 +32,8 @@ class DataController {
         const page = urlSearchParams.get("page") || undefined;
         const search = urlSearchParams.get("search") || undefined;
 
+        const fighterName = context.params.fighterName;
+
         let parsedLimit;
 
         if (limit && /^\d+$/.test(limit)) {
@@ -45,7 +48,8 @@ class DataController {
             "orderBy": orderBy,
             "order": order,
             "page": page,
-            "search": search
+            "search": search,
+            "fighterName": fighterName
         };
     }
 
@@ -75,9 +79,9 @@ class DataController {
             context.response.status = context.response.body.code;
         });
 
-        this.router.get('/detailedfighters', async (context:Context) => {
+        this.router.get('/detailedfighters/:fighterName', async (context:Context) => {
             const params = this.extractParams(context);
-            const response = await this.dataService.fetchData('detailedfighters', params.limit, params.orderBy, params.order, params.page);
+            const response = await this.dataService.fetchData('detailedfighters', params);
             context.response.body = response;
             context.response.status = response.code;
         })

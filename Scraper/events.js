@@ -3,6 +3,7 @@ import Db from '../Backend/helpers/db.ts';
 import "dotenv/config";
 import fs from 'fs'
 import path from 'path';
+import * as countryCodeJSON from './data/countryCode.json';
 
 const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
 
@@ -28,12 +29,49 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                 const tds = await rowHandle.$$('td');
 
                 // Extract text content of specific td elements
+                let eventImg = null;
+                try {
+                    const imgElement = await tds[0].$eval('img', el => el.src)// Default value
+                    console.log(imgElement);
+                    if (imgElement) {
+                        const lastIndex = imgElement.lastIndexOf('_');
+                        eventImg = lastIndex !== -1 ? imgElement.substring(0, lastIndex) : imgElement;
+                    }
+                } catch (error) {
+                    eventImg = null
+                }
+
+                console.log("Event image without .jpg", eventImg)
+
+
                 const eventName = await tds[1].$eval('a', el => el.textContent.trim());
                 const eventLink = await tds[1].$eval('a', el => el.href);
                 const date = await tds[2].evaluate(td => td.textContent.trim());
+              // Default value
+                let imgFlag = null
+                try {
+                    let flag = await tds[3].$eval('img', el => el.src) // Default value
+                    console.log(flag);
+                    if (flag) {
+                        const lastIndex = flag.lastIndexOf('_');
+                        imgFlag = lastIndex !== -1 ? flag.substring(0, lastIndex) : flag;
+                    }
+                } catch (error) {
+                    imgFlag = null
+                }
+
                 const venue = await tds[4].evaluate(td => td.textContent.trim());
                 const fights = await tds[5].$eval('a', el => el.textContent.trim());
+                let countryCode = null;
+                if (imgFlag) {
+                    if (imgFlag.includes('Unknown.png')) {
+                        countryCode = null;
+                    } else {
+                        countryCode = imgFlag.split('/').pop().replace('.png', '');
+                    }
+                }
 
+                console.log("Image after truncate = ",countryCode)
                 // Open detail page for the event
                 const eventPage = await browser.newPage();
                 await eventPage.goto(eventLink);
@@ -189,8 +227,10 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
 
                 // Store the extracted data in the final result array, nesting the eventData inside the event object
                 eventResult.push({
+                    eventImg: eventImg,
                     eventName: eventName,
                     date: date,
+                    countryCode: countryCode,
                     venue: venue,
                     fights: fights,
                     eventData: eventData // Nesting eventData inside the event object
@@ -203,11 +243,25 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
         pageNumber++;
     }
 
+    for (let i = 0; i < eventResult.length; i++) {
+        const event = eventResult[i];
+        let countryCode = event.countryCode;
+        for (const key in countryCodeJSON) {
+            if (Object.prototype.hasOwnProperty.call(countryCodeJSON, key)) {
+                if (key === countryCode) {
+                    eventResult[i].countryCode = countryCodeJSON[key]; // Update countryCode to the matched value
+                    break; // Exit the loop once a match is found
+                }
+            }
+        }
+    }
+
+
     // const eventsDetailedPath = path.join('data', 'detailedEvents.json');
     // fs.writeFileSync(eventsDetailedPath, JSON.stringify(eventResult, null, 2));
     // console.log(`Saved detailed fighters to ${eventsDetailedPath}`);
 
-    // // Insert the event data into MongoDB
+    // Insert the event data into MongoDB
     const eventsCollection = await db.getDb().then(async db => {
         const eventsCollection = db.collection('events');
         return await eventsCollection.insertMany(eventResult);
