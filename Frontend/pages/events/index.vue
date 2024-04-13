@@ -44,44 +44,130 @@
       </div>
     </div>
 
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead />
-          <TableHead>Event Name</TableHead>
-          <TableHead>Date</TableHead>
-          <TableHead>Venue</TableHead>
-          <TableHead>Fights</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow v-for="item in events.payload" :key="item._id">
-          <TableCell>
+    <Dialog>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead />
+            <TableHead>Event Name</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Venue</TableHead>
+            <TableHead>Fights</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow v-for="item in events.payload" :key="item._id">
+            <DialogTrigger as-child>
+              <TableCell @click="modalPayload = item">
+                <img
+                  class="cursor-pointer"
+                  v-if="item.eventImg"
+                  :src="item.eventImg + '_thumb.jpg'"
+                  height="50px"
+                />
+              </TableCell>
+            </DialogTrigger>
+            <DialogTrigger as-child>
+              <TableCell
+                @click="modalPayload = item"
+                class="cursor-pointer hover:underline hover:text-red-600"
+                >{{ item.eventName }}</TableCell
+              >
+            </DialogTrigger>
+            <TableCell>{{ item.date }}</TableCell>
+            <TableCell>
+              <div class="flex items-center relative">
+                <img
+                  v-if="item.countryCode"
+                  class="h-4 mr-2"
+                  :src="`https://flagcdn.com/${item.countryCode}.svg`"
+                  alt="flag"
+                />
+                <span class="relative">
+                  {{ item.venue }}
+                </span>
+              </div>
+            </TableCell>
+            <TableCell>{{ item.fights }}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <DialogContent
+        class="sm:max-w-[825px] grid-rows-[auto_minmax(0,1fr)_auto] p-6 max-h-[85dvh]"
+      >
+        <DialogHeader class="items-center">
+          <DialogTitle>{{ modalPayload.eventName }}</DialogTitle>
+          <DialogDescription class="flex gap-2 items-center">
+            {{ modalPayload.date }} | {{ modalPayload.venue }}
             <img
-              v-if="item.eventImg"
-              :src="item.eventImg + '_thumb.jpg'"
-              height="50px"
+              v-if="modalPayload.countryCode"
+              class="h-4"
+              :src="`https://flagcdn.com/${modalPayload.countryCode}.svg`"
+              alt="flag"
             />
-          </TableCell>
-          <TableCell>{{ item.eventName }}</TableCell>
-          <TableCell>{{ item.date }}</TableCell>
-          <TableCell >
-            <div class="flex items-center relative">
-              <img
-                v-if="item.countryCode"
-                class="h-4 mr-2"
-                :src="`https://flagcdn.com/${item.countryCode}.svg`"
-                alt="flag"
-              />
-              <span class="relative">
-                {{ item.venue }}
-              </span>
-            </div>
-          </TableCell>
-          <TableCell>{{ item.fights }}</TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+          </DialogDescription>
+        </DialogHeader>
+
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead class="flex items-center justify-end gap-2">
+                <div class="w-4 h-4 bg-white rounded-full"></div>
+                <span>Fighter White</span>
+              </TableHead>
+              <TableHead class="px-0"> VS </TableHead>
+              <TableHead>
+                <div class="flex items-center justify-start gap-2">
+                  <span>Fighter Black</span>
+                  <div
+                    class="w-4 h-4 bg-black border-white border rounded-full"
+                  ></div>
+                </div>
+              </TableHead>
+              <TableHead>Result</TableHead>
+              <TableHead>Result Description </TableHead>
+              <TableHead class="text-right">View Result</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow v-for="item in modalPayload.eventData" :key="item._id">
+              <TableCell>
+                <div class="flex justify-end items-center gap-3">
+                  <span class="text-right">{{ item.fighterWhite }}</span>
+                  <img
+                    class="w-7 h-7 rounded-full"
+                    :src="
+                      item.urlImgWhite
+                        ? item.urlImgWhite + '_thumb.jpg'
+                        : 'https://www.chessboxing.info/images/avatar_unknown.jpg'
+                    "
+                  />
+                </div>
+              </TableCell>
+              <TableCell class="px-0"> vs </TableCell>
+              <TableCell>
+                <div class="flex justify-start items-center gap-3">
+                  <img
+                    class="w-7 h-7 rounded-full"
+                    :src="
+                      item.urlImgBlack
+                        ? item.urlImgBlack + '_thumb.jpg'
+                        : 'https://www.chessboxing.info/images/avatar_unknown.jpg'
+                    "
+                  />
+                  <span>{{ item.fighterBlack }}</span>
+                </div>
+              </TableCell>
+              <TableCell>{{ item.result }}</TableCell>
+              <TableCell>{{ item.resultDescription }}</TableCell>
+              <TableCell>
+                <Eye class="ml-auto" />
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </DialogContent>
+    </Dialog>
 
     <Pagination
       v-slot="{ page }"
@@ -119,24 +205,27 @@
         <PaginationLast @click="selectedPage = events.paging.total - 1" />
       </PaginationList>
     </Pagination>
+
     <Toaster />
   </div>
 </template>
 
 <script setup>
-import { useToast } from '@/components/ui/toast/use-toast'
+import { useToast } from "@/components/ui/toast/use-toast";
 import {
   Search,
   Rows3,
   Grid3X3,
+  Eye,
   ArrowRightToLine,
   CalendarClock,
 } from "lucide-vue-next";
 
-const { toast } = useToast()
+const { toast } = useToast();
 
 const selectedPage = ref(1);
 const searchQuery = ref();
+const modalPayload = ref();
 
 const events = ref(
   (await useFetch("http://localhost:8000/events?page=0")).data
@@ -152,21 +241,22 @@ const fetchPage = async (page) => {
   }
 };
 
-
 const searchEvent = async (name) => {
   try {
     if (!name) {
       fetchPage(selectedPage.value);
       return;
     }
-    const data = await $fetch(`http://localhost:8000/events?search=eventName:${name}`);
+    const data = await $fetch(
+      `http://localhost:8000/events?search=eventName:${name}`
+    );
     events.value = data;
   } catch (error) {
     console.error("Error fetching data:", error);
     toast({
-        title: 'Sorry',
-        description: 'We could not find any event with that name',
-      });
+      title: "Sorry",
+      description: "We could not find any event with that name",
+    });
   }
 };
 
