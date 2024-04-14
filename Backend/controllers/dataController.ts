@@ -6,6 +6,9 @@ interface Params {
     order?: string;
     page?: any;
     fighterName?: string;
+    resultId?: number;
+    eventName?: string;
+    fightWinDetail?: string;
 }
 
 class DataController {
@@ -34,6 +37,10 @@ class DataController {
 
         const fighterName = context.params.fighterName;
 
+        const resultId = urlSearchParams.get("resultId");
+        const eventName = urlSearchParams.get("eventName");
+        const fightWinDetail = urlSearchParams.get("fightWinDetail");
+
         let parsedLimit;
 
         if (limit && /^\d+$/.test(limit)) {
@@ -49,7 +56,10 @@ class DataController {
             "order": order,
             "page": page,
             "search": search,
-            "fighterName": fighterName
+            "fighterName": fighterName,
+            "resultId": resultId,
+            "eventName": eventName,
+            "fightWinDetail": fightWinDetail
         };
     }
 
@@ -82,6 +92,13 @@ class DataController {
         this.router.get('/detailedfighters/:fighterName', async (context:Context) => {
             const params = this.extractParams(context);
             const response = await this.dataService.fetchData('detailedfighters', params);
+            context.response.body = response;
+            context.response.status = response.code;
+        })
+
+        this.router.get('/fightdetails', async(context: Context) => {
+            const params = this.extractParams(context);
+            const response = await this.dataService.fetchData('fightdetails', params);
             context.response.body = response;
             context.response.status = response.code;
         })

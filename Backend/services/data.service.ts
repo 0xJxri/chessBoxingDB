@@ -31,12 +31,20 @@ class DataService {
                 }
             }
 
-            
+
             if (params.fighterName) {
                 searchQuery["name"] = { $regex: new RegExp(name, 'i') };//creo na nova regex co l'i option almeno la rendo case insensitive per la query 
             }
 
-            console.log("searchquery",searchQuery)
+            if (params.resultId && params.eventName && params.fightWinDetail) {
+                // Apply case insensitive search to the query
+                searchQuery["resultId"] = Number(params.resultId);
+                searchQuery["eventName"] = { $regex: new RegExp(params.eventName, 'i') };
+                searchQuery["fightWinDetail"] = { $regex: new RegExp(params.fightWinDetail, 'i') };
+            }
+
+       
+            console.log("searchquery", searchQuery)
             console.log(collectionName)
 
             var data = await collection.find(searchQuery).limit(params.limit).sort(sortOptions).toArray();

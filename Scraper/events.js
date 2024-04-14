@@ -15,6 +15,7 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
 
     let pageNumber = 1;
     let eventResult = []; // Array to store the event data
+    let fightDetails = []
 
     while (true) {
         const url = `https://www.chessboxing.info/events/?pageno=${pageNumber}`; // Cycle through the URIs
@@ -47,7 +48,7 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                 const eventName = await tds[1].$eval('a', el => el.textContent.trim());
                 const eventLink = await tds[1].$eval('a', el => el.href);
                 const date = await tds[2].evaluate(td => td.textContent.trim());
-              // Default value
+                // Default value
                 let imgFlag = null
                 try {
                     let flag = await tds[3].$eval('img', el => el.src) // Default value
@@ -71,10 +72,11 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                     }
                 }
 
-                console.log("Image after truncate = ",countryCode)
+                //  console.log("Image after truncate = ",countryCode)
                 // Open detail page for the event
                 const eventPage = await browser.newPage();
                 await eventPage.goto(eventLink);
+
 
                 // Scrape data from the detail page
                 const eventData = await eventPage.evaluate(async () => {
@@ -83,9 +85,10 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
 
                     for (const row of tableRows) {
                         const tds = row.querySelectorAll('td');
+                        const resultId = parseInt(tds[0].textContent.trim().replace(')', ''))
                         const fighterWhite = tds[1].querySelector('a').textContent.trim();
-                        let urlImgWhite = tds[2].querySelector('img').getAttribute('src').replace('thumb', 'big');
-                        let urlImgBlack = tds[4].querySelector('img').getAttribute('src').replace('thumb', 'big');
+                        let urlImgWhite = tds[2].querySelector('img').getAttribute('src');
+                        let urlImgBlack = tds[4].querySelector('img').getAttribute('src');
                         const fighterBlack = tds[5].querySelector('a').textContent.trim();
                         let result = tds[6].textContent.trim();
                         const resultDescription = tds[7].textContent.trim();
@@ -104,7 +107,20 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                             urlImgBlack = null;
                         }
 
+                        const truncateUrl = (url) => {
+                            if (url && url.length > 0) {
+                                const lastIndex = url.lastIndexOf('_');
+                                return lastIndex !== -1 ? url.substring(0, lastIndex) : url;
+                            } else {
+                                return url; // Return the original URL if it's empty
+                            }
+                        };
+
+                        urlImgBlack = truncateUrl(urlImgBlack)
+                        urlImgWhite = truncateUrl(urlImgWhite)
+
                         resultArray.push({
+                            resultId: resultId,
                             fighterWhite: fighterWhite,
                             urlImgWhite: urlImgWhite,
                             urlImgBlack: urlImgBlack,
@@ -125,7 +141,7 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                     const nestedPage = await browser.newPage();
                     await nestedPage.goto(event.nestedLink);
 
-                    event.fightDetails = await nestedPage.evaluate(() => {
+                    const fightDetailsPage = await nestedPage.evaluate((event) => {
                         const fighterWhite = {};
                         const fighterBlack = {};
                         let fightWinDetail = document.querySelector('.tbl_tot_profile h3').textContent.trim();
@@ -134,8 +150,8 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                         }
                         const tableRows = document.querySelectorAll('.tbl_tot tr');
                         const imgRows = document.querySelectorAll('h1');
-
-
+                        const eventName = document.querySelector('h2 a').textContent.trim() || null;
+                        console.log("eventNameee = ",eventName)
                         let nationalityWhite = null;
                         let nationalityBlack = null
                         imgRows.forEach(img => {
@@ -198,6 +214,8 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                             }
 
                             return {
+                                resultId: event.resultId,
+                                eventName: eventName,
                                 fightWinDetail: fightWinDetail,
                                 nationalityWhite: nationalityWhite,
                                 nationalityBlack: nationalityBlack,
@@ -207,6 +225,8 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                             };
                         } else {
                             return {
+                                resultId: event.resultId,
+                                eventName: eventName,
                                 fightWinDetail: fightWinDetail,
                                 nationalityWhite: nationalityWhite,
                                 nationalityBlack: nationalityBlack,
@@ -215,7 +235,9 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                                 chessMoves: null
                             };
                         }
-                    });
+                    }, event);
+
+                    fightDetails.push(fightDetailsPage)
 
                     await nestedPage.close();
                 }
@@ -256,17 +278,44 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
         }
     }
 
+    for (let i = 0; i < fightDetails.length; i++) {
+        const fight = fightDetails[i];
+        let countryCodeWhite = fight.nationalityWhite;
+        let countryCodeBlack = fight.nationalityBlack;
+
+        for (const key in countryCodeJSON) {
+            if (Object.prototype.hasOwnProperty.call(countryCodeJSON, key)) {
+                if (key === countryCodeWhite) {
+                    fightDetails[i].nationalityWhite = countryCodeJSON[key]; // Update countryCode to the matched value
+                }
+                if (key === countryCodeBlack) {
+                    fightDetails[i].nationalityBlack = countryCodeJSON[key]; // Update countryCode to the matched value
+                }
+            }
+        }
+    }
+
 
     // const eventsDetailedPath = path.join('data', 'detailedEvents.json');
     // fs.writeFileSync(eventsDetailedPath, JSON.stringify(eventResult, null, 2));
     // console.log(`Saved detailed fighters to ${eventsDetailedPath}`);
 
-    // Insert the event data into MongoDB
-    const eventsCollection = await db.getDb().then(async db => {
-        const eventsCollection = db.collection('events');
-        return await eventsCollection.insertMany(eventResult);
-    });
-    console.log(eventsCollection)
+    // const fightDetailsPath = path.join('data', 'fightDetails.json');
+    // fs.writeFileSync(fightDetailsPath, JSON.stringify(fightDetails, null, 2));
+    // console.log(`Saved detailed fighters to ${fightDetailsPath}`);
 
+
+    // Insert the event data into MongoDB
+    // const eventsCollection = await db.getDb().then(async db => {
+    //     const eventsCollection = db.collection('events');
+    //     return await eventsCollection.insertMany(eventResult);
+    // });
+    // console.log(eventsCollection)
+
+    const fightsDetailsCollection = await db.getDb().then(async db => {
+        const fightsDetailsCollection = db.collection('fightdetails');
+        return await fightsDetailsCollection.insertMany(fightDetails);
+    });
+    console.log(fightsDetailsCollection)
     await browser.close();
 })();

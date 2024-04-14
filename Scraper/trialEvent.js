@@ -18,6 +18,7 @@ import "dotenv/config";
 
             for (const row of tableRows) {
                 const tds = row.querySelectorAll('td');
+                const resultId = tds[0].textContent.trim();
                 const fighterWhite = tds[1].querySelector('a').textContent.trim();
                 let urlImgWhite = tds[2].querySelector('img').getAttribute('src').replace('thumb', 'big');
                 let urlImgBlack = tds[4].querySelector('img').getAttribute('src').replace('thumb', 'big');
@@ -38,6 +39,7 @@ import "dotenv/config";
                 }
 
                 resultArray.push({
+                    resultId: resultId,
                     fighterWhite: fighterWhite,
                     urlImgWhite: urlImgWhite,
                     urlImgBlack: urlImgBlack,
