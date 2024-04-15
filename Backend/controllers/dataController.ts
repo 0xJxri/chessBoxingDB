@@ -1,4 +1,4 @@
-import { Context, Router } from "@oakserver/oak";
+import { Router } from 'express';
 
 interface Params {
     limit?: number;
@@ -8,82 +8,97 @@ interface Params {
 }
 
 class DataController {
-    private db;
-    private auth;
-    private wasm;
+    private db: any;
+    private auth: any;
+    private wasm: any;
+    private dataService: any;
     public router;
-    private dataService;
 
     constructor(db, auth, wasm, dataService) {
         this.db = db;
         this.auth = auth;
         this.wasm = wasm;
         this.dataService = dataService;
-        this.router = new Router();
+        this.router = Router();
+        this.init();
     }
 
     // Terry is king
-    private extractParams(context) {
-        const urlSearchParams = context.request.url.searchParams;
-        const limit = urlSearchParams.get("limit");
-        const orderBy = urlSearchParams.get("orderBy") || "name";
-        const order = urlSearchParams.get("order") || "asc";
-        const page = urlSearchParams.get("page") || undefined;
-        const search = urlSearchParams.get("search") || undefined;
-
-        let parsedLimit;
-
-        if (limit && /^\d+$/.test(limit)) {
-            parsedLimit = parseInt(limit);
-        }
-        
-        if (!parsedLimit) {
-            parsedLimit = Infinity;
-        }
+    private extractParams(req) {
+        const limit = req.query.limit ? parseInt(req.query.limit) : Infinity;
+        const orderBy = req.query.orderBy || "name";
+        const order = req.query.order || "asc";
+        const page = req.query.page || undefined;
+        const search = req.query.search || undefined;
+    
         return {
-            "limit": parsedLimit,
-            "orderBy": orderBy,
-            "order": order,
-            "page": page,
-            "search": search
+            limit,
+            orderBy,
+            order,
+            page,
+            search
         };
     }
 
-
-
-
-
-    public async init() {
-        this.router.get("/results", async (context: Context) => {
-            const params = this.extractParams(context);
-            const response = await this.dataService.fetchData<ResultsDto>('results', params);
-            context.response.body = response;
-            context.response.status = context.response.body.code;
+    init() {
+        this.router.get("/results", async (req, res) => {
+            const params = this.extractParams(req);
+            const response = await this.dataService.fetchData('results', params);
+            res.status(response.code).json(response);
         });
 
-        this.router.get("/fighterslist", async (context: Context) => {
-            const params = this.extractParams(context);
-            const response = await this.dataService.fetchData<FightersListDto>('listfighters', params);
-            context.response.body = response;
-            context.response.status = response.code;
+        this.router.get("/fighterslist", async (req, res) => {
+            const params = this.extractParams(req);
+            const response = await this.dataService.fetchData('listfighters', params);
+            res.status(response.code).json(response);
         });
 
-        this.router.get('/events', async (context: Context) => {
-            const params = this.extractParams(context);
+        this.router.get('/events', async (req, res) => {
+            const params = this.extractParams(req);
             const response = await this.dataService.fetchData('events', params);
-            context.response.body = response;
-            context.response.status = context.response.body.code;
+            res.status(response.code).json(response);
         });
 
-        this.router.get('/detailedfighters', async (context:Context) => {
-            const params = this.extractParams(context);
+        this.router.get('/detailedfighters', async (req, res) => {
+            const params = this.extractParams(req);
             const response = await this.dataService.fetchData('detailedfighters', params.limit, params.orderBy, params.order, params.page);
-            context.response.body = response;
-            context.response.status = response.code;
-        })
+            res.status(response.code).json(response);
+        });
+    
+    this.router.get('/compare', async (req, res) => {
+        try {
+            let jwt = await this.auth.authorized(req);
+    
+            if (jwt) {
+                const fighterOne = req.body.fighterOne;
+                const fighterTwo = req.body.fighterTwo;
+    
+                const response = await this.dataService.compareFighters(fighterOne, fighterTwo);
+                res.status(response.code).json(response);
+            } else {
+                res.status(401).json({
+                    status: "error",
+                    message: "User is not authorized",
+                    code: 401,
+                    payload: null
+                });
+            }
+        } catch (error) {
+            console.error("Error occurred:", error);
+            res.status(500).json({
+                status: "error",
+                message: "Internal Server Error",
+                code: 500,
+                payload: null
+            });
+        }
+    });
 
-        return this.router.routes();
+
+
+        return this.router;
     }
+
 }
 
 export default DataController;

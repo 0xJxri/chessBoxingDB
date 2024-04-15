@@ -1,9 +1,4 @@
 [
-
-    {
-        "name": "qrcode",
-        "path": "./wasm_modules/qrcode_wasm/qrcodeWasm.js"
-    },
     {
         "name": "jwt_rs",
         "path": "./wasm_modules/jwt_rs/json_web_token.js"

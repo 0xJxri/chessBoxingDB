@@ -1,19 +1,16 @@
-import * as fs from 'fs/promises';    
+import fs from 'fs/promises';
 
-async function readJsonFile(filePath) {
-    const data = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(data);
-}
 class WasmSingleton {
     private initialized: boolean;
-    private wasmModule: any = [];
-    public wasmFunctions= {};
+    private wasmModule: any;
+    private wasmFunctions: any;
     private result: any;
-
-
 
     constructor() {
         this.initialized = false;
+        this.wasmModule = {};
+        this.wasmFunctions = {};
+        this.result = undefined;
     }
 
     async loadFunctionsFromModule(modulePath) {
@@ -24,44 +21,37 @@ class WasmSingleton {
             if (typeof module[key] === "function"){
                 functions[key] = module[key];
             }
-
         }
         return functions;
     }
 
     async init() {
         if (!this.initialized) {
-            const modules = await readJsonFile("./mods.json"); 
+            const modules = JSON.parse(await fs.readFile("./mods.json", "utf8"));
             for(const module of modules) {
-                    this.wasmFunctions[module.name] = await this.loadFunctionsFromModule(module.path);
-                    this.wasmModule[module.name] = await this.executeForeign(this.wasmFunctions[module.name].default);
-            };
+                this.wasmFunctions[module.name] = await this.loadFunctionsFromModule(module.path);
+                this.wasmModule[module.name] = await this.executeForeign(this.wasmFunctions[module.name].default);
+            }
         }
         console.log("Wasm modules initialized");
         this.initialized = true;
-
     }
-    
 
     async executeWasmFunction(wasmFunction, ...args) {
         return wasmFunction(...args);
-
-
     }
 
-    public async executeForeign(wasmFunction, ...args) {
-            
-        await this.executeWasmFunction(wasmFunction, ...args).then(result => {
+    async executeForeign(wasmFunction, ...args) {
+        try {
+            const result = await this.executeWasmFunction(wasmFunction, ...args);
             this.result = result;
-          })
-          .catch(error => {
-             this.result = "Error executing WebAssembly function: " + error;
-        });
-
-        return wasmSingleton
+        } catch (error) {
+            this.result = "Error executing WebAssembly function: " + error;
+        }
+        return this.result;
     }
 
-    public async executeForeignConstructor(constructor, ...args) {
+    async executeForeignConstructor(constructor, ...args) {
         try {
             const instance = new constructor(...args);
             return instance;
@@ -70,14 +60,13 @@ class WasmSingleton {
         }
     }
 
-    public getRawResult() {
+    getRawResult() {
         return this.result;
     }
 
-    public decodeU8ToString() {
+    decodeU8ToString() {
         return new TextDecoder().decode(this.result);
     }
-
 }
 
 const wasmSingleton = new WasmSingleton();

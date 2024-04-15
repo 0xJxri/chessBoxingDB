@@ -1,267 +1,241 @@
-import { Context } from "@oakserver/oak";
-import Db from "./db.ts";
-import ResponsePayload from "./responsePayload.ts";
+import { ObjectId } from "mongodb";
 
 class AuthHelper {
-    private db: Db;
+    private db: any;
     private jwt_rs: any;
     private wasm_singleton: any;
-
     constructor(client, jwt_rs, wasm_singleton) {
         this.db = client;
         this.jwt_rs = jwt_rs;
         this.wasm_singleton = wasm_singleton;
     }
 
-    public async genId() {
+
+    async genId() {
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
-    public async register(username: string, password: string){
-
-        let res: ResponsePayload;
+    async register(username, password, res) {
+        let resPayload;
         const user = await this.checkIfUserExists(username, password);
 
         if (user) {
-            return {
+            resPayload = {
                 status: "error",
-                message: "User already exists", // The CIA trying to get in
+                message: "User already exists",
                 code: 400,
                 payload: null
             };
+        } else {
+            try {
+                await this.db.collection("users").insertOne({ username: username, password: password });
+                const newUser = await this.checkIfUserExists(username, password);
+                resPayload = {
+                    status: "success",
+                    message: "User registered",
+                    code: 200,
+                    payload: await this.genJwt(newUser._id)
+                };
+            } catch (error) {
+                console.error("Error registering user:", error);
+                resPayload = {
+                    status: "error",
+                    message: "Internal server error",
+                    code: 500,
+                    payload: null
+                };
+            }
         }
+        res.status(resPayload.code).json(resPayload);
+    }
 
+    async getUser(req, res) {
+        const id = req.params.id;
         try {
-
-            this.db.getDb().then(db => {
-                db.collection("users").insertOne({username: username, password: password});
-            });
-
-            const new_user = await this.checkIfUserExists(username, password);
-            
-            console.log(new_user);
-
-            res = {
-                status: "success",
-                message: "User registered",
-                code: 200,
-                payload: await this.genJwt(new_user._id)
-            };
-
-        } catch (e) {
-
-             res = {
+            const user = await this.db.collection("users").findOne({ _id: new ObjectId(id) });
+            if (user) {
+                res.status(200).json({
+                    status: "success",
+                    message: "User found",
+                    code: 200,
+                    payload: user
+                });
+            } else {
+                res.status(404).json({
+                    status: "error",
+                    message: "User not found",
+                    code: 404,
+                    payload: null
+                });
+            }
+        } catch (error) {
+            console.error("Error fetching user:", error);
+            res.status(500).json({
                 status: "error",
-                message: e,
+                message: "Internal server error",
                 code: 500,
                 payload: null
-            };
+            });
         }
-        return res;
-
     }
 
-    public async getUser(id: string) {
-        console.log(id);
-        const user = await this.db.getDb().then(db => {
-            return db.collection("users").findOne({_id: new ObjectId(id)}); 
-        });
-
-        if (user) {
-            return {
-                status: "success",
-                message: "User found",
-                code: 200,
-                payload: user
-            };
-        }
-
-        return {
-            status: "error",
-            message: "User not found",
-            code: 404,
-            payload: null
-        };
-    }
-
-    public async getUsers() {
+    async getUsers(req, res) {
         try {
-            const db = await this.db.getDb();
-            
-            const usersCursor = db.collection("users").find({}, { projection: { _id: 1 } });
-            const users = await usersCursor.toArray();
-
+            const users = await this.db.collection("users").find({}, { projection: { _id: 1 } }).toArray();
             if (users.length > 0) {
-                return {
+                res.status(200).json({
                     status: "success",
                     message: "Users found",
                     code: 200,
                     payload: users
-                };
+                });
             } else {
-                return {
+                res.status(404).json({
                     status: "error",
                     message: "Users not found",
                     code: 404,
                     payload: null
-                };
+                });
             }
         } catch (error) {
             console.error("Error fetching users:", error);
-            return {
+            res.status(500).json({
                 status: "error",
                 message: "Internal server error",
                 code: 500,
                 payload: null
-            };
+            });
         }
     }
 
-    public async deleteUser(id: string) {
+    async deleteUser(req, res) {
+        const id = req.params.id;
         try {
-            const db = await this.db.getDb();
-            const deleteCount = await db.collection("users").deleteOne({ _id: new ObjectId(id) });
-
-            if (deleteCount > 0) {
-                return {
+            const deleteCount = await this.db.collection("users").deleteOne({ _id: new ObjectId(id) });
+            if (deleteCount.deletedCount > 0) {
+                res.status(200).json({
                     status: "success",
                     message: "User deleted",
                     code: 200,
                     payload: null
-                };
+                });
             } else {
-                return {
+                res.status(404).json({
                     status: "error",
                     message: "User not found",
                     code: 404,
                     payload: null
-                };
+                });
             }
         } catch (error) {
             console.error("Error deleting user:", error);
-            return {
+            res.status(500).json({
                 status: "error",
                 message: "Internal server error",
                 code: 500,
                 payload: null
-            };
+            });
         }
     }
 
-    public async updateUser(id: string, user: any) {
+    async updateUser(req, res) {
+        const id = req.params.id;
+        const user = req.body;
         try {
-            const db = await this.db.getDb();
-            const updateCount = await db.collection("users").updateOne({ _id: new ObjectId(id) }, { $set: user });
-
-            if (updateCount > 0) {
-                return {
+            const updateCount = await this.db.collection("users").updateOne({ _id: new ObjectId(id) }, { $set: user });
+            if (updateCount.modifiedCount > 0) {
+                res.status(200).json({
                     status: "success",
                     message: "User updated",
                     code: 200,
                     payload: null
-                };
+                });
             } else {
-                return {
+                res.status(404).json({
                     status: "error",
                     message: "User not found",
                     code: 404,
                     payload: null
-                };
+                });
             }
         } catch (error) {
             console.error("Error updating user:", error);
-            return {
+            res.status(500).json({
                 status: "error",
                 message: "Internal server error",
                 code: 500,
                 payload: null
-            };
+            });
         }
     }
 
-    public async checkIfUserExists(username: string, password: string) {
-
-        const user = await this.db.getDb().then(db => {
-            return db.collection("users").findOne({username: username, password: password});
-        });
-
-        if (user) {
-            return user;
-        }
-
-        return null;
-
+    async checkIfUserExists(username, password) {
+        return await this.db.collection("users").findOne({ username: username, password: password });
     }
 
-    public async login(username: string, password: string) {
-
+    async login(username, password, res) {
         const user = await this.checkIfUserExists(username, password);
-
-            if (user) {
-
-            return {
+        if (user) {
+            res.status(200).json({
                 status: "success",
                 message: "User logged in",
                 code: 200,
-                payload: await this.genJwt(user.id)
-            };
+                payload: await this.genJwt(user._id)
+            });
         } else {
-
-            return {
+            res.status(404).json({
                 status: "error",
                 message: "User not found",
                 code: 404,
                 payload: null
-            }
-
+            });
         }
     }
-    
 
-    public async genJwt(id) {
-        // exp: (exp.getTime() / 1000).toFixed(0)
+    async genJwt(id) {
         const exp = new Date();
         exp.setMinutes(exp.getMinutes() + 1);
-
-
         const exp_unix = (exp.getTime() / 1000).toFixed(0);
-        const tokenData = { id: id  };
-        const jwt_rs =await this.wasm_singleton.executeForeignConstructor(await this.wasm_singleton.wasmFunctions["jwt_rs"].jwt_rs, exp_unix, JSON.stringify(tokenData));
+        const tokenData = { id: id };
+        const jwt_rs = await this.wasm_singleton.executeForeignConstructor(await this.wasm_singleton.wasmFunctions["jwt_rs"].jwt_rs, exp_unix, JSON.stringify(tokenData));
 
         return this.jwt_rs.encode_data(jwt_rs);
     }
 
-    public getJwtFromHeaders(ctx: Context) {
-        const headers: Headers = ctx.request.headers;
-        const authorization = headers.get('Authorization');
-        if (!authorization) {
-            ctx.response.status = 401;
-            return;
-        }
+    getJwtFromHeaders(req) {
+
+        const authorization = req.headers.authorization;
+        if (!authorization) return null;
         const jwt = authorization.split(' ')[1];
         return jwt;
     }
 
-    public authorized = async (ctx: Context) => {
-        const jwt = this.getJwtFromHeaders(ctx);
+    async authorized(req, res, next) {
+        const jwt = this.getJwtFromHeaders(req);
         try {
             if (!jwt) {
-                ctx.response.status = 401;
-                return;
+                return {
+                    status: "error",
+                    message: "Unauthorized",
+                    code: 401,
+                    payload: null
+                };
             }
             const isValid = await this.jwt_rs.decode_data(jwt);
-
             if (isValid != "") {
-                return jwt;
+                return isValid;
             } else {
                 throw new Error("Invalid token");
             }
         } catch (error) {
-            ctx.response.status = 401;
-            return;
+            console.error("Error decoding token:", error);
+            res.status(401).json({
+                status: "error",
+                message: " Unauthorized",
+                code: 401,
+                payload: null
+            });
         }
-    };
-
+    }
 }
-
 export default AuthHelper;

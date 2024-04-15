@@ -6,9 +6,6 @@
     "json_web_token.js",
     "json_web_token.d.ts"
   ],
-  "module": "json_web_token.js",
-  "types": "json_web_token.d.ts",
-  "sideEffects": [
-    "./snippets/*"
-  ]
+  "main": "json_web_token.js",
+  "types": "json_web_token.d.ts"
 }

@@ -1,51 +1,47 @@
-import {
-  Application
-} from "@oakserver/oak";
-
-import 'dotenv/config'
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import express from 'express';
+import fs from 'fs/promises'; // Node.js file system module
+import DataController from "./controllers/dataController.ts";
 import UserController from "./controllers/userController.ts";
 import ValidationController from "./controllers/validationController.ts";
+
 import AuthHelper from "./helpers/auth.ts";
 import Db from "./helpers/db.ts";
+import DataService from './services/data.service.ts';
 import wasmSingleton from "./wasm_helpers.ts";
-import DataController from "./controllers/dataController.ts";
-import DataService from "./services/data.service.ts";
-import * as fs from 'fs/promises';   
 
+dotenv.config();
 
-const app = new Application();
-const mongoConnectionString: any = process.env.MONGO_CONNECTIONSTRING
-await wasmSingleton.init();
+const app = express();
+app.use(await bodyParser.json());
+app.use(await bodyParser.urlencoded({ extended: true }));
 
-console.log(wasmSingleton);
-// db stuff
-const db = new Db(mongoConnectionString); 
-
-// auth stuff
-const keyFile: any = await await fs.readFile("./openssl/key.pem", 'utf8');
-const auth_rs =  await wasmSingleton.executeForeignConstructor(wasmSingleton.wasmFunctions["jwt_rs"].jwt_rs_methods, keyFile);
+(async () => {
+    const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
+    await wasmSingleton.init();
+    const db = new Db(mongoConnectionString); 
+    await db.init();
 
 
 
-const authentication = await new AuthHelper(db, auth_rs, wasmSingleton);
-const dataService = await new DataService(db);
+    const keyFile = await fs.readFile("./openssl/key.pem", 'utf8');
+    const auth_rs =  await wasmSingleton.executeForeignConstructor(wasmSingleton.wasmFunctions["jwt_rs"].jwt_rs_methods, keyFile);
+    const authentication = new AuthHelper(await db.getDb(), auth_rs, wasmSingleton);
 
-// controllers init
-const userController = new UserController(db, authentication, wasmSingleton);
-const validationController = new ValidationController(db, authentication, wasmSingleton);
-const dataController = new DataController(db, authentication, wasmSingleton, dataService)
+    // Initialize controllers
+    const validationController = new ValidationController(db, authentication, wasmSingleton);
+    const dataController = new DataController(db, authentication, wasmSingleton, new DataService(db));
+    const userController = new UserController(db, authentication, wasmSingleton);
 
-app.use((ctx, next) => {
-  ctx.response.headers.set('Access-Control-Allow-Origin', '*')
-  return next()
-})
+    // Initialize routes
+    app.use("/", await validationController.init());
+    app.use("/", await dataController.init());
+    app.use("/", await userController.init());
 
-app.use(await userController.init());
-app.use(await validationController.init());
-app.use(await dataController.init())
-
-console.log("Server running on port 8000");
-
-await app.listen({ port: 8000 });
-
-
+    // Start the server
+    const port = process.env.PORT || 8000;
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
+})();

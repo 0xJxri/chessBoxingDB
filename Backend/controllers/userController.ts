@@ -1,66 +1,57 @@
-import {
-  Context,
-  Router
-} from "@oakserver/oak";
+import { Router } from 'express';
 
 class UserController {
-    private db;
-    private auth;
-    private wasm;
-    public router; 
+    private db: any;
+    private auth: any;
+    private wasm: any;
+    private dataService: any;
+    public router;
 
     constructor(db, auth, wasm) {
         this.db = db;
         this.auth = auth;
         this.wasm = wasm;
-        this.router = new Router();
+        this.router = Router();
     }
 
-
-    public async init() {
-
-        this.router.post("/user/register", async (context: Context) => {
-          const body = await context.request.body();
-          const value = await body.value;
-          context.response.body =  await this.auth.register(value.username, value.password)
-          context.response.status = context.response.body.code;
+    init() {
+        this.router.post("/user/register", async (req, res) => {
+            const result = await this.auth.register(req.body.username, req.body.password, res);
+            res.status(res.code).json(res.payload);
         });
 
-        this.router.get("/user/:id", async (context: Context) => {
-          const id = context.params.id;
-          context.response.body =  await this.auth.getUser(id);
-          context.response.status = context.response.body.code;
+        this.router.get("/user/:id", async (req, res) => {
+            const id = req.params.id;
+            const result = await this.auth.getUser(id);
+            res.status(res.code).json(result);
         });
 
-        this.router.get("/users", async (context: Context) => {
-          context.response.body =  await this.auth.getUsers();
-          context.response.status = context.response.body.code;
+        this.router.get("/users", async (req, res) => {
+            const result = await this.auth.getUsers();
+            res.status(res.code).json(result);
         });
 
-        this.router.post("/user/login", async (context: Context) => {
-          const body = await context.request.body();
-          const value = await body.value;
-          context.response.body =  await this.auth.login(value.username, value.password)
-          context.response.status = context.response.body.code;
+        this.router.post("/user/login", async (req, res) => {
+        const result = await this.auth.login(req.body.username, req.body.password, res);
+
+            res.status(res.code).json(result);
         });
 
-        this.router.delete("/user:id", async (context: Context) => {
-          const id = context.params.id;
-          context.response.body =  await this.auth.deleteUser(id);
-          context.response.status = context.response.body.code;
+        this.router.delete("/user/:id", async (req, res) => {
+            const id = req.params.id;
+            const result = await this.auth.deleteUser(id);
+            res.status(res.code).json(result);
         });
 
-        this.router.put("/user/:id", async (context: Context) => {
-          const id = context.params.id;
-          const body = await context.request.body();
-          const value = await body.value;
-          context.response.body =  await this.auth.updateUser(id, value);
-          context.response.status = context.response.body.code;
+        this.router.put("/user/:id", async (req, res) => {
+            const id = req.params.id;
+            const value = req.body;
+            const result = await this.auth.updateUser(id, value);
+            res.status(res.code).json(result);
         });
 
-        return this.router.routes();
+        return this.router;
     }
-    //  the CIA glows in the dark
 }
 
 export default UserController;
