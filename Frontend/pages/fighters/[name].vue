@@ -37,7 +37,14 @@
         </span>
       </div>
       <div class="grid grid-cols-2 w-1/3 gap-4 mb-4">
-        <img :src="fighter.payload[0].pfp_link + '_mid.jpg'" alt="pfp" />
+        <img
+          :src="
+            fighter.payload[0].pfp_link
+              ? fighter.payload[0].pfp_link + '_mid.jpg'
+              : 'https://www.chessboxing.info/images/profile_unknown.jpg'
+          "
+          alt="pfp"
+        />
         <div>
           <div class="grid grid-cols-2 h-full">
             <div class="grid h-full pr-2 font-semibold">
@@ -134,7 +141,12 @@
                     : 'https://www.chessboxing.info/images/avatar_unknown.jpg'
                 "
               />
-              {{ item.opponentName }}
+              <nuxt-link
+                :to="`/fighters/${item.opponentName}`"
+                class="text-right hover:underline hover:text-red-600"
+              >
+                <span>{{ item.opponentName }}</span>
+              </nuxt-link>
             </TableCell>
             <TableCell>{{ item.eventName }}</TableCell>
             <TableCell>{{ item.date }}</TableCell>

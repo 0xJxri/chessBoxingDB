@@ -132,7 +132,12 @@
             <TableRow v-for="item in modalPayload.eventData" :key="item._id">
               <TableCell>
                 <div class="flex justify-end items-center gap-3">
-                  <span class="text-right">{{ item.fighterWhite }}</span>
+                  <nuxt-link
+                    :to="`/fighters/${item.fighterWhite}`"
+                    class="text-right hover:underline hover:text-red-600"
+                  >
+                    <span>{{ item.fighterWhite }}</span>
+                  </nuxt-link>
                   <img
                     class="w-7 h-7 rounded-full"
                     :src="
@@ -154,7 +159,14 @@
                         : 'https://www.chessboxing.info/images/avatar_unknown.jpg'
                     "
                   />
-                  <span>{{ item.fighterBlack }}</span>
+                  <nuxt-link
+                    :to="`/fighters/${item.fighterBlack}`"
+                    class="hover:underline hover:text-red-600"
+                  >
+                    <span>
+                      {{ item.fighterBlack }}
+                    </span>
+                  </nuxt-link>
                 </div>
               </TableCell>
               <TableCell>{{ item.result }}</TableCell>

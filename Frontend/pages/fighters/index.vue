@@ -93,7 +93,14 @@
               "
             />
           </TableCell>
-          <TableCell>{{ item.name }}</TableCell>
+          <TableCell>
+            <nuxt-link
+              :to="`/fighters/${item.name}`"
+              class="text-right hover:underline hover:text-red-600"
+            >
+              <span>{{ item.name }}</span>
+            </nuxt-link>
+          </TableCell>
           <TableCell class="flex items-center">
             <img
               v-if="item.countryCode"
@@ -105,11 +112,11 @@
           </TableCell>
           <TableCell>{{ item.fights }}</TableCell>
           <TableCell>
-            <span class="text-green-300">{{ item.record.split("-")[0] }}</span>
+            <span class="text-green-400">{{ item.record.split("-")[0] }}</span>
             <span>-</span>
-            <span class="text-red-300">{{ item.record.split("-")[1] }}</span>
+            <span class="text-red-400">{{ item.record.split("-")[1] }}</span>
             <span>-</span>
-            <span class="text-blue-300">{{ item.record.split("-")[2] }}</span>
+            <span class="text-blue-400">{{ item.record.split("-")[2] }}</span>
           </TableCell>
           <TableCell>{{ item.elo }}</TableCell>
           <TableCell>{{ item.height }}</TableCell>
