@@ -5,6 +5,10 @@ interface Params {
     orderBy?: string;
     order?: string;
     page?: any;
+    fighterName?: string;
+    resultId?: number;
+    eventName?: string;
+    fightWinDetail?: string;
 }
 
 class DataController {
@@ -25,18 +29,27 @@ class DataController {
 
     // Terry is king
     private extractParams(req) {
-        const limit = req.query.limit ? parseInt(req.query.limit) : Infinity;
-        const orderBy = req.query.orderBy || "name";
-        const order = req.query.order || "asc";
-        const page = req.query.page || undefined;
-        const search = req.query.search || undefined;
-    
+        const urlSearchParams = req.query;
+        const limit = urlSearchParams.limit ? parseInt(urlSearchParams.limit) : Infinity;
+        const orderBy = urlSearchParams.orderBy || "name";
+        const order = urlSearchParams.order || "asc";
+        const page = urlSearchParams.page || undefined;
+        const search = urlSearchParams.search || undefined;
+        const fighterName = req.params.fighterName || undefined;
+        const resultId = urlSearchParams.resultId ? parseInt(urlSearchParams.resultId) : undefined;
+        const eventName = urlSearchParams.eventName || undefined;
+        const fightWinDetail = urlSearchParams.fightWinDetail || undefined;
+
         return {
             limit,
             orderBy,
             order,
             page,
-            search
+            search,
+            fighterName,
+            resultId,
+            eventName,
+            fightWinDetail
         };
     }
 
@@ -59,46 +72,43 @@ class DataController {
             res.status(response.code).json(response);
         });
 
-        this.router.get('/detailedfighters', async (req, res) => {
+        this.router.get('/detailedfighters/:fighterName', async (req, res) => {
             const params = this.extractParams(req);
-            const response = await this.dataService.fetchData('detailedfighters', params.limit, params.orderBy, params.order, params.page);
+            const response = await this.dataService.fetchData('detailedfighters', params);
             res.status(response.code).json(response);
         });
-    
-    this.router.get('/compare', async (req, res) => {
-        try {
-            let jwt = await this.auth.authorized(req);
-    
-            if (jwt) {
-                const fighterOne = req.body.fighterOne;
-                const fighterTwo = req.body.fighterTwo;
-    
-                const response = await this.dataService.compareFighters(fighterOne, fighterTwo);
-                res.status(response.code).json(response);
-            } else {
-                res.status(401).json({
+
+        this.router.get('/compare', async (req, res) => {
+            try {
+                let jwt = await this.auth.authorized(req);
+
+                if (jwt) {
+                    const fighterOne = req.body.fighterOne;
+                    const fighterTwo = req.body.fighterTwo;
+
+                    const response = await this.dataService.compareFighters(fighterOne, fighterTwo);
+                    res.status(response.code).json(response);
+                } else {
+                    res.status(401).json({
+                        status: "error",
+                        message: "User is not authorized",
+                        code: 401,
+                        payload: null
+                    });
+                }
+            } catch (error) {
+                console.error("Error occurred:", error);
+                res.status(500).json({
                     status: "error",
-                    message: "User is not authorized",
-                    code: 401,
+                    message: "Internal Server Error",
+                    code: 500,
                     payload: null
                 });
             }
-        } catch (error) {
-            console.error("Error occurred:", error);
-            res.status(500).json({
-                status: "error",
-                message: "Internal Server Error",
-                code: 500,
-                payload: null
-            });
-        }
-    });
-
-
+        });
 
         return this.router;
     }
-
 }
 
 export default DataController;

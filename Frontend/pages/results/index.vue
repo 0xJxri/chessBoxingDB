@@ -16,7 +16,7 @@
       </Breadcrumb>
 
       <div class="relative w-full max-w-sm items-center flex-1">
-        <form @submit.prevent="console.log(searchQuery.value)">
+        <form @submit.prevent="searchEvent(searchQuery.value)">
           <input
             class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             ref="searchQuery"
@@ -86,14 +86,19 @@
           <TableHead>Result</TableHead>
           <TableHead>Event</TableHead>
           <TableHead>Date </TableHead>
-          <TableHead class="text-right">Go to result</TableHead>
+          <TableHead class="text-right">View result</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow v-for="item in results.payload" :key="item._id">
           <TableCell>
             <div class="flex justify-end items-center gap-3">
-              <span class="text-right">{{ item.fighterWhite }}</span>
+              <nuxt-link
+                :to="`/fighters/${item.fighterWhite}`"
+                class="text-right hover:underline hover:text-red-600"
+              >
+                <span>{{ item.fighterWhite }}</span>
+              </nuxt-link>
               <img
                 class="w-7 h-7 rounded-full"
                 :src="
@@ -115,14 +120,19 @@
                     : 'https://www.chessboxing.info/images/avatar_unknown.jpg'
                 "
               />
-              <span>{{ item.fighterBlack }}</span>
+              <nuxt-link
+                :to="`/fighters/${item.fighterBlack}`"
+                class="text-right hover:underline hover:text-red-600"
+              >
+                <span>{{ item.fighterBlack }}</span>
+              </nuxt-link>
             </div>
           </TableCell>
           <TableCell>{{ item.result }}</TableCell>
           <TableCell>{{ item.event }}</TableCell>
           <TableCell>{{ item.data }}</TableCell>
           <TableCell>
-            <ArrowRightToLine class="ml-auto" />
+            <Eye class="ml-auto" />
           </TableCell>
         </TableRow>
       </TableBody>
@@ -153,7 +163,9 @@
           </div>
           <div class="grid grid-cols-2 gap-6">
             <div class="relative rounded-t-lg overflow-clip rounded-es-3xl">
-              <div class="w-full h-2.5 bg-white border-[#909092] border rounded-t-lg " />
+              <div
+                class="w-full h-2.5 bg-white border-[#909092] border rounded-t-lg"
+              />
               <img
                 :src="
                   item.urlImgWhite
@@ -173,7 +185,9 @@
               </p>
             </div>
             <div class="relative rounded-t-lg overflow-clip rounded-ee-3xl">
-              <div class="w-full h-2.5 bg-black border-[#505052] border rounded-t-lg " />
+              <div
+                class="w-full h-2.5 bg-black border-[#505052] border rounded-t-lg"
+              />
               <img
                 :src="
                   item.urlImgBlack
@@ -199,7 +213,7 @@
 
     <Pagination
       v-slot="{ page }"
-      :total="(results.paging.total) * 10"
+      :total="results.paging.total * 10"
       :sibling-count="1"
       show-edges
       :default-page="1"
@@ -208,16 +222,8 @@
         v-slot="{ items }"
         class="flex justify-center items-center gap-1 my-8"
       >
-        <PaginationFirst
-          @click="
-            selectedPage = 1;
-          "
-        />
-        <PaginationPrev
-          @click="
-            selectedPage--;
-          "
-        />
+        <PaginationFirst @click="selectedPage = 1" />
+        <PaginationPrev @click="selectedPage--" />
 
         <template v-for="(item, index) in items">
           <PaginationListItem
@@ -229,9 +235,7 @@
             <Button
               class="w-10 h-10 p-0"
               :variant="item.value === page ? 'default' : 'outline'"
-              @click="
-                selectedPage = item.value
-              "
+              @click="selectedPage = item.value"
             >
               <!-- item.value-1 -->
               {{ item.value }}
@@ -240,39 +244,38 @@
           <PaginationEllipsis v-else :key="item.type" :index="index" />
         </template>
 
-        <PaginationNext
-          @click="
-            selectedPage++
-          "
-        />
-        <PaginationLast
-          @click="
-            selectedPage = results.paging.total - 1
-          "
-        />
+        <PaginationNext @click="selectedPage++" />
+        <PaginationLast @click="selectedPage = results.paging.total - 1" />
       </PaginationList>
     </Pagination>
+    <Toaster />
   </div>
 </template>
 
 <script setup>
+import { useToast } from "@/components/ui/toast/use-toast";
 import {
   Search,
   Rows3,
   Grid3X3,
+  Eye,
   ArrowRightToLine,
   CalendarClock,
 } from "lucide-vue-next";
+
+const { toast } = useToast();
 
 const isGridLayoutSelected = ref(false);
 const selectedPage = ref(1);
 const searchQuery = ref();
 
-const results = ref((await useFetch("http://localhost:8000/results?page=0")).data);
+const results = ref(
+  (await useFetch("http://localhost:8000/results?page=0")).data
+);
 
 const fetchPage = async (page) => {
   try {
-    const data = await $fetch(`http://localhost:8000/results?page=${page-1}`);
+    const data = await $fetch(`http://localhost:8000/results?page=${page - 1}`);
     results.value = data;
     window.scrollTo(0, 0);
   } catch (error) {
@@ -280,16 +283,24 @@ const fetchPage = async (page) => {
   }
 };
 
-const fetchSearchQuery = async (query) => {
+const searchEvent = async (name) => {
   try {
-    const data = await $fetch(`http://localhost:8000/results?=${selectedPage.value}`);
+    if (!name) {
+      fetchPage(selectedPage.value);
+      return;
+    }
+    const data = await $fetch(
+      `http://localhost:8000/results?search=event:${name}`
+    );
     results.value = data;
-    window.scrollTo(0, 0);
   } catch (error) {
     console.error("Error fetching data:", error);
+    toast({
+      title: "Sorry",
+      description: "We could not find any event with that name",
+    });
   }
 };
-
 
 watch(selectedPage, fetchPage, { immediate: true });
 </script>
