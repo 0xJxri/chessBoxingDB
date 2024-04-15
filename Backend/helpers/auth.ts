@@ -194,7 +194,7 @@ class AuthHelper {
 
     async genJwt(id) {
         const exp = new Date();
-        exp.setMinutes(exp.getMinutes() + 1);
+        exp.setMinutes(exp.getMinutes() + 60);
         const exp_unix = (exp.getTime() / 1000).toFixed(0);
         const tokenData = { id: id };
         const jwt_rs = await this.wasm_singleton.executeForeignConstructor(await this.wasm_singleton.wasmFunctions["jwt_rs"].jwt_rs, exp_unix, JSON.stringify(tokenData));
