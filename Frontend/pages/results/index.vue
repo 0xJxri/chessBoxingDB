@@ -86,7 +86,7 @@
           <TableHead>Result</TableHead>
           <TableHead>Event</TableHead>
           <TableHead>Date </TableHead>
-          <TableHead class="text-right">Go to result</TableHead>
+          <TableHead class="text-right">View result</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -122,7 +122,7 @@
           <TableCell>{{ item.event }}</TableCell>
           <TableCell>{{ item.data }}</TableCell>
           <TableCell>
-            <ArrowRightToLine class="ml-auto" />
+            <Eye class="ml-auto" />
           </TableCell>
         </TableRow>
       </TableBody>
@@ -262,6 +262,7 @@ import {
   Search,
   Rows3,
   Grid3X3,
+  Eye,
   ArrowRightToLine,
   CalendarClock,
 } from "lucide-vue-next";

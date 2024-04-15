@@ -58,9 +58,8 @@
         <TableBody>
           <TableRow v-for="item in events.payload" :key="item._id">
             <DialogTrigger as-child>
-              <TableCell @click="modalPayload = item">
+              <TableCell class="cursor-pointer" @click="modalPayload = item">
                 <img
-                  class="cursor-pointer"
                   v-if="item.eventImg"
                   :src="item.eventImg + '_thumb.jpg'"
                   height="50px"

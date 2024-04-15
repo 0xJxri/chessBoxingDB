@@ -169,11 +169,17 @@
               <span class="flex-1">{{ item.nationality }}</span>
               <span class="flex-1">{{ item.fights }}</span>
               <span class="flex-1">
-                <span class="text-green-500">{{item.record.split("-")[0]}}</span>
+                <span class="text-green-500">{{
+                  item.record.split("-")[0]
+                }}</span>
                 <span>-</span>
-                <span class="text-red-500">{{item.record.split("-")[1]}}</span>
+                <span class="text-red-500">{{
+                  item.record.split("-")[1]
+                }}</span>
                 <span>-</span>
-                <span class="text-blue-500">{{item.record.split("-")[2]}}</span>
+                <span class="text-blue-500">{{
+                  item.record.split("-")[2]
+                }}</span>
               </span>
               <span class="flex-1">{{ item.elo }}</span>
               <span class="flex-1">{{ item.height }}</span>
@@ -182,7 +188,9 @@
             </div>
           </div>
 
-          <Button class="mt-8">See more ...</Button>
+          <nuxt-link :to="`/fighters/${item.name}`">
+            <Button class="mt-8">See more ...</Button>
+          </nuxt-link>
         </CardFlipBack>
       </CardFlip>
     </div>
@@ -228,7 +236,7 @@
 </template>
 
 <script setup>
-import { useToast } from '@/components/ui/toast/use-toast'
+import { useToast } from "@/components/ui/toast/use-toast";
 import {
   Search,
   Rows3,
@@ -237,7 +245,7 @@ import {
   CalendarClock,
 } from "lucide-vue-next";
 
-const { toast } = useToast()
+const { toast } = useToast();
 
 const isGridLayoutSelected = ref(true);
 const selectedPage = ref(1);
@@ -265,14 +273,16 @@ const searchFighter = async (name) => {
       fetchPage(selectedPage.value);
       return;
     }
-    const data = await $fetch(`http://localhost:8000/fighterslist?search=name:${name}`);
+    const data = await $fetch(
+      `http://localhost:8000/fighterslist?search=name:${name}`
+    );
     fighters.value = data;
   } catch (error) {
     console.error("Error fetching data:", error);
     toast({
-        title: 'Sorry',
-        description: 'We could not find any fighter with that name',
-      });
+      title: "Sorry",
+      description: "We could not find any fighter with that name",
+    });
   }
 };
 
