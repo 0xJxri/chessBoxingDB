@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "/Users/vitaliy/code/tpsi/Gruppo3_Didyk/Frontend/node_modules/nuxt/dist/app/entry.js": {
+  "C:/Users/Jxri/Desktop/projectSportTPSI/Gruppo3_Didyk/Frontend/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "/Users/vitaliy/code/tpsi/Gruppo3_Didyk/Frontend/node_modules/nuxt/dist/app/entry.js"
+    "file": "C:/Users/Jxri/Desktop/projectSportTPSI/Gruppo3_Didyk/Frontend/node_modules/nuxt/dist/app/entry.js"
   }
 }

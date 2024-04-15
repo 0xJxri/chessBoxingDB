@@ -9,6 +9,7 @@ const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
 
 const db = new Db(mongoConnectionString); // You need a connection string for MongoDB
 
+
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -72,7 +73,6 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                     }
                 }
 
-                //  console.log("Image after truncate = ",countryCode)
                 // Open detail page for the event
                 const eventPage = await browser.newPage();
                 await eventPage.goto(eventLink);
@@ -142,16 +142,72 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                     await nestedPage.goto(event.nestedLink);
 
                     const fightDetailsPage = await nestedPage.evaluate((event) => {
+
+                        function formatDateString(dateString) {
+                            // Create a new Date object directly from the date string
+                            let dateObject = new Date(dateString);
+
+                            // Format the date components and store in a variable
+                            let formattedDate = ('0' + dateObject.getDate()).slice(-2) + '/' +
+                                ('0' + (dateObject.getMonth() + 1)).slice(-2) + '/' +
+                                dateObject.getFullYear();
+
+                            return formattedDate;
+                        }
+
+
                         const fighterWhite = {};
                         const fighterBlack = {};
                         let fightWinDetail = document.querySelector('.tbl_tot_profile h3').textContent.trim();
                         if (!fightWinDetail) {
                             fightWinDetail = null;
                         }
+
+                        const carouselImgs = document.querySelectorAll(".mySlides");
+                        let imgSrcArray = null;
+
+                        if (carouselImgs && carouselImgs.length > 0) {
+                            imgSrcArray = []
+                            carouselImgs.forEach(img => {
+                                let src = img.getAttribute('src');
+                                const truncateUrl = (url) => {
+                                    if (url && url.length > 0) {
+                                        const lastIndex = url.lastIndexOf('_');
+                                        return lastIndex !== -1 ? url.substring(0, lastIndex) : url;
+                                    } else {
+                                        return url; // Return the original URL if it's empty
+                                    }
+                                };
+                                src = truncateUrl(src)
+                                imgSrcArray.push(src);
+                            });
+                        }
+
                         const tableRows = document.querySelectorAll('.tbl_tot tr');
                         const imgRows = document.querySelectorAll('h1');
+
+                        const wrapperH2 = document.querySelector('h2')
                         const eventName = document.querySelector('h2 a').textContent.trim() || null;
-                        console.log("eventNameee = ",eventName)
+                        const venue = document.querySelector('h2 a:nth-child(4)').textContent.trim() || null;
+
+                        let date = '';
+
+                        // Iterate over the child nodes of the h2 element
+                        wrapperH2.childNodes.forEach(node => {
+                            // Check if the node is not an anchor tag (a)
+                            if (node.nodeType === Node.TEXT_NODE) {
+                                // Append the text content of non-anchor nodes to h2Text
+                                date += node.textContent.trim() + ' ';
+                            }
+                        });
+
+                        // Trim any trailing whitespace
+                        date = date.trim();
+
+                        console.log(date)
+                        // const date = wrapperH2[1].textContent.trim() || null
+                        // const dateFormat = formatDateString(date)
+                        console.log("eventNameee = ", eventName)
                         let nationalityWhite = null;
                         let nationalityBlack = null
                         imgRows.forEach(img => {
@@ -215,7 +271,11 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
 
                             return {
                                 resultId: event.resultId,
+                                gallery: imgSrcArray,
                                 eventName: eventName,
+                                venue: venue,
+                                date: date,
+                                // dateFormat: dateFormat,
                                 fightWinDetail: fightWinDetail,
                                 nationalityWhite: nationalityWhite,
                                 nationalityBlack: nationalityBlack,
@@ -226,7 +286,11 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                         } else {
                             return {
                                 resultId: event.resultId,
+                                gallery: imgSrcArray,
                                 eventName: eventName,
+                                venue: venue,
+                                date: date,
+                                // dateFormat: dateFormat,
                                 fightWinDetail: fightWinDetail,
                                 nationalityWhite: nationalityWhite,
                                 nationalityBlack: nationalityBlack,

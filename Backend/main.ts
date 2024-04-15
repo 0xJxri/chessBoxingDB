@@ -5,6 +5,7 @@ import fs from 'fs/promises'; // Node.js file system module
 import DataController from "./controllers/dataController.ts";
 import UserController from "./controllers/userController.ts";
 import ValidationController from "./controllers/validationController.ts";
+import cors from 'cors'
 
 import AuthHelper from "./helpers/auth.ts";
 import Db from "./helpers/db.ts";
@@ -14,6 +15,7 @@ import wasmSingleton from "./wasm_helpers.ts";
 dotenv.config();
 
 const app = express();
+app.use(cors())
 app.use(await bodyParser.json());
 app.use(await bodyParser.urlencoded({ extended: true }));
 

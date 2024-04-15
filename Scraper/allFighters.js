@@ -71,14 +71,14 @@ const db = new Db(mongoConnectionString);
                 let height = null;
                 if (heightElement) {
                     const heightText = heightElement.textContent.trim();
-                    const heightMatch = heightText.match(/\d+/); 
+                    const heightMatch = heightText.match(/\d+/);
                     height = heightMatch ? parseInt(heightMatch[0]) : null; // Convert to integer
                 }
                 const weightElement = row.querySelector('td:nth-child(8)');
                 let weight = null;
                 if (weightElement) {
                     const weightText = weightElement.textContent.trim();
-                    const weightMatch = weightText.match(/\d+/); 
+                    const weightMatch = weightText.match(/\d+/);
                     weight = weightMatch ? parseInt(weightMatch[0]) : null; //Converting to integer
                 }
                 const activeYears = row.querySelector('td:nth-child(9)').textContent.trim() || null;
@@ -125,72 +125,106 @@ const db = new Db(mongoConnectionString);
                 return value;
             }
 
+            const truncateUrl = (url) => {
+                if (url && url.length > 0) {
+                    const lastIndex = url.lastIndexOf('_');
+                    return lastIndex !== -1 ? url.substring(0, lastIndex) : url;
+                } else {
+                    return url; // Return the original URL if it's empty
+                }
+            };
+
             const fighterInfo = document.querySelector(".tbl_addbtn02 > tbody");
             const name = fighterInfo.querySelector("h1").textContent;
-            const results = fighterInfo
-                .querySelector("h2")
-                .textContent.replaceAll(" ", "")
-                .split("-");
-            const pfp_link = fighterInfo.querySelector(".profile_mid").src;
+            let flag = fighterInfo.querySelector("h1 img").getAttribute('src')
+            if (flag) {
+                if (flag.includes('Unknown.png')) {
+                    flag = null;
+                } else {
+                    flag = flag.split('/').pop().replace('.png', '');
+                }
 
-            const tbl_tot = fighterInfo.querySelectorAll(
-                '.tbl_tot tr > td[align="left"]'
-            );
+                console.log(flag)
+                const results = fighterInfo
+                    .querySelector("h2")
+                    .textContent.replaceAll(" ", "")
+                    .split("-");
 
-            const age = checkNull(tbl_tot[0].innerText);
-            const height = checkNull(tbl_tot[1].innerText);
-            const weight = checkNull(tbl_tot[2].innerText);
-            const reach = checkNull(tbl_tot[3].innerText);
-            const elo = checkNull(tbl_tot[4].innerText);
-            const country = checkNull(tbl_tot[5].innerText);
-            const hometown = checkNull(tbl_tot[6].innerText);
-            const gym = checkNull(tbl_tot[7].innerText);
-            const job = checkNull(tbl_tot[8].innerText);
+                let pfp_link = fighterInfo.querySelector(".profile_mid").src;
+                if (pfp_link.includes('unknown.jpg')) {
+                    pfp_link = null;
+                } else {
+                    pfp_link = truncateUrl(pfp_link)
+                }
+             
 
-            let description =
-                fighterInfo.querySelector(".tbl_tot_profile").textContent;
+                const tbl_tot = fighterInfo.querySelectorAll(
+                    '.tbl_tot tr > td[align="left"]'
+                );
 
-            let fights = [];
-            document
-                .querySelectorAll(".tbl_events tbody tr:not(:nth-child(-n+2))")
-                .forEach((row) => {
-                    const fight = row.querySelectorAll("td");
-                    const opponentChessColor = fight[0]
-                        .querySelector("img")
-                        .classList[1].replace("border_", "");
-                    const opponentName = fight[1].textContent;
-                    const eventName = fight[2].textContent;
-                    const date = fight[3].textContent;
-                    const result = fight[4].textContent;
-                    const description = fight[5].textContent;
-                    const round = fight[6].textContent;
-                    fights.push({
-                        opponentChessColor,
-                        opponentName,
-                        eventName,
-                        date,
-                        result,
-                        description,
-                        round,
+                const age = checkNull(tbl_tot[0].innerText);
+                const height = checkNull(tbl_tot[1].innerText);
+                const weight = checkNull(tbl_tot[2].innerText);
+                const reach = checkNull(tbl_tot[3].innerText);
+                const elo = checkNull(tbl_tot[4].innerText);
+                const country = checkNull(tbl_tot[5].innerText);
+                const hometown = checkNull(tbl_tot[6].innerText);
+                const gym = checkNull(tbl_tot[7].innerText);
+                const job = checkNull(tbl_tot[8].innerText);
+
+                let description =
+                    fighterInfo.querySelector(".tbl_tot_profile").textContent;
+
+                let fights = [];
+                document
+                    .querySelectorAll(".tbl_events tbody tr:not(:nth-child(-n+2))")
+                    .forEach((row) => {
+                        const fight = row.querySelectorAll("td");
+                        const opponentChessColor = fight[0]
+                            .querySelector("img")
+                            .classList[1].replace("border_", "");
+                        let opponentImg = fight[0].querySelector("img").getAttribute('src')
+                        if (opponentImg.includes('unknown.jpg')) {
+                            opponentImg = null;
+                        } else {
+                            opponentImg = truncateUrl(opponentImg);
+                        }
+                        const opponentName = fight[1].textContent;
+                        const eventName = fight[2].textContent;
+                        const date = fight[3].textContent;
+                        const result = fight[4].textContent;
+                        const description = fight[5].textContent;
+                        const round = fight[6].textContent;
+                        fights.push({
+                            opponentImg,
+                            opponentChessColor,
+                            opponentName,
+                            eventName,
+                            date,
+                            result,
+                            description,
+                            round,
+                        });
                     });
-                });
 
-            return {
-                name,
-                results,
-                pfp_link,
-                age,
-                height,
-                weight,
-                reach,
-                elo,
-                country,
-                hometown,
-                gym,
-                job,
-                description,
-                fights,
-            };
+                return {
+                    name,
+                    flag,
+                    results,
+                    pfp_link,
+                    age,
+                    height,
+                    weight,
+                    reach,
+                    elo,
+                    country,
+                    hometown,
+                    gym,
+                    job,
+                    description,
+                    fights,
+                };
+            }
         });
 
         detailedFighters.push(fighterData);
@@ -212,6 +246,19 @@ const db = new Db(mongoConnectionString);
         }
     }
 
+    for (let i = 0; i < detailedFighters.length; i++) {
+        const flagsFighters = detailedFighters[i]
+        let flag = flagsFighters.flag
+        for (const key in countryCodeJSON) {
+            if (Object.prototype.hasOwnProperty.call(countryCodeJSON, key)) {
+                console.log(key)
+                if (key === flag) {
+                    detailedFighters[i].flag = countryCodeJSON[key]; // Set nationality to the matched key
+                    break; // Exit the loop once a match is found
+                }
+            }
+        }
+    }
 
 
     // const listFightersFilePath = path.join('data', 'listFightersNew.json');
@@ -222,16 +269,16 @@ const db = new Db(mongoConnectionString);
     // fs.writeFileSync(detailedFightersFilePath, JSON.stringify(detailedFighters, null, 2));
     // console.log(`Saved detailed fighters to ${detailedFightersFilePath}`);
 
-     const fighterList = await db.getDb().then(async db => {
-            const fighterList = db.collection('listfighters');
-            return await fighterList.insertMany(listFighters);
-        });
-        console.log(fighterList)
-    // const detailedListFighters = await db.getDb().then(async db => {
-    //     const detailedListFighters = db.collection('detailedfighters');
-    //     return await detailedListFighters.insertMany(detailedFighters);
-    // });
-    // console.log(detailedFighters)
+    //  const fighterList = await db.getDb().then(async db => {
+    //         const fighterList = db.collection('listfighters');
+    //         return await fighterList.insertMany(listFighters);
+    //     });
+    //     console.log(fighterList)
+    const detailedListFighters = await db.getDb().then(async db => {
+        const detailedListFighters = db.collection('detailedfighters');
+        return await detailedListFighters.insertMany(detailedFighters);
+    });
+    console.log(detailedListFighters)
     await browser.close();
 
 })();

@@ -4,9 +4,23 @@ import "dotenv/config";
 import fs from 'fs'
 import path from 'path';
 
+
+init(){}
 const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
 
 const db = new Db(mongoConnectionString); // You need a connection string for MongoDB
+
+function formatDateString(dateString) {
+    // Create a new Date object directly from the date string
+    let dateObject = new Date(dateString);
+
+    // Format the date components and store in a variable
+    let formattedDate = ('0' + dateObject.getDate()).slice(-2) + '/' +
+                        ('0' + (dateObject.getMonth() + 1)).slice(-2) + '/' +
+                        dateObject.getFullYear();
+
+    return formattedDate;
+}
 
 (async () => {
     const browser = await puppeteer.launch();
@@ -40,6 +54,8 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                 const event = await tds[6].$eval('a', el => el.textContent.trim());
                 const data = await tds[7].evaluate(td => td.textContent.trim());
 
+                const dateFormat = formatDateString(data)
+
                 if (urlImgWhite && urlImgWhite.includes('unknown.jpg')) {
                     urlImgWhite = null;
                 }
@@ -71,7 +87,8 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                     fighterBlack: fighterBlack,
                     result: result,
                     event: event,
-                    data: data
+                    data: data,
+                    dataFormatted: dateFormat
                 });
             } catch (error) {
                 console.error('Error:', error);
