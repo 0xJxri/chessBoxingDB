@@ -1,13 +1,10 @@
 import puppeteer from 'puppeteer';
-import Db from '../Backend/helpers/db.ts';
+import { MongoClient } from 'mongodb';
 import "dotenv/config";
 import fs from 'fs'
 import path from 'path';
 import * as countryCodeJSON from './data/countryCode.json';
 
-const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
-
-const db = new Db(mongoConnectionString); // You need a connection string for MongoDB
 
 
 (async () => {
@@ -202,7 +199,9 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                         });
 
                         // Trim any trailing whitespace
-                        date = date.trim();
+                        date = date.trim().replace(/^- /, '');
+
+                        const dateFormat = formatDateString(date)
 
                         console.log(date)
                         // const date = wrapperH2[1].textContent.trim() || null
@@ -275,7 +274,7 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                                 eventName: eventName,
                                 venue: venue,
                                 date: date,
-                                // dateFormat: dateFormat,
+                                dateFormat: dateFormat,
                                 fightWinDetail: fightWinDetail,
                                 nationalityWhite: nationalityWhite,
                                 nationalityBlack: nationalityBlack,
@@ -290,7 +289,7 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
                                 eventName: eventName,
                                 venue: venue,
                                 date: date,
-                                // dateFormat: dateFormat,
+                                dateFormat: dateFormat,
                                 fightWinDetail: fightWinDetail,
                                 nationalityWhite: nationalityWhite,
                                 nationalityBlack: nationalityBlack,
@@ -376,10 +375,33 @@ const db = new Db(mongoConnectionString); // You need a connection string for Mo
     // });
     // console.log(eventsCollection)
 
-    const fightsDetailsCollection = await db.getDb().then(async db => {
-        const fightsDetailsCollection = db.collection('fightdetails');
-        return await fightsDetailsCollection.insertMany(fightDetails);
-    });
-    console.log(fightsDetailsCollection)
+    // const fightsDetailsCollection = await db.getDb().then(async db => {
+    //     const fightsDetailsCollection = db.collection('fightdetails');
+    //     return await fightsDetailsCollection.insertMany(fightDetails);
+    // });
+
+    async function insertFightDetails(fightDetails) {
+        const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
+        const client = new MongoClient(mongoConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        await client.connect();
+        if (client) {
+            console.log("Connected to db!")
+        }
+        try {
+            const db = client.db(); // Get the database from the client
+            const fightsDetailsCollection = db.collection("fightdetails"); // replace "test" with your database name
+            const result = await fightsDetailsCollection.insertMany(fightDetails);
+            console.log(result)
+            return result;
+        } catch (err) {
+            console.error(err);
+        } finally {
+            await client.close();
+        }
+    }
+
+    insertFightDetails(fightDetails); // call the function with your fightDetails
+
+
     await browser.close();
-})();
+})(); 

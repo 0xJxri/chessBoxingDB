@@ -9,6 +9,9 @@ interface Params {
     resultId?: number;
     eventName?: string;
     fightWinDetail?: string;
+    date?: string;
+    fighterWhite?: string;
+    fighterBlack?: string;
 }
 
 class DataController {
@@ -39,6 +42,9 @@ class DataController {
         const resultId = urlSearchParams.resultId ? parseInt(urlSearchParams.resultId) : undefined;
         const eventName = urlSearchParams.eventName || undefined;
         const fightWinDetail = urlSearchParams.fightWinDetail || undefined;
+        const date = urlSearchParams.date || undefined;
+        const fighterWhite = urlSearchParams.fighterWhite || undefined;
+        const fighterBlack = urlSearchParams.fighterBlack || undefined;
 
         return {
             limit,
@@ -49,7 +55,10 @@ class DataController {
             fighterName,
             resultId,
             eventName,
-            fightWinDetail
+            fightWinDetail,
+            date,
+            fighterWhite,
+            fighterBlack
         };
     }
 
@@ -77,6 +86,12 @@ class DataController {
             const response = await this.dataService.fetchData('detailedfighters', params);
             res.status(response.code).json(response);
         });
+
+        this.router.get('/fightdetails', async (req, res) => {
+            const params = this.extractParams(req);
+            const response = await this.dataService.fetchData('fightdetails', params);
+            res.status(response.code).json(response);
+        })
 
         this.router.get('/compare', async (req, res) => {
             try {

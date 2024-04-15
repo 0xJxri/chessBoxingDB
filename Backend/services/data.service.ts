@@ -31,7 +31,6 @@ class DataService {
                 }
             }
 
-
             if (params.fighterName) {
                 searchQuery["name"] = { $regex: new RegExp(name, 'i') };//creo na nova regex co l'i option almeno la rendo case insensitive per la query 
             }
@@ -43,7 +42,14 @@ class DataService {
                 searchQuery["fightWinDetail"] = { $regex: new RegExp(params.fightWinDetail, 'i') };
             }
 
-       
+            if (params.date && params.eventName && params.fighterWhite && params.fighterBlack) {
+
+                searchQuery["dateFormat"] = { $regex: new RegExp(params.date, 'i') };
+                searchQuery["eventName"] = { $regex: new RegExp(params.eventName, 'i') };
+                searchQuery["fighterWhite.Name"] = { $regex: new RegExp(params.fighterWhite, 'i') };
+                searchQuery["fighterBlack.Name"] = { $regex: new RegExp(params.fighterBlack, 'i') };
+            }
+
             console.log("searchquery", searchQuery)
             console.log(collectionName)
 
@@ -86,50 +92,50 @@ class DataService {
         }
     }
 
-public async compareFighters(figherOne, fighterTwo) {
-    const db = await this.db.getDb();
-    try {
+    public async compareFighters(figherOne, fighterTwo) {
+        const db = await this.db.getDb();
+        try {
             const fighterOneData = await db.collection("detailedfighters").findOne({ name: figherOne });
             const fighterTwoData = await db.collection("detailedfighters").findOne({ name: fighterTwo });
 
-                const calculateWinPercentage = (fighter) => {
-                    const totalFights = fighter.results.reduce((acc, cur) => acc + parseInt(cur), 0);
-                    const wins = parseInt(fighter.results[0]);
-                    return (wins / totalFights) * 100;
-                };
+            const calculateWinPercentage = (fighter) => {
+                const totalFights = fighter.results.reduce((acc, cur) => acc + parseInt(cur), 0);
+                const wins = parseInt(fighter.results[0]);
+                return (wins / totalFights) * 100;
+            };
 
-                const fighterOneWinPercentage = calculateWinPercentage(fighterOneData);
-                const fighterTwoWinPercentage = calculateWinPercentage(fighterTwoData);
+            const fighterOneWinPercentage = calculateWinPercentage(fighterOneData);
+            const fighterTwoWinPercentage = calculateWinPercentage(fighterTwoData);
 
-                let winner: any;
+            let winner: any;
 
 
-                if (fighterOneWinPercentage > fighterTwoWinPercentage) {
-                    winner = fighterOneData.name;
-                } else if (fighterTwoWinPercentage > fighterOneWinPercentage) {
-                    winner = fighterTwoData.name;
-                } else {
-                    winner = "Tie";
-                }
+            if (fighterOneWinPercentage > fighterTwoWinPercentage) {
+                winner = fighterOneData.name;
+            } else if (fighterTwoWinPercentage > fighterOneWinPercentage) {
+                winner = fighterTwoData.name;
+            } else {
+                winner = "Tie";
+            }
 
-                return {
-                    status: "success",
-                    message: "Fighters compared",
-                    code: 200,
-                    percentages: [{ name: fighterOneData.name, percentage: fighterOneWinPercentage }, { name: fighterTwoData.name, percentage: fighterTwoWinPercentage }],
-                    winner: winner
-
-                }
+            return {
+                status: "success",
+                message: "Fighters compared",
+                code: 200,
+                percentages: [{ name: fighterOneData.name, percentage: fighterOneWinPercentage }, { name: fighterTwoData.name, percentage: fighterTwoWinPercentage }],
+                winner: winner
 
             }
-    catch (error) { 
-        return {
-            status: "error",
-            message: "Internal server error",
-            code: 500,
-            payload: null
-        };    
-    }
+
+        }
+        catch (error) {
+            return {
+                status: "error",
+                message: "Internal server error",
+                code: 500,
+                payload: null
+            };
+        }
 
     }
 }

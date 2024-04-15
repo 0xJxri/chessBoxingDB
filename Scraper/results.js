@@ -4,11 +4,10 @@ import "dotenv/config";
 import fs from 'fs'
 import path from 'path';
 
-
-init(){}
 const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
 
 const db = new Db(mongoConnectionString); // You need a connection string for MongoDB
+
 
 function formatDateString(dateString) {
     // Create a new Date object directly from the date string
@@ -16,8 +15,8 @@ function formatDateString(dateString) {
 
     // Format the date components and store in a variable
     let formattedDate = ('0' + dateObject.getDate()).slice(-2) + '/' +
-                        ('0' + (dateObject.getMonth() + 1)).slice(-2) + '/' +
-                        dateObject.getFullYear();
+        ('0' + (dateObject.getMonth() + 1)).slice(-2) + '/' +
+        dateObject.getFullYear();
 
     return formattedDate;
 }
@@ -71,7 +70,7 @@ function formatDateString(dateString) {
                         return url; // Return the original URL if it's empty
                     }
                 };
-                
+
 
                 // Truncate the URLs
                 urlImgWhite = truncateUrl(urlImgWhite);
