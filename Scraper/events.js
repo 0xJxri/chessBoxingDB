@@ -5,7 +5,17 @@ import fs from 'fs'
 import path from 'path';
 import * as countryCodeJSON from './data/countryCode.json';
 
+function formatDateString(dateString) {
+    // Create a new Date object directly from the date string
+    let dateObject = new Date(dateString);
 
+    // Format the date components and store in a variable
+    let formattedDate = ('0' + dateObject.getDate()).slice(-2) + '/' +
+        ('0' + (dateObject.getMonth() + 1)).slice(-2) + '/' +
+        dateObject.getFullYear();
+
+    return formattedDate;
+}
 
 (async () => {
     const browser = await puppeteer.launch();
@@ -46,8 +56,10 @@ import * as countryCodeJSON from './data/countryCode.json';
                 const eventName = await tds[1].$eval('a', el => el.textContent.trim());
                 const eventLink = await tds[1].$eval('a', el => el.href);
                 const date = await tds[2].evaluate(td => td.textContent.trim());
-                // Default value
-                let imgFlag = null
+                const dateFormat = formatDateString(date)
+                console.log("dateformat = ",dateFormat)
+                    // Default value
+                    let imgFlag = null
                 try {
                     let flag = await tds[3].$eval('img', el => el.src) // Default value
                     console.log(flag);
@@ -77,6 +89,7 @@ import * as countryCodeJSON from './data/countryCode.json';
 
                 // Scrape data from the detail page
                 const eventData = await eventPage.evaluate(async () => {
+
                     const tableRows = document.querySelectorAll('.tbl_events .tbl_mid_green01');
                     const resultArray = [];
 
@@ -315,6 +328,7 @@ import * as countryCodeJSON from './data/countryCode.json';
                     eventImg: eventImg,
                     eventName: eventName,
                     date: date,
+                    dateFormat: dateFormat,
                     countryCode: countryCode,
                     venue: venue,
                     fights: fights,
@@ -380,7 +394,7 @@ import * as countryCodeJSON from './data/countryCode.json';
     //     return await fightsDetailsCollection.insertMany(fightDetails);
     // });
 
-    async function insertFightDetails(fightDetails) {
+    async function insertEventsCollection(eventResult) {
         const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
         const client = new MongoClient(mongoConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         await client.connect();
@@ -389,8 +403,8 @@ import * as countryCodeJSON from './data/countryCode.json';
         }
         try {
             const db = client.db(); // Get the database from the client
-            const fightsDetailsCollection = db.collection("fightdetails"); // replace "test" with your database name
-            const result = await fightsDetailsCollection.insertMany(fightDetails);
+            const eventsCollection = db.collection("events"); // replace "test" with your database name
+            const result = await eventsCollection.insertMany(eventResult);
             console.log(result)
             return result;
         } catch (err) {
@@ -400,7 +414,28 @@ import * as countryCodeJSON from './data/countryCode.json';
         }
     }
 
-    insertFightDetails(fightDetails); // call the function with your fightDetails
+    insertEventsCollection(eventResult); // call the function with your fightDetails
+    // async function insertFightDetails(fightDetails) {
+    //     const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
+    //     const client = new MongoClient(mongoConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+    //     await client.connect();
+    //     if (client) {
+    //         console.log("Connected to db!")
+    //     }
+    //     try {
+    //         const db = client.db(); // Get the database from the client
+    //         const fightsDetailsCollection = db.collection("fightdetails"); // replace "test" with your database name
+    //         const result = await fightsDetailsCollection.insertMany(fightDetails);
+    //         console.log(result)
+    //         return result;
+    //     } catch (err) {
+    //         console.error(err);
+    //     } finally {
+    //         await client.close();
+    //     }
+    // }
+
+    // insertFightDetails(fightDetails);
 
 
     await browser.close();
