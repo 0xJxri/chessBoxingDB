@@ -60,7 +60,7 @@ class DataService {
                 end = start + 50;
                 var len = data.length;
                 data = data.slice(start, end);
-                additionalData = { current: params.page, total: Math.ceil(len / 50) - 1 };
+                additionalData = { current: params.page, total: Math.ceil(len / 50)  };
 
             }
 
