@@ -7,7 +7,12 @@
       <nuxt-link to="/" class="flex-1 flex justify-center">
         <img src="/chessboxingdb-logo.svg" alt="logo" class="h-20" />
       </nuxt-link>
-      <NuxtLink to="/login" class="flex-1 flex justify-end">
+
+      <div v-if="checkTokenExists()" class="flex-1 flex justify-end">
+        <Icon icon="material-symbols:logout" class="mr-4 mb-2 cursor-pointer" @click="removeToken()" width="2rem" />
+      </div>
+
+      <NuxtLink v-else to="/login" class="flex-1 flex justify-end">
         <Icon icon="material-symbols:login" class="mr-4 mb-2" width="2rem" />
       </NuxtLink>
     </header>
@@ -42,5 +47,15 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+
+function checkTokenExists() {
+  const token = localStorage.getItem("token");
+  return !!token;
+}
+
+function removeToken() {
+  localStorage.removeItem("token");
+  window.location.reload();
+} 
 
 </script>

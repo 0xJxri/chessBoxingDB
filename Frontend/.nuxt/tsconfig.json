@@ -11,20 +11,29 @@
       "h3": [
         "../node_modules/h3"
       ],
+      "consola": [
+        "../node_modules/consola"
+      ],
+      "ofetch": [
+        "../node_modules/ofetch"
+      ],
       "@unhead/vue": [
         "../node_modules/@unhead/vue"
+      ],
+      "@vue/runtime-core": [
+        "../node_modules/@vue/runtime-core"
+      ],
+      "@vue/compiler-sfc": [
+        "../node_modules/@vue/compiler-sfc"
+      ],
+      "@vue/runtime-dom": [
+        "../node_modules/@vue/runtime-dom"
       ],
       "@nuxt/schema": [
         "../node_modules/@nuxt/schema"
       ],
       "nuxt": [
         "../node_modules/nuxt"
-      ],
-      "consola": [
-        "../node_modules/consola"
-      ],
-      "ofetch": [
-        "../node_modules/ofetch"
       ],
       "~": [
         ".."
@@ -81,7 +90,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev.json"
+        "./manifest/meta/dev"
       ],
       "#build": [
         "."

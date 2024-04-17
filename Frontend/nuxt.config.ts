@@ -1,6 +1,9 @@
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: false },
+  nitro: {
+    serveStatic: true,
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
