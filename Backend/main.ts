@@ -1,12 +1,14 @@
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import express from 'express';
+import swaggerUi from "swagger-ui-express";
+
+import cors from 'cors';
 import fs from 'fs/promises'; // Node.js file system module
+import swaggerJsdoc from "swagger-jsdoc";
 import DataController from "./controllers/dataController.ts";
 import UserController from "./controllers/userController.ts";
 import ValidationController from "./controllers/validationController.ts";
-import cors from 'cors'
-
 import AuthHelper from "./helpers/auth.ts";
 import Db from "./helpers/db.ts";
 import DataService from './services/data.service.ts';
@@ -15,6 +17,43 @@ import wasmSingleton from "./wasm_helpers.ts";
 dotenv.config();
 
 const app = express();
+
+
+const options = {
+  definition: {
+    openapi: "3.1.0",
+    info: {
+      title: "LogRocket Express API with Swagger",
+      version: "0.1.0",
+      description:
+        "This is a simple CRUD API application made with Express and documented with Swagger",
+      license: {
+        name: "MIT",
+        url: "https://spdx.org/licenses/MIT.html",
+      },
+      contact: {
+        name: "LogRocket",
+        url: "https://logrocket.com",
+        email: "info@email.com",
+      },
+    },
+    servers: [
+      {
+        url: "http://localhost:8000",
+      },
+    ],
+  },
+  apis: ["./controllers/*.ts"],
+};
+
+const specs = swaggerJsdoc(options);
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs)
+);
+
+
 app.use(cors())
 app.use(await bodyParser.json());
 app.use(await bodyParser.urlencoded({ extended: true }));

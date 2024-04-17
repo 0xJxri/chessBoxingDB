@@ -14,6 +14,30 @@ interface Params {
     fighterBlack?: string;
 }
 
+
+/**
+ * @typedef {Object} Params - Object representing optional query parameters
+ * @property {number} [limit] - Limit number of results
+ * @property {string} [orderBy] - Field to order results by
+ * @property {string} [order] - Order of sorting (asc or desc)
+ * @property {any} [page] - Page number for pagination
+ * @property {string} [fighterName] - Name of the fighter
+ * @property {number} [resultId] - ID of the result
+ * @property {string} [eventName] - Name of the event
+ * @property {string} [fightWinDetail] - Fight win detail
+ * @property {string} [date] - Date of the event
+ * @property {string} [fighterWhite] - Name of the white fighter
+ * @property {string} [fighterBlack] - Name of the black fighter
+ */
+
+/**
+ * @typedef {Object} ResponseBody - Response body structure
+ * @property {string} status - Status of the response
+ * @property {string} message - Message explaining the status
+ * @property {number} code - HTTP status code
+ * @property {any} payload - Data payload
+ */
+
 class DataController {
     private db: any;
     private auth: any;
@@ -63,6 +87,254 @@ class DataController {
     }
 
     init() {
+
+/**
+ * @swagger
+ * /results:
+ *   get:
+ *     summary: Retrieve results
+ *     parameters:
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *         description: Limit number of results
+ *       - in: query
+ *         name: orderBy
+ *         schema:
+ *           type: string
+ *         description: Field to order results by
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *         description: Order of sorting (asc or desc)
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: Page number for pagination
+ *       - in: query
+ *         name: fighterName
+ *         schema:
+ *           type: string
+ *         description: Name of the fighter
+ *       - in: query
+ *         name: resultId
+ *         schema:
+ *           type: integer
+ *         description: ID of the result
+ *       - in: query
+ *         name: eventName
+ *         schema:
+ *           type: string
+ *         description: Name of the event
+ *       - in: query
+ *         name: fightWinDetail
+ *         schema:
+ *           type: string
+ *         description: Fight win detail
+ *       - in: query
+ *         name: date
+ *         schema:
+ *           type: string
+ *         description: Date of the event
+ *       - in: query
+ *         name: fighterWhite
+ *         schema:
+ *           type: string
+ *         description: Name of the white fighter
+ *       - in: query
+ *         name: fighterBlack
+ *         schema:
+ *           type: string
+ *         description: Name of the black fighter
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema: {}
+ */
+
+
+/**
+ * @swagger
+ * /fighterslist:
+ *   get:
+ *     summary: Retrieve list of fighters
+ *     parameters:
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *         description: Limit number of results
+ *       - in: query
+ *         name: orderBy
+ *         schema:
+ *           type: string
+ *         description: Field to order results by
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *         description: Order of sorting (asc or desc)
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: Page number for pagination
+ *       - in: query
+ *         name: fighterName
+ *         schema:
+ *           type: string
+ *         description: Name of the fighter
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema: {}
+ */
+
+/**
+ * @swagger
+ * /events:
+ *   get:
+ *     summary: Retrieve list of events
+ *     parameters:
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *         description: Limit number of results
+ *       - in: query
+ *         name: orderBy
+ *         schema:
+ *           type: string
+ *         description: Field to order results by
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *         description: Order of sorting (asc or desc)
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: Page number for pagination
+ *       - in: query
+ *         name: eventName
+ *         schema:
+ *           type: string
+ *         description: Name of the event
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema: {}
+ */
+
+/**
+ * @swagger
+ * /detailedfighters/{fighterName}:
+ *   get:
+ *     summary: Retrieve detailed information of a fighter
+ *     parameters:
+ *       - in: path
+ *         name: fighterName
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Name of the fighter
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema: {}
+ */
+
+/**
+ * @swagger
+ * /fightdetails:
+ *   get:
+ *     summary: Retrieve details of fights
+ *     parameters:
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *         description: Limit number of results
+ *       - in: query
+ *         name: orderBy
+ *         schema:
+ *           type: string
+ *         description: Field to order results by
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *         description: Order of sorting (asc or desc)
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: Page number for pagination
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema: {}
+ */
+
+/**
+ * @swagger
+ * /compare:
+ *   post:
+ *     summary: Compare two fighters
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Bearer token for authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               fighterOne:
+ *                 type: string
+ *                 description: Name of the first fighter
+ *               fighterTwo:
+ *                 type: string
+ *                 description: Name of the second fighter
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema: {}
+ *       401:
+ *         description: Unauthorized
+ *         content:
+ *           application/json:
+ *             schema: {}
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             schema: {}
+ */
+
+
+
         this.router.get("/results", async (req, res) => {
             const params = this.extractParams(req);
             const response = await this.dataService.fetchData('results', params);
@@ -78,6 +350,7 @@ class DataController {
         this.router.get('/events', async (req, res) => {
             const params = this.extractParams(req);
             const response = await this.dataService.fetchData('events', params);
+            console.log(response);
             res.status(response.code).json(response);
         });
 
@@ -93,7 +366,7 @@ class DataController {
             res.status(response.code).json(response);
         })
 
-        this.router.get('/compare', async (req, res) => {
+        this.router.post('/compare', async (req, res) => {
             try {
                 let jwt = await this.auth.authorized(req);
 
