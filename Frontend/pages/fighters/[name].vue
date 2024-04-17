@@ -20,8 +20,14 @@
       </BreadcrumbList>
     </Breadcrumb>
     <div class="flex flex-col items-center">
-      <h1 class="font-bold text-3xl mb-1">
+      <h1 class="font-bold text-3xl mb-1 flex justify-center items-center gap-4">
         {{ fighter.payload[0].name }}
+        <img
+          v-if="fighter.payload[0].flag"
+          class="h-4 mr-2"
+          :src="`https://flagcdn.com/${fighter.payload[0].flag}.svg`"
+          alt="flag"
+        />
       </h1>
       <div class="text-xl mb-2">
         <span class="text-green-600">
@@ -36,7 +42,7 @@
           {{ fighter.payload[0].results[2] }}
         </span>
       </div>
-      <div class="grid grid-cols-2 w-1/3 gap-4 mb-4">
+      <div class="grid grid-cols-2 w-2/5 gap-4 mb-4">
         <img
           :src="
             fighter.payload[0].pfp_link
@@ -120,7 +126,7 @@
             <TableHead>Result</TableHead>
             <TableHead>Description</TableHead>
             <TableHead>Round</TableHead>
-            <TableHead>View Fight </TableHead>
+            <TableHead class="text-right">View Fight </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -143,17 +149,43 @@
               />
               <nuxt-link
                 :to="`/fighters/${item.opponentName}`"
-                class="text-right hover:underline hover:text-red-600"
+                class="text-left hover:underline hover:text-red-600"
               >
                 <span>{{ item.opponentName }}</span>
               </nuxt-link>
             </TableCell>
             <TableCell>{{ item.eventName }}</TableCell>
             <TableCell>{{ item.date }}</TableCell>
-            <TableCell>{{ item.result }}</TableCell>
+            <TableCell>
+              <p
+                :class="{
+                  'text-green-400': item.result === 'W',
+                  'text-red-400': item.result === 'L',
+                  'text-blue-400': item.result === 'D',
+                }"
+              >
+                {{ item.result }}
+              </p>
+            </TableCell>
             <TableCell>{{ item.description }}</TableCell>
             <TableCell>{{ item.round }}</TableCell>
-            <TableCell class="flex justify-center"><Eye /></TableCell>
+            <nuxt-link
+              :to="`/results/${encodeURIComponent(item.dateFormat)}?eventName=${
+                item.eventName
+              }&fighterWhite=${
+                item.opponentChessColor === 'white'
+                  ? item.opponentName
+                  : fighter.payload[0].name
+              }&fighterBlack=${
+                item.opponentChessColor === 'black'
+                  ? item.opponentName
+                  : fighter.payload[0].name
+              }`"
+            >
+              <TableCell class="w-full flex justify-end cursor-pointer">
+                <Eye class="hover:stroke-red-600" />
+              </TableCell>
+            </nuxt-link>
           </TableRow>
         </TableBody>
       </Table>

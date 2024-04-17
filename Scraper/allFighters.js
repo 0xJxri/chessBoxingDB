@@ -1,14 +1,9 @@
 import puppeteer from 'puppeteer'
-import Db from '../Backend/helpers/db.ts';
+import { MongoClient } from 'mongodb'
 import "dotenv/config"
 import fs from 'fs'
 import path from 'path'
 import * as countryCodeJSON from './data/countryCode.json';
-
-
-const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING
-
-const db = new Db(mongoConnectionString);
 
 
 (async () => {
@@ -134,8 +129,20 @@ const db = new Db(mongoConnectionString);
                 }
             };
 
+            function formatDateString(dateString) {
+                // Create a new Date object directly from the date string
+                let dateObject = new Date(dateString);
+
+                // Format the date components and store in a variable
+                let formattedDate = ('0' + dateObject.getDate()).slice(-2) + '/' +
+                    ('0' + (dateObject.getMonth() + 1)).slice(-2) + '/' +
+                    dateObject.getFullYear();
+
+                return formattedDate;
+            }
+
             const fighterInfo = document.querySelector(".tbl_addbtn02 > tbody");
-            const name = fighterInfo.querySelector("h1").textContent;
+            const name = fighterInfo.querySelector("h1").textContent.trim();
             let flag = fighterInfo.querySelector("h1 img").getAttribute('src')
             if (flag) {
                 if (flag.includes('Unknown.png')) {
@@ -156,7 +163,7 @@ const db = new Db(mongoConnectionString);
                 } else {
                     pfp_link = truncateUrl(pfp_link)
                 }
-             
+
 
                 const tbl_tot = fighterInfo.querySelectorAll(
                     '.tbl_tot tr > td[align="left"]'
@@ -192,6 +199,7 @@ const db = new Db(mongoConnectionString);
                         const opponentName = fight[1].textContent;
                         const eventName = fight[2].textContent;
                         const date = fight[3].textContent;
+                        const dateFormat = formatDateString(date)
                         const result = fight[4].textContent;
                         const description = fight[5].textContent;
                         const round = fight[6].textContent;
@@ -201,6 +209,7 @@ const db = new Db(mongoConnectionString);
                             opponentName,
                             eventName,
                             date,
+                            dateFormat,
                             result,
                             description,
                             round,
@@ -274,11 +283,34 @@ const db = new Db(mongoConnectionString);
     //         return await fighterList.insertMany(listFighters);
     //     });
     //     console.log(fighterList)
-    const detailedListFighters = await db.getDb().then(async db => {
-        const detailedListFighters = db.collection('detailedfighters');
-        return await detailedListFighters.insertMany(detailedFighters);
-    });
-    console.log(detailedListFighters)
+    // const detailedListFighters = await db.getDb().then(async db => {
+    //     const detailedListFighters = db.collection('detailedfighters');
+    //     return await detailedListFighters.insertMany(detailedFighters);
+    // });
+    // console.log(detailedListFighters)
+
+    async function insertFightDetails(detailedFighters) {
+        const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
+        const client = new MongoClient(mongoConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        await client.connect();
+        if (client) {
+            console.log("Connected to db!")
+        }
+        try {
+            const db = client.db(); // Get the database from the client
+            const detailedFightersCollection = db.collection("detailedfighters"); // replace "test" with your database name
+            const result = await detailedFightersCollection.insertMany(detailedFighters);
+            console.log(result)
+            return result;
+        } catch (err) {
+            console.error(err);
+        } finally {
+            await client.close();
+        }
+    }
+
+    insertFightDetails(detailedFighters);
+
     await browser.close();
 
 })();

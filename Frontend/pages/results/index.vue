@@ -33,14 +33,14 @@
       </div>
 
       <div class="flex flex-1 justify-end">
-        <Menubar>
+        <!-- <Menubar>
           <MenubarMenu>
             <MenubarTrigger>ord by date ...</MenubarTrigger>
           </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger>ord by </MenubarTrigger>
           </MenubarMenu>
-        </Menubar>
+        </Menubar> -->
         <div
           class="flex h-10 items-center gap-x-1 rounded-md border bg-background p-1"
         >
@@ -131,9 +131,11 @@
           <TableCell>{{ item.result }}</TableCell>
           <TableCell>{{ item.event }}</TableCell>
           <TableCell>{{ item.data }}</TableCell>
-          <TableCell>
-            <Eye class="ml-auto" />
-          </TableCell>
+          <nuxt-link :to="`/results/${encodeURIComponent(item.dataFormatted)}?eventName=${item.event}&fighterWhite=${item.fighterWhite}&fighterBlack=${item.fighterBlack}`">
+            <TableCell class="w-full flex justify-end cursor-pointer">
+              <Eye class=" hover:stroke-red-600" />
+            </TableCell>
+          </nuxt-link>
         </TableRow>
       </TableBody>
     </Table>
@@ -146,7 +148,7 @@
         class="w-full bg-background flex flex-col justify-between"
       >
         <CardHeader class="flex items-center">
-          <p class="font-bold">{{ item.event }}</p>
+          <p class="font-bold text-center">{{ item.event }}</p>
           <p class="text-xs text-zinc-400 italic">{{ item.data }}</p>
         </CardHeader>
         <CardContent>

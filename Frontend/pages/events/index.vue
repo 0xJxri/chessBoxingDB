@@ -33,14 +33,14 @@
       </div>
 
       <div class="flex flex-1 justify-end">
-        <Menubar>
+        <!-- <Menubar>
           <MenubarMenu>
             <MenubarTrigger>ord by date ...</MenubarTrigger>
           </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger>ord by </MenubarTrigger>
           </MenubarMenu>
-        </Menubar>
+        </Menubar> -->
       </div>
     </div>
 
@@ -92,7 +92,7 @@
         </TableBody>
       </Table>
       <DialogContent
-        class="sm:max-w-[825px] grid-rows-[auto_minmax(0,1fr)_auto] p-6 max-h-[85dvh]"
+        class="REMOVE-SCROLLBAR sm:max-w-[825px] grid-rows-[auto_minmax(0,1fr)_auto] p-6 max-h-[85dvh]"
       >
         <DialogHeader class="items-center">
           <DialogTitle>{{ modalPayload.eventName }}</DialogTitle>
@@ -171,9 +171,14 @@
               </TableCell>
               <TableCell>{{ item.result }}</TableCell>
               <TableCell>{{ item.resultDescription }}</TableCell>
-              <TableCell>
-                <Eye class="ml-auto" />
-              </TableCell>
+              
+              <nuxt-link
+                :to="`/results/${encodeURIComponent(modalPayload.dateFormat)}?eventName=${modalPayload.eventName}&fighterWhite=${item.fighterWhite}&fighterBlack=${item.fighterBlack}`"
+              >
+                <TableCell class="w-full flex justify-end cursor-pointer">
+                  <Eye class="hover:stroke-red-600" />
+                </TableCell>
+              </nuxt-link>
             </TableRow>
           </TableBody>
         </Table>
@@ -273,3 +278,17 @@ const searchEvent = async (name) => {
 
 watch(selectedPage, fetchPage, { immediate: true });
 </script>
+
+
+<style scoped>
+.REMOVE-SCROLLBAR>*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.REMOVE-SCROLLBAR>* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+</style>

@@ -35,10 +35,106 @@
       <div class="flex flex-1 justify-end">
         <Menubar>
           <MenubarMenu>
-            <MenubarTrigger>ord by date ...</MenubarTrigger>
+            <MenubarTrigger>order</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem
+                inset
+                @click="
+                  selectedOrder = 'asc';
+                  fetchPage(1);
+                "
+              >
+                <ArrowUpNarrowWide class="mr-2" />
+                <span>Asc</span>
+              </MenubarItem>
+              <MenubarItem
+                inset
+                @click="
+                  selectedOrder = 'desc';
+                  fetchPage(1);
+                "
+              >
+                <ArrowDownWideNarrow class="mr-2" />
+                <span>Desc</span>
+              </MenubarItem>
+            </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>ord by </MenubarTrigger>
+            <MenubarTrigger>order by</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem
+                inset
+                @click="
+                  selectedOrderBy = 'name';
+                  fetchPage(1);
+                "
+              >
+                <UserSearch class="mr-2" />
+                <span>name</span>
+              </MenubarItem>
+              <MenubarItem
+                inset
+                @click="
+                  selectedOrderBy = 'nationality';
+                  fetchPage(1);
+                "
+              >
+                <Flag class="mr-2" />
+                <span>nationality</span>
+              </MenubarItem>
+              <MenubarItem
+                inset
+                @click="
+                  selectedOrderBy = 'fights';
+                  fetchPage(1);
+                "
+              >
+                <Icon icon="ri:boxing-line" width="24px" class="mr-2" />
+                <span>fights</span>
+              </MenubarItem>
+              <!-- <MenubarItem inset>
+                <LibraryBig class="mr-2" />
+                <span>record</span>
+              </MenubarItem> -->
+              <MenubarItem
+                inset
+                @click="
+                  selectedOrderBy = 'elo';
+                  fetchPage(1);
+                "
+              >
+                <Icon
+                  icon="tabler:chess-bishop-filled"
+                  width="24px"
+                  class="mr-2"
+                />
+                <span>elo</span>
+              </MenubarItem>
+              <MenubarItem
+                inset
+                @click="
+                  selectedOrderBy = 'height';
+                  fetchPage(1);
+                "
+              >
+                <Ruler class="mr-2" />
+                <span>height</span>
+              </MenubarItem>
+              <MenubarItem
+                inset
+                @click="
+                  selectedOrderBy = 'weight';
+                  fetchPage(1);
+                "
+              >
+                <Weight class="mr-2" />
+                <span>weight</span>
+              </MenubarItem>
+              <!-- <MenubarItem inset>
+                <CalendarClock class="mr-2" />
+                <span>activity</span>
+              </MenubarItem> -->
+            </MenubarContent>
           </MenubarMenu>
         </Menubar>
         <div
@@ -243,12 +339,20 @@
 </template>
 
 <script setup>
+import { Icon } from "@iconify/vue";
 import { useToast } from "@/components/ui/toast/use-toast";
 import {
   Search,
   Rows3,
   Grid3X3,
   ArrowRightToLine,
+  ArrowUpNarrowWide,
+  ArrowDownWideNarrow,
+  UserSearch,
+  Flag,
+  Ruler,
+  Weight,
+  LibraryBig,
   CalendarClock,
 } from "lucide-vue-next";
 
@@ -256,6 +360,8 @@ const { toast } = useToast();
 
 const isGridLayoutSelected = ref(true);
 const selectedPage = ref(1);
+const selectedOrderBy = ref("name");
+const selectedOrder = ref("asc");
 const searchQuery = ref();
 
 const fighters = ref(
@@ -265,7 +371,9 @@ const fighters = ref(
 const fetchPage = async (page) => {
   try {
     const data = await $fetch(
-      `http://localhost:8000/fighterslist?page=${page - 1}`
+      `http://localhost:8000/fighterslist?page=${page - 1}&orderBy=${
+        selectedOrderBy.value
+      }&order=${selectedOrder.value}`
     );
     fighters.value = data;
     window.scrollTo(0, 0);
