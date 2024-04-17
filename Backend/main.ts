@@ -64,7 +64,7 @@ app.use(await bodyParser.urlencoded({ extended: true }));
     const db = new Db(mongoConnectionString); 
     await db.init();
 
-
+    console.log(wasmSingleton.wasmFunctions);
 
     const keyFile = await fs.readFile("./openssl/key.pem", 'utf8');
     const auth_rs =  await wasmSingleton.executeForeignConstructor(wasmSingleton.wasmFunctions["jwt_rs"].jwt_rs_methods, keyFile);

@@ -17,6 +17,7 @@ class ValidationController {
     init() {
         this.router.get("/validate", async (req, res) => {
             try {
+
                 let jwt = await this.auth.authorized(req);
                 if (jwt) {
                     res.status(200).json({

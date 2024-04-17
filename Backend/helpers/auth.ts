@@ -205,21 +205,17 @@ class AuthHelper {
     getJwtFromHeaders(req) {
 
         const authorization = req.headers.authorization;
-        if (!authorization) return null;
+        if (!authorization || !authorization.startsWith('Bearer ')) return null;
         const jwt = authorization.split(' ')[1];
         return jwt;
     }
 
     async authorized(req, res, next) {
         const jwt = this.getJwtFromHeaders(req);
+        
         try {
             if (!jwt) {
-                return {
-                    status: "error",
-                    message: "Unauthorized",
-                    code: 401,
-                    payload: null
-                };
+                throw new Error("Invalid token");
             }
             const isValid = await this.jwt_rs.decode_data(jwt);
             if (isValid != "") {
