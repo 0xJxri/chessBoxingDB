@@ -131,9 +131,15 @@
           <TableCell>{{ item.result }}</TableCell>
           <TableCell>{{ item.event }}</TableCell>
           <TableCell>{{ item.data }}</TableCell>
-          <nuxt-link :to="`/results/${encodeURIComponent(item.dataFormatted)}?eventName=${item.event}&fighterWhite=${item.fighterWhite}&fighterBlack=${item.fighterBlack}`">
+          <nuxt-link
+            :to="`/results/${encodeURIComponent(
+              item.dataFormatted
+            )}?eventName=${item.event}&fighterWhite=${
+              item.fighterWhite
+            }&fighterBlack=${item.fighterBlack}`"
+          >
             <TableCell class="w-full flex justify-end cursor-pointer">
-              <Eye class=" hover:stroke-red-600" />
+              <Eye class="hover:stroke-red-600" />
             </TableCell>
           </nuxt-link>
         </TableRow>
