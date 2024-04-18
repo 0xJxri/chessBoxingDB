@@ -69,28 +69,43 @@
       </span>
     </div>
 
-    <Carousel
-      v-if="fightDetails.payload[0].gallery"
-      class="relative w-full max-w-xl mx-auto mb-2"
-    >
-      <CarouselContent>
-        <CarouselItem
-          v-for="(item, index) in fightDetails.payload[0].gallery"
-          :key="index"
-        >
-          <div class="p-1">
-            <Card>
-              <CardContent class="flex items-center justify-center p-6">
-                <img :src="item + '_big.jpg'" alt="gallery" />
-              </CardContent>
-            </Card>
-          </div>
-        </CarouselItem>
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div class="flex justify-between">
+      <img
+        class=""
+        :src="(fightDetails.payload[0].blackPfp) ? fightDetails.payload[0].blackPfp + '_mid.jpg' : 'https://www.chessboxing.info/images/profile_unknown.jpg'"
+        alt="black pfp"
+      />
+      <Carousel
+        v-if="fightDetails.payload[0].gallery"
+        class="relative w-full max-w-xl mx-auto mb-2"
+      >
+        <CarouselContent>
+          <CarouselItem
+            v-for="(item, index) in fightDetails.payload[0].gallery"
+            :key="index"
+          >
+            <div class="p-1">
+              <Card>
+                <CardContent class="flex items-center justify-center p-6">
+                  <img :src="item + '_big.jpg'" alt="gallery" />
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+      <img
+        class=""
+        :src="(fightDetails.payload[0].whitePfp) ? fightDetails.payload[0].whitePfp + '_mid.jpg' : 'https://www.chessboxing.info/images/profile_unknown.jpg'"
+        alt="white pfp"
+      />
+    </div>
 
+    <h2 class="text-center text-2xl font-semibold">
+      {{ fightDetails.payload[0].fightWinDetail }}
+    </h2>
     <h3 class="text-center text-zinc-300 mb-24">
       <span>
         {{ fightDetails.payload[0].eventName }}
@@ -109,7 +124,7 @@
       <div class="flex col-span-2 justify-center items-center gap-4 mb-12">
         <ChevronLeft class="h-12 w-12 cursor-pointer" @click="previousMove()" />
         <div class="w-2/3 flex flex-col items-center gap-2">
-          <div ref="myBoard" class="w-full"/>
+          <div ref="myBoard" class="w-full" />
           <p class="text-xl">
             {{ selectedChessMove }} /
             {{ fightDetails.payload[0].chessMoves[0].length }}
@@ -121,7 +136,7 @@
         <p
           v-for="(move, index) in fightDetails.payload[0].chessMoves[0]"
           class="p-2 gap-2 mb-2 mr-2 rounded-sm"
-          :class="selectedChessMove === index+1 ? 'bg-primary' : 'bg-muted'"
+          :class="selectedChessMove === index + 1 ? 'bg-primary' : 'bg-muted'"
         >
           <span>{{ index }}</span> {{ move }}
         </p>
@@ -148,6 +163,7 @@ const selectedChessMove = ref(0);
 
 // const fenMoves = movesToFen(removeMoveNumbers(fightDetails.value.payload[0].chessMoves[0]));
 // console.log(fenMoves.value);
+console.log(removeMoveNumbers(fightDetails.value.payload[0].chessMoves[0]));
 
 function nextMove() {
   if (
@@ -167,11 +183,11 @@ function previousMove() {
 }
 
 function removeMoveNumbers(chessMoves) {
-    const regex = /^\d+\./; 
-    for (let i = 0; i < chessMoves.length; i++) {
-        chessMoves[i] = chessMoves[i].replace(regex, '');
-    }
-    return chessMoves;
+  const regex = /^\d+\./;
+  for (let i = 0; i < chessMoves.length; i++) {
+    chessMoves[i] = chessMoves[i].replace(regex, "");
+  }
+  return chessMoves;
 }
 
 function movesToFen(moves) {
@@ -194,7 +210,6 @@ function movesToFen(moves) {
 
   return fenList;
 }
-
 
 onMounted(() => {
   const board = new Chessboard(myBoard.value, {
