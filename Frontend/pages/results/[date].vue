@@ -72,7 +72,11 @@
     <div class="flex justify-between">
       <img
         class=""
-        :src="(fightDetails.payload[0].blackPfp) ? fightDetails.payload[0].blackPfp + '_mid.jpg' : 'https://www.chessboxing.info/images/profile_unknown.jpg'"
+        :src="
+          fightDetails.payload[0].blackPfp
+            ? fightDetails.payload[0].blackPfp + '_mid.jpg'
+            : 'https://www.chessboxing.info/images/profile_unknown.jpg'
+        "
         alt="black pfp"
       />
       <Carousel
@@ -98,7 +102,11 @@
       </Carousel>
       <img
         class=""
-        :src="(fightDetails.payload[0].whitePfp) ? fightDetails.payload[0].whitePfp + '_mid.jpg' : 'https://www.chessboxing.info/images/profile_unknown.jpg'"
+        :src="
+          fightDetails.payload[0].whitePfp
+            ? fightDetails.payload[0].whitePfp + '_mid.jpg'
+            : 'https://www.chessboxing.info/images/profile_unknown.jpg'
+        "
         alt="white pfp"
       />
     </div>
@@ -120,14 +128,14 @@
       </span>
     </h3>
 
-    <div v-if="fightDetails.payload[0].chessMoves" class="grid grid-cols-3">
-      <div class="flex col-span-2 justify-center items-center gap-4 mb-12">
+    <div v-if="fightDetails.payload[0].chessMoves" class="grid grid-cols-3  mb-12">
+      <div class="flex col-span-2 justify-center items-center gap-4">
         <ChevronLeft class="h-12 w-12 cursor-pointer" @click="previousMove()" />
         <div class="w-2/3 flex flex-col items-center gap-2">
           <div ref="myBoard" class="w-full" />
           <p class="text-xl">
-            {{ selectedChessMove }} /
-            {{ fightDetails.payload[0].chessMoves[0].length }}
+            {{ selectedChessMove+1 }} /
+            {{ fightDetails.payload[0].chessMoves[0].length - 1 }}
           </p>
         </div>
         <ChevronRight class="h-12 w-12 cursor-pointer" @click="nextMove()" />
@@ -136,7 +144,7 @@
         <p
           v-for="(move, index) in fightDetails.payload[0].chessMoves[0]"
           class="p-2 gap-2 mb-2 mr-2 rounded-sm"
-          :class="selectedChessMove === index + 1 ? 'bg-primary' : 'bg-muted'"
+          :class="selectedChessMove === index ? 'bg-primary' : 'bg-muted'"
         >
           <span>{{ index }}</span> {{ move }}
         </p>
@@ -158,28 +166,42 @@ const { data: fightDetails } = await useFetch(
   `http://localhost:8000/fightdetails?date=${route.params.date}&eventName=${route.query.eventName}&fighterWhite=${route.query.fighterWhite}&fighterBlack=${route.query.fighterBlack}`
 );
 
+let board;
 const myBoard = ref();
-const selectedChessMove = ref(0);
+const selectedChessMove = ref(-1);
 
-console.log("fightdetails = ",fightDetails.value.payload[0].chessMoves[0])
-const fenMoves = movesToFen(removeMoveCastle(removeMoveNumbers(fightDetails.value.payload[0].chessMoves[0])));
-console.log(fenMoves.value);
+console.log("fightdetails = ", fightDetails.value.payload[0].chessMoves[0]);
+const fenMoves = movesToFen(
+  removeMoveCastle(
+    removeMoveNumbers(fightDetails.value.payload[0].chessMoves[0])
+  )
+);
 
 function nextMove() {
   if (
-    selectedChessMove.value < fightDetails.value.payload[0].chessMoves[0].length
+    selectedChessMove.value <
+    fightDetails.value.payload[0].chessMoves[0].length - 2
   ) {
     selectedChessMove.value++;
   } else {
     selectedChessMove.value = 0;
   }
+  updateBoardPosition();
 }
 
 function previousMove() {
-  if (selectedChessMove.value > 0) selectedChessMove.value--;
-  else
+  if (selectedChessMove.value > 0) {
+    selectedChessMove.value--;
+  } else {
     selectedChessMove.value =
-      fightDetails.value.payload[0].chessMoves[0].length;
+      fightDetails.value.payload[0].chessMoves[0].length - 1;
+  }
+  updateBoardPosition();
+}
+
+function updateBoardPosition() {
+  const fen = fenMoves[selectedChessMove.value].fen;
+  board.setPosition(fen);
 }
 
 function removeMoveNumbers(chessMoves) {
@@ -191,20 +213,21 @@ function removeMoveNumbers(chessMoves) {
 }
 
 function removeMoveCastle(chessMoves) {
-    const regex = /^\d+\./; 
-    for (let i = 0; i < chessMoves.length; i++) {
-        // Replace "0-0" with "O-O"
-        chessMoves[i] = chessMoves[i].replace("0-0", "O-O");
-    }
-    return chessMoves;
+  const regex = /^\d+\./;
+  for (let i = 0; i < chessMoves.length; i++) {
+    // Replace "0-0" with "O-O"
+    chessMoves[i] = chessMoves[i].replace("0-0", "O-O");
+  }
+  return chessMoves;
 }
-
 
 function movesToFen(moves) {
   const chess = new Chess();
   const fenList = [];
 
-  for (let i = 0; i < moves.length; i += 2) {
+  console.log(moves.length);
+
+  for (let i = 0; i < moves.length - 1; i += 2) {
     const moveNumber = Math.floor(i / 2) + 1;
     const whiteMove = moves[i];
     const blackMove = moves[i + 1];
@@ -214,15 +237,13 @@ function movesToFen(moves) {
 
     chess.move(blackMove);
     fenList.push({ moveNumber, fen: chess.fen() });
-
-    console.log(fenList);
   }
 
   return fenList;
-} 
+}
 
 onMounted(() => {
-  const board = new Chessboard(myBoard.value, {
+  board = new Chessboard(myBoard.value, {
     position: FEN.start,
     assetsUrl: "/",
   });
