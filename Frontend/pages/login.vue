@@ -35,7 +35,7 @@
                     <DialogTitle>Well... try to remember it</DialogTitle>
                     <DialogDescription>
                       <img src="/forgot-password.gif" alt="forgot-password" />
-                      <p class="text-right">Try with pwd123</p>
+                      <p class="text-right">PS. try the passwords on the GIF</p>
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
@@ -62,32 +62,43 @@
         class="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
       />
     </div>
+    <Toaster />
   </div>
 </template>
 
 <script setup>
+import { useToast } from "@/components/ui/toast/use-toast";
+const { toast } = useToast();
+
 const email = ref("");
 const password = ref("");
 
 function login() {
-
-  fetch('http://localhost:8000/user/login', {
-    method: 'POST',
+  fetch("http://localhost:8000/user/login", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       username: email.value.value,
-      password: password.value.value
-    })
+      password: password.value.value,
+    }),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       // Handle the response data here
-      localStorage.setItem('token', data.payload);
-      navigateTo('/')
+      console.log();
+      if (data.code !== 200) {
+        toast({
+          title: "Sorry",
+          description: "The email or password is incorrect",
+        });
+        return;
+      }
+      localStorage.setItem("token", data.payload);
+      navigateTo("/");
     })
-    .catch(error => {
+    .catch((error) => {
       // Handle any errors here
       console.error(error);
     });
