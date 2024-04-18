@@ -1,7 +1,8 @@
 import puppeteer from 'puppeteer';
-import fs from 'fs';
-import path from 'path';
+import { MongoClient } from 'mongodb';
 import "dotenv/config";
+import fs from 'fs'
+import path from 'path'
 
 (async () => {
     try {
@@ -90,6 +91,7 @@ import "dotenv/config";
                     }
                 });
 
+                
 
                 for (const row of tableRows) {
                     const tds = row.querySelectorAll('td');
