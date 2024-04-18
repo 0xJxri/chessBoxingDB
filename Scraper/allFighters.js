@@ -7,7 +7,7 @@ import * as countryCodeJSON from './data/countryCode.json';
 
 
 (async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
     await page.goto('https://www.chessboxing.info/fighters/');
 
@@ -203,6 +203,18 @@ import * as countryCodeJSON from './data/countryCode.json';
                         const result = fight[4].textContent;
                         const description = fight[5].textContent;
                         const round = fight[6].textContent;
+
+                        let winBy;
+                        if (description.includes('chess')) {
+                            winBy = 'chess';
+                        } else if (description.includes('boxing')) {
+                            winBy = 'boxing';
+                        } else if (description.includes('UNKNOWN')) {
+                            winBy = 'UNKNOWN';
+                        } else {
+                            winBy = null;
+                        }
+
                         fights.push({
                             opponentImg,
                             opponentChessColor,
@@ -212,6 +224,7 @@ import * as countryCodeJSON from './data/countryCode.json';
                             dateFormat,
                             result,
                             description,
+                            winBy,
                             round,
                         });
                     });

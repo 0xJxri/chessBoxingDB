@@ -18,7 +18,7 @@ function formatDateString(dateString) {
 }
 
 (async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ headless: false});
     const page = await browser.newPage();
 
     let pageNumber = 1;
@@ -57,9 +57,9 @@ function formatDateString(dateString) {
                 const eventLink = await tds[1].$eval('a', el => el.href);
                 const date = await tds[2].evaluate(td => td.textContent.trim());
                 const dateFormat = formatDateString(date)
-                console.log("dateformat = ",dateFormat)
-                    // Default value
-                    let imgFlag = null
+                console.log("dateformat = ", dateFormat)
+                // Default value
+                let imgFlag = null
                 try {
                     let flag = await tds[3].$eval('img', el => el.src) // Default value
                     console.log(flag);
@@ -215,8 +215,8 @@ function formatDateString(dateString) {
                         date = date.trim().replace(/^- /, '');
 
                         const dateFormat = formatDateString(date)
-
                         console.log(date)
+
                         // const date = wrapperH2[1].textContent.trim() || null
                         // const dateFormat = formatDateString(date)
                         console.log("eventNameee = ", eventName)
@@ -291,6 +291,8 @@ function formatDateString(dateString) {
                                 fightWinDetail: fightWinDetail,
                                 nationalityWhite: nationalityWhite,
                                 nationalityBlack: nationalityBlack,
+                                whitePfp: event.urlImgWhite,
+                                blackPfp: event.urlImgBlack,
                                 fighterWhite: fighterWhite,
                                 fighterBlack: fighterBlack,
                                 chessMoves: chessMoves
@@ -306,6 +308,8 @@ function formatDateString(dateString) {
                                 fightWinDetail: fightWinDetail,
                                 nationalityWhite: nationalityWhite,
                                 nationalityBlack: nationalityBlack,
+                                whitePfp: event.urlImgWhite,
+                                blackPfp: event.urlImgBlack,
                                 fighterWhite: fighterWhite,
                                 fighterBlack: fighterBlack,
                                 chessMoves: null
@@ -394,28 +398,7 @@ function formatDateString(dateString) {
     //     return await fightsDetailsCollection.insertMany(fightDetails);
     // });
 
-    async function insertEventsCollection(eventResult) {
-        const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
-        const client = new MongoClient(mongoConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
-        await client.connect();
-        if (client) {
-            console.log("Connected to db!")
-        }
-        try {
-            const db = client.db(); // Get the database from the client
-            const eventsCollection = db.collection("events"); // replace "test" with your database name
-            const result = await eventsCollection.insertMany(eventResult);
-            console.log(result)
-            return result;
-        } catch (err) {
-            console.error(err);
-        } finally {
-            await client.close();
-        }
-    }
-
-    insertEventsCollection(eventResult); // call the function with your fightDetails
-    // async function insertFightDetails(fightDetails) {
+    // async function insertEventsCollection(eventResult) {
     //     const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
     //     const client = new MongoClient(mongoConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
     //     await client.connect();
@@ -424,8 +407,8 @@ function formatDateString(dateString) {
     //     }
     //     try {
     //         const db = client.db(); // Get the database from the client
-    //         const fightsDetailsCollection = db.collection("fightdetails"); // replace "test" with your database name
-    //         const result = await fightsDetailsCollection.insertMany(fightDetails);
+    //         const eventsCollection = db.collection("events"); // replace "test" with your database name
+    //         const result = await eventsCollection.insertMany(eventResult);
     //         console.log(result)
     //         return result;
     //     } catch (err) {
@@ -435,7 +418,28 @@ function formatDateString(dateString) {
     //     }
     // }
 
-    // insertFightDetails(fightDetails);
+    // insertEventsCollection(eventResult); // call the function with your fightDetails
+    async function insertFightDetails(fightDetails) {
+        const mongoConnectionString = process.env.MONGO_CONNECTIONSTRING;
+        const client = new MongoClient(mongoConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        await client.connect();
+        if (client) {
+            console.log("Connected to db!")
+        }
+        try {
+            const db = client.db(); // Get the database from the client
+            const fightsDetailsCollection = db.collection("fightdetails"); // replace "test" with your database name
+            const result = await fightsDetailsCollection.insertMany(fightDetails);
+            console.log(result)
+            return result;
+        } catch (err) {
+            console.error(err);
+        } finally {
+            await client.close();
+        }
+    }
+
+    insertFightDetails(fightDetails);
 
 
     await browser.close();

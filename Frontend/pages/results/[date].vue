@@ -161,9 +161,9 @@ const { data: fightDetails } = await useFetch(
 const myBoard = ref();
 const selectedChessMove = ref(0);
 
-// const fenMoves = movesToFen(removeMoveNumbers(fightDetails.value.payload[0].chessMoves[0]));
-// console.log(fenMoves.value);
-console.log(removeMoveNumbers(fightDetails.value.payload[0].chessMoves[0]));
+console.log("fightdetails = ",fightDetails.value.payload[0].chessMoves[0])
+const fenMoves = movesToFen(removeMoveCastle(removeMoveNumbers(fightDetails.value.payload[0].chessMoves[0])));
+console.log(fenMoves.value);
 
 function nextMove() {
   if (
@@ -190,6 +190,16 @@ function removeMoveNumbers(chessMoves) {
   return chessMoves;
 }
 
+function removeMoveCastle(chessMoves) {
+    const regex = /^\d+\./; 
+    for (let i = 0; i < chessMoves.length; i++) {
+        // Replace "0-0" with "O-O"
+        chessMoves[i] = chessMoves[i].replace("0-0", "O-O");
+    }
+    return chessMoves;
+}
+
+
 function movesToFen(moves) {
   const chess = new Chess();
   const fenList = [];
@@ -209,7 +219,7 @@ function movesToFen(moves) {
   }
 
   return fenList;
-}
+} 
 
 onMounted(() => {
   const board = new Chessboard(myBoard.value, {
