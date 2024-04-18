@@ -9,7 +9,12 @@
       </nuxt-link>
 
       <div v-if="checkTokenExists()" class="flex-1 flex justify-end">
-        <Icon icon="material-symbols:logout" class="mr-4 mb-2 cursor-pointer" @click="removeToken()" width="2rem" />
+        <Icon
+          icon="material-symbols:logout"
+          class="mr-4 mb-2 cursor-pointer"
+          @click="removeToken()"
+          width="2rem"
+        />
       </div>
 
       <NuxtLink v-else to="/login" class="flex-1 flex justify-end">
@@ -35,7 +40,10 @@
         </NuxtLink>
         <NuxtLink to="/compare">
           <NavigationMenuLink :class="navigationMenuTriggerStyle()">
-            Compare
+            <div class="relative">
+              <span> Compare </span>
+              <Crown class="w-4 stroke-yellow-400 absolute -right-2.5 -top-3 rotate-[25deg]" />
+            </div>
           </NavigationMenuLink>
         </NuxtLink>
       </NavigationMenuList>
@@ -46,6 +54,7 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
+import { Crown } from "lucide-vue-next";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 function checkTokenExists() {
@@ -56,6 +65,5 @@ function checkTokenExists() {
 function removeToken() {
   localStorage.removeItem("token");
   window.location.reload();
-} 
-
+}
 </script>

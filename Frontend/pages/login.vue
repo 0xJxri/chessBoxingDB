@@ -87,7 +87,6 @@ function login() {
     .then((response) => response.json())
     .then((data) => {
       // Handle the response data here
-      console.log();
       if (data.code !== 200) {
         toast({
           title: "Sorry",

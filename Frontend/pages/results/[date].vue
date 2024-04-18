@@ -71,7 +71,7 @@
 
     <div class="flex justify-between">
       <img
-        class=""
+        class="object-cover"
         :src="
           fightDetails.payload[0].blackPfp
             ? fightDetails.payload[0].blackPfp + '_mid.jpg'
@@ -100,8 +100,14 @@
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+      <div v-else class="flex items-center justify-center">
+        <span>
+          No photo gallery available
+        </span>
+      </div>
+
       <img
-        class=""
+        class="object-cover"
         :src="
           fightDetails.payload[0].whitePfp
             ? fightDetails.payload[0].whitePfp + '_mid.jpg'
@@ -146,10 +152,11 @@
           class="p-2 gap-2 mb-2 mr-2 rounded-sm"
           :class="selectedChessMove === index ? 'bg-primary' : 'bg-muted'"
         >
-          <span>{{ index }}</span> {{ move }}
+          {{ move }}
         </p>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -170,10 +177,10 @@ let board;
 const myBoard = ref();
 const selectedChessMove = ref(-1);
 
-console.log("fightdetails = ", fightDetails.value.payload[0].chessMoves[0]);
+// console.log("fightdetails = ", fightDetails.value.payload[0].chessMoves[0]);
 const fenMoves = movesToFen(
   removeMoveCastle(
-    removeMoveNumbers(fightDetails.value.payload[0].chessMoves[0])
+    removeMoveNumbers(fightDetails.value.payload[0].chessMoves ? fightDetails.value.payload[0].chessMoves[0] : [])
   )
 );
 
@@ -216,6 +223,7 @@ function removeMoveCastle(chessMoves) {
   const regex = /^\d+\./;
   for (let i = 0; i < chessMoves.length; i++) {
     // Replace "0-0" with "O-O"
+    chessMoves[i] = chessMoves[i].replace("0-0-0", "O-O-O");
     chessMoves[i] = chessMoves[i].replace("0-0", "O-O");
   }
   return chessMoves;
@@ -225,7 +233,7 @@ function movesToFen(moves) {
   const chess = new Chess();
   const fenList = [];
 
-  console.log(moves.length);
+  // console.log(moves.length);
 
   for (let i = 0; i < moves.length - 1; i += 2) {
     const moveNumber = Math.floor(i / 2) + 1;
