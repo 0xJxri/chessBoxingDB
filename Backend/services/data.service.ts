@@ -95,8 +95,8 @@ class DataService {
 public async compareFighters(fighterOne, fighterTwo) {
     const db = await this.db.getDb();
     try {
-        const fighterOneData = await db.collection("detailedfighters").findOne({ name: fighterOne });
-        const fighterTwoData = await db.collection("detailedfighters").findOne({ name: fighterTwo });
+        var fighterOneData = await db.collection("detailedfighters").findOne({ name: fighterOne });
+        var fighterTwoData = await db.collection("detailedfighters").findOne({ name: fighterTwo });
 
         const calculateWinPercentage = (fighter) => {
             let totalWins = 0;
@@ -120,16 +120,33 @@ public async compareFighters(fighterOne, fighterTwo) {
         const fighterTwoWinPercentage = calculateWinPercentage(fighterTwoData);
 
         let winner = "Tie";
-        if (fighterOneWinPercentage > fighterTwoWinPercentage) {
+
+        if ( fighterOneWinPercentage > fighterTwoWinPercentage) {
             winner = fighterOneData.name;
         } else if (fighterTwoWinPercentage > fighterOneWinPercentage) {
             winner = fighterTwoData.name;
         }
 
+        
+        const extrasFighterOne = await db.collection("detailedfighters").findOne({ name: fighterOne });
+        const extrasFighterTwo = await db.collection("detailedfighters").findOne({ name: fighterTwo }); 
+
+        fighterOneData = {
+            ...fighterOneData,
+            ...extrasFighterOne
+        };
+        console.log(fighterOneData);
+        fighterTwoData = {
+            ...fighterTwoData,
+            ...extrasFighterTwo
+        };
+
+
         return {
             code: 200,
             status: "success",
             payload: {
+                winner: winner,
                 fighterWhite: {
                     name: fighterOneData.name,
                     percentage: fighterOneWinPercentage,
