@@ -92,58 +92,87 @@ class DataService {
         }
     }
 
-    public async compareFighters(figherOne, fighterTwo) {
-        const db = await this.db.getDb();
-        try {
-            const fighterOneData = await db.collection("detailedfighters").findOne({ name: figherOne });
-            const fighterTwoData = await db.collection("detailedfighters").findOne({ name: fighterTwo });
+public async compareFighters(fighterOne, fighterTwo) {
+    const db = await this.db.getDb();
+    try {
+        const fighterOneData = await db.collection("detailedfighters").findOne({ name: fighterOne });
+        const fighterTwoData = await db.collection("detailedfighters").findOne({ name: fighterTwo });
 
-            const calculateWinPercentage = (fighter) => {
-                const totalFights = fighter.results.reduce((acc, cur) => acc + parseInt(cur), 0);
-                const wins = parseInt(fighter.results[0]);
-                return (wins / totalFights) * 100;
-            };
+        const calculateWinPercentage = (fighter) => {
+            let totalWins = 0;
+            let totalMatches = 0;
+            fighter.results.forEach((result) => {
+                const resultInt = parseInt(result);
+                if (!isNaN(resultInt)) {
+                    totalMatches++;
+                    if(resultInt >= 1) {
+                        totalWins++;
 
-            const fighterOneWinPercentage = calculateWinPercentage(fighterOneData);
-            const fighterTwoWinPercentage = calculateWinPercentage(fighterTwoData);
+                    }
+                }
+            });
+            if (totalMatches === 0) return 0;
+            const winPercentage = (totalWins / totalMatches) * 100;
+            return winPercentage >= 0 ? winPercentage : 0;
+        };
 
-            let winner: any;
+        const fighterOneWinPercentage = calculateWinPercentage(fighterOneData);
+        const fighterTwoWinPercentage = calculateWinPercentage(fighterTwoData);
 
-
-            if (fighterOneWinPercentage > fighterTwoWinPercentage) {
-                winner = fighterOneData.name;
-            } else if (fighterTwoWinPercentage > fighterOneWinPercentage) {
-                winner = fighterTwoData.name;
-            } else {
-                winner = "Tie";
-            }
-
-            return {
-                status: "success",
-                message: "Fighters compared",
-                code: 200,
-                percentages: [{ name: fighterOneData.name, percentage: fighterOneWinPercentage }, { name: fighterTwoData.name, percentage: fighterTwoWinPercentage }],
-                winner: winner
-
-            }
-
-        }
-        catch (error) {
-            return {
-                status: "error",
-                message: "Internal server error",
-                code: 500,
-                payload: null
-            };
+        let winner = "Tie";
+        if (fighterOneWinPercentage > fighterTwoWinPercentage) {
+            winner = fighterOneData.name;
+        } else if (fighterTwoWinPercentage > fighterOneWinPercentage) {
+            winner = fighterTwoData.name;
         }
 
+        return {
+            code: 200,
+            status: "success",
+            payload: {
+                fighterWhite: {
+                    name: fighterOneData.name,
+                    percentage: fighterOneWinPercentage,
+                    flag: fighterOneData.flag,
+                    results: fighterOneData.results,
+                    pfp_link: fighterOneData.pfp_link,
+                    age: fighterOneData.age,
+                    height: fighterOneData.height,
+                    weight: fighterOneData.weight,
+                    reach: fighterOneData.reach,
+                    elo: fighterOneData.elo,
+                    country: fighterOneData.country,
+                    hometown: fighterOneData.hometown,
+                    gym: fighterOneData.gym,
+                    job: fighterOneData.job,
+                },
+                fighterBlack: {
+                    name: fighterTwoData.name,
+                    percentage: fighterTwoWinPercentage,
+                    flag: fighterTwoData.flag,
+                    results: fighterTwoData.results,
+                    pfp_link: fighterTwoData.pfp_link,
+                    age: fighterTwoData.age,
+                    height: fighterTwoData.height,
+                    weight: fighterTwoData.weight,
+                    reach: fighterTwoData.reach,
+                    elo: fighterTwoData.elo,
+                    country: fighterTwoData.country,
+                    hometown: fighterTwoData.hometown,
+                    gym: fighterTwoData.gym,
+                    job: fighterTwoData.job,
+                }
+            }
+        };
+    } catch (error) {
+        return {
+            status: "error",
+            message: "Internal server error",
+            code: 500,
+            payload: null
+        };
     }
 }
 
-
-
-
-
-
-
+}
 export default DataService;
