@@ -233,36 +233,37 @@
           >
             <div class="flex-1 h-full p-1">
               <div
-                class="w-full h-full bg-muted rounded-full flex justify-between"
+                class="w-full h-full bg-muted rounded-full relative flex justify-between"
               >
-                <p class="ml-2">{{ fighterOneStats() }}%</p>
                 <div
-                  class="h-full rounded-full"
+                  class="h-full rounded-full absolute right-0"
                   :class="{
-                    'bg-green-500': fighterOneStats <= fighterTwoStats,
-                    'bg-primary': fighterOneStats > fighterTwoStats,
+                    'bg-green-500': higherWinFighter() === compareData.fighterWhite.name,
+                    'bg-primary': higherWinFighter() === compareData.fighterBlack.name,
                   }"
-                  :style="{ width: fighterTwoStats() + '%' }"
-                ></div>
+                  :style="{ width: fighterOneStats() + '%' }"
+                />
+                <p class="ml-2 relative">{{ fighterOneStats() }}%</p>
               </div>
             </div>
             <div class="flex-2 text-center text-lg font-semibold">Win rate</div>
             <div class="flex-1 h-full p-1">
               <div
-                class="w-full h-full bg-muted rounded-full flex justify-between"
+                class="w-full relative h-full bg-muted rounded-full flex justify-between"
               >
                 <div
-                  class="h-full rounded-full"
+                  class="h-full rounded-full absolute"
                   :class="{
-                    'bg-green-500': fighterTwoStats <= fighterOneStats,
-                    'bg-primary': fighterTwoStats > fighterOneStats,
+                    'bg-green-500': higherWinFighter() === compareData.fighterBlack.name,
+                    'bg-primary': higherWinFighter() === compareData.fighterWhite.name,
                   }"
                   :style="{ width: fighterTwoStats() + '%' }"
-                ></div>
-                <p class="mr-2">{{ fighterTwoStats() }}%</p>
+                />
+                <p class="mr-2 ml-auto relative">{{ fighterTwoStats() }}%</p>
               </div>
             </div>
           </div>
+
         </div>
 
         <div>
@@ -291,6 +292,12 @@ const fighter1 = ref(null);
 const fighter2 = ref(null);
 
 const compareData = ref();
+
+const higherWinFighter = () => {
+  return fighterOneStats() > fighterTwoStats()
+    ? compareData.value.fighterWhite.name
+    : compareData.value.fighterBlack.name;
+};
 
 const fighterOneStats = () => {
   return Math.floor(
