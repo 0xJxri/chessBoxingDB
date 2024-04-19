@@ -241,10 +241,12 @@
 ![gh-chessboxing-logo](https://github.com/0xJxri/Gruppo3_Didyk/assets/79630556/632982ac-c3a3-44fb-b291-a5c7469418a8)
 
 
+<h2 style="text-align: center;">Welcome to the Chessboxing Analytics Web Application! 🥊♟️</h2>
 
-Welcome to the Chessboxing Analytics Web Application! 🥊♟️
 
-Explore chessboxing events, track fighter stats, analyze match outcomes, and compare athletes with our interactive platform. Dive into the dynamic world of chessboxing today!
+<p style="text-align: center;">Explore chessboxing events, track fighter stats, analyze match outcomes, and compare athletes with our interactive platform. Dive into the dynamic world of chessboxing today!</p>
+
+
 
 
 # Gruppo3_Didyk UWU
