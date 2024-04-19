@@ -242,6 +242,10 @@
 
 
 
+Welcome to the Chessboxing Analytics Web Application! 🥊♟️
+
+Explore chessboxing events, track fighter stats, analyze match outcomes, and compare athletes with our interactive platform. Dive into the dynamic world of chessboxing today!
+
 
 # Gruppo3_Didyk UWU
 
