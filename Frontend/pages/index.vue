@@ -36,7 +36,7 @@ onLoop(({ delta, elapsed }) => {
     <TresPerspectiveCamera :position="[60, 48, 60]" />
     <CameraControls />
     <Suspense>
-      <GLTFModel ref="ring" path="https://media.githubusercontent.com/media/MrTartuf0/chessBoxingDB/main/Frontend/public/chessboxing.glb" draco />
+      <GLTFModel ref="ring" path="https://media.githubusercontent.com/media/MrTartuf0/chessBoxingDB/main/Frontend/public/models/chessboxing.glb" draco />
     </Suspense>
     <TresDirectionalLight :position="[0, 10, 0]" :intensity="0.6" cast-shadow />
   </TresCanvas>
