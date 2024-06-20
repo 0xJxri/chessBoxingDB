@@ -243,6 +243,8 @@
 
 <h2 style="text-align: center;">Welcome to the Chessboxing Analytics Web Application! 🥊♟️</h2>
 
+https://chessboxingdb.netlify.app/
+
 
 <p style="text-align: center;">Explore chessboxing events, track fighter stats, analyze match outcomes, and compare athletes with our interactive platform. Dive into the dynamic world of chessboxing today!</p>
 
