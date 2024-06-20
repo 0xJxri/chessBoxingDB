@@ -238,18 +238,20 @@ import {
 } from "lucide-vue-next";
 
 const { toast } = useToast();
+const config = useRuntimeConfig();
+
 
 const selectedPage = ref(1);
 const searchQuery = ref();
 const modalPayload = ref();
 
 const events = ref(
-  (await useFetch("http://localhost:8000/events?page=0")).data
+  (await useFetch(config.public.baseUrl+"/events?page=0")).data
 );
 
 const fetchPage = async (page) => {
   try {
-    const data = await $fetch(`http://localhost:8000/events?page=${page - 1}`);
+    const data = await $fetch(config.public.baseUrl+`/events?page=${page - 1}`);
     events.value = data;
     window.scrollTo(0, 0);
   } catch (error) {
@@ -264,7 +266,7 @@ const searchEvent = async (name) => {
       return;
     }
     const data = await $fetch(
-      `http://localhost:8000/events?search=eventName:${name}`
+      config.public.baseUrl+`/events?search=eventName:${name}`
     );
     events.value = data;
   } catch (error) {

@@ -169,8 +169,10 @@ import { Chess } from "chess.js";
 import { ChevronRight, ChevronLeft } from "lucide-vue-next";
 
 const route = useRoute();
+const config = useRuntimeConfig();
+
 const { data: fightDetails } = await useFetch(
-  `http://localhost:8000/fightdetails?date=${route.params.date}&eventName=${route.query.eventName}&fighterWhite=${route.query.fighterWhite}&fighterBlack=${route.query.fighterBlack}`
+  config.public.baseUrl+`/fightdetails?date=${route.params.date}&eventName=${route.query.eventName}&fighterWhite=${route.query.fighterWhite}&fighterBlack=${route.query.fighterBlack}`
 );
 
 let board;

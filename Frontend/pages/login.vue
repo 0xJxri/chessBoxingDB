@@ -69,12 +69,13 @@
 <script setup>
 import { useToast } from "@/components/ui/toast/use-toast";
 const { toast } = useToast();
+const config = useRuntimeConfig();
 
 const email = ref("");
 const password = ref("");
 
 function login() {
-  fetch("http://localhost:8000/user/login", {
+  fetch(config.public.baseUrl+"/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

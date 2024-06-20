@@ -285,6 +285,7 @@
 <script setup>
 import { useToast } from "@/components/ui/toast/use-toast";
 const { toast } = useToast();
+const config = useRuntimeConfig();
 
 const isTokenValid = ref(false);
 
@@ -332,7 +333,7 @@ const fetchData = () => {
 
   console.log(body);
 
-  fetch("http://localhost:8000/compare", {
+  fetch(config.public.baseUrl+"/compare", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -361,7 +362,7 @@ onMounted(() => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    fetch("http://localhost:8000/validate", {
+    fetch(config.public.baseUrl+"/validate", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

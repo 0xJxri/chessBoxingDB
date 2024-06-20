@@ -357,6 +357,7 @@ import {
 } from "lucide-vue-next";
 
 const { toast } = useToast();
+const config = useRuntimeConfig();
 
 const isGridLayoutSelected = ref(true);
 const selectedPage = ref(1);
@@ -365,13 +366,13 @@ const selectedOrder = ref("asc");
 const searchQuery = ref();
 
 const fighters = ref(
-  (await useFetch("http://localhost:8000/fighterslist?page=0")).data
+  (await useFetch(config.public.baseUrl+"/fighterslist?page=0")).data
 );
 
 const fetchPage = async (page) => {
   try {
     const data = await $fetch(
-      `http://localhost:8000/fighterslist?page=${page - 1}&orderBy=${
+      config.public.baseUrl+`/fighterslist?page=${page - 1}&orderBy=${
         selectedOrderBy.value
       }&order=${selectedOrder.value}`
     );
@@ -389,7 +390,7 @@ const searchFighter = async (name) => {
       return;
     }
     const data = await $fetch(
-      `http://localhost:8000/fighterslist?search=name:${name}`
+      config.public.baseUrl+`/fighterslist?search=name:${name}`
     );
     fighters.value = data;
   } catch (error) {

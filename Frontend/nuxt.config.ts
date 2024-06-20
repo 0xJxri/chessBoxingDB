@@ -10,6 +10,13 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@tresjs/nuxt",
   ],
+  runtimeConfig: {
+    public: {
+      // baseUrl: process.env.BASE_URL || 'http://localhost:8000'
+      // baseUrl: "http://localhost:8000",
+      baseUrl: "https://chessboxingdb.onrender.com",
+    }
+  },
   shadcn: {
     prefix: "",
     componentDir: "./components/ui",

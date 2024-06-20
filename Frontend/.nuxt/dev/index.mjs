@@ -102,7 +102,9 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {
+    "baseUrl": "https://chessboxingdb.onrender.com"
+  }
 };
 const envOptions = {
   prefix: "NITRO_",

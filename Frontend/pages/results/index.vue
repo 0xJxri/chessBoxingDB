@@ -271,6 +271,7 @@ import {
   CalendarClock,
 } from "lucide-vue-next";
 
+const config = useRuntimeConfig();
 const { toast } = useToast();
 
 const isGridLayoutSelected = ref(false);
@@ -278,12 +279,12 @@ const selectedPage = ref(1);
 const searchQuery = ref();
 
 const results = ref(
-  (await useFetch("http://localhost:8000/results?page=0")).data
+  (await useFetch(config.public.baseUrl+"/results?page=0")).data
 );
 
 const fetchPage = async (page) => {
   try {
-    const data = await $fetch(`http://localhost:8000/results?page=${page - 1}`);
+    const data = await $fetch(config.public.baseUrl+`/results?page=${page - 1}`);
     results.value = data;
     window.scrollTo(0, 0);
   } catch (error) {
@@ -298,7 +299,7 @@ const searchEvent = async (name) => {
       return;
     }
     const data = await $fetch(
-      `http://localhost:8000/results?search=event:${name}`
+      config.public.baseUrl+`/results?search=event:${name}`
     );
     results.value = data;
   } catch (error) {

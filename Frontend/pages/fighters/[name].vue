@@ -196,8 +196,9 @@
 <script setup>
 import { Eye } from "lucide-vue-next";
 
+const config = useRuntimeConfig();
 const route = useRoute();
 const { data: fighter } = await useFetch(
-  "http://localhost:8000/detailedFighters/" + route.params.name
+  config.public.baseUrl+"/detailedFighters/" + route.params.name
 );
 </script>

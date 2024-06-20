@@ -57,6 +57,10 @@ import { Icon } from "@iconify/vue";
 import { Crown } from "lucide-vue-next";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
+const config = useRuntimeConfig();
+
+console.log(config.public.baseUrl);
+
 function checkTokenExists() {
   const token = localStorage.getItem("token");
   return !!token;
